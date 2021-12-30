@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.Http;
@@ -9,18 +10,22 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Xml.Serialization;
+using MyAnimeList.Constants;
+using MyAnimeList.Exceptions;
 
 namespace MyAnimeList
 {
     public class OAuth
     {
         private static HttpClient? _oAuthMyAnimeListHttpClient;
-        private const string ClientId = "23c477235d19c5349899187d13f5af36";
         private static string? _codeVerifier;
         private static string? _codeChallenge;
         private static AuthorizationResponse? _tokenRefreshInfo;
+
+        private static HttpListener? _authHttpListener;
+        private static Process? _browserProcess; 
         
-        public static void Init()
+        public static async Task Init()
         {
             _codeVerifier = GenerateNonce();
             
@@ -32,46 +37,75 @@ namespace MyAnimeList
             {
                 _oAuthMyAnimeListHttpClient = HttpClientFactory.Create();
                 _oAuthMyAnimeListHttpClient.DefaultRequestHeaders.Accept.Clear();
-                _oAuthMyAnimeListHttpClient.BaseAddress = new Uri("https://myanimelist.net/");
+                _oAuthMyAnimeListHttpClient.BaseAddress = new Uri(MyAnimeListConstants.APIUrl);
             }
+
+            if (_authHttpListener == null)
+                _authHttpListener = new HttpListener();
+            else
+            {
+                if (_authHttpListener.IsListening)
+                {
+                    _authHttpListener.Stop();
+                    _authHttpListener.Abort();
+                }
+
+                _authHttpListener = new HttpListener();
+            }
+
+            _authHttpListener = new HttpListener();
+            _authHttpListener.Prefixes.Add(MyAnimeListConstants.RedirectUrl);
+            _authHttpListener.Start();
+
+            // if the browser process variable has yet to be set, create a new one or if it has
+            // been set, refresh the current one
+            if (_browserProcess == null)
+                _browserProcess = new Process();
+            else
+                _browserProcess.Close();
+
+            // This is the URL required to link a user's account to the app
+            // see https://myanimelist.net/blog.php?eid=835707 or
+            // https://myanimelist.net/apiconfig/references/authorization
+            _browserProcess.StartInfo.FileName = string.Format(MyAnimeListConstants.AuthUrl, MyAnimeListConstants.APIUrl, MyAnimeListConstants.ClientId, _codeChallenge);
+            _browserProcess.StartInfo.UseShellExecute = true;
+            _browserProcess.StartInfo.Verb = "";
+            _browserProcess.Start();
+            
+
+            var context = await _authHttpListener.GetContextAsync();
+
+            var code = context.Request.QueryString.Get("code");
+            var state = context.Request.QueryString.Get("state");
+
+            if (code == null)
+                throw new AuthenticationUrlIncomplete("Code variable missing from authentication URL");
+            
+            /*if (state == null)
+                throw new AuthenticationUrlIncomplete("State variable missing from authentication URL");*/
+
+            await InitUserAccessToken(code, state);
+            
+            _authHttpListener.Stop();
         }
 
         public static void Login()
         {
-            
         }
-
-        /// <summary>
-        ///     This is the URL required to link a user's account to the app
-        ///     Clicking it will open a "MAL Desktop wants to access your MyAnimeList account" page
-        ///     After clicking allow the next step will require the current link of the page
-        ///     see https://myanimelist.net/blog.php?eid=835707 or
-        ///     https://myanimelist.net/apiconfig/references/authorization
-        ///     for explanation
-        /// </summary>
-        public static string GetUserAuthUrl()
-        {
-            return _oAuthMyAnimeListHttpClient == null 
-                ? "Failed: HttpClient not initialized or base address not set" 
-                : $"{_oAuthMyAnimeListHttpClient.BaseAddress}v1/oauth2/authorize?response_type=code&client_id={ClientId}&code_challenge={_codeChallenge}&code_challenge_method=plain";
-        }
+        
         
         /// <summary>
         ///     Exchanging authorization code for refresh and access tokens
         /// </summary>
         /// <param name="authorizationUrl"></param>
         /// <returns></returns>
-        public static async Task InitUserAccessToken(string authorizationUrl)
+        public static async Task InitUserAccessToken(string code, string? state)
         {
             if (_oAuthMyAnimeListHttpClient == null || _codeVerifier == null) return;
 
-            var authUrl = new Uri(authorizationUrl);
-            string code = HttpUtility.ParseQueryString(authUrl.Query).Get("code");
-            string state = HttpUtility.ParseQueryString(authUrl.Query).Get("state");
-            
             // preparing a http form to get the token type, expires in, access token and refresh token
             var parameters = new Dictionary<string, string>();
-            parameters.Add("client_id", ClientId);
+            parameters.Add("client_id", MyAnimeListConstants.ClientId);
             parameters.Add("code", code);
             parameters.Add("code_verifier", _codeVerifier);
             parameters.Add("grant_type", "authorization_code");
