@@ -1,4 +1,6 @@
-﻿using System;
+﻿#define DEBUG
+
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -8,7 +10,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.Web;
 using System.Xml.Serialization;
 using MyAnimeList.Constants;
 using MyAnimeList.Exceptions;
@@ -21,9 +22,11 @@ namespace MyAnimeList
         private static string? _codeVerifier;
         private static string? _codeChallenge;
         private static AuthorizationResponse? _tokenRefreshInfo;
-
+        
         private static HttpListener? _authHttpListener;
-        private static Process? _browserProcess; 
+        private static Process? _browserProcess;
+
+        private static string? token;
         
         public static async Task Init()
         {
@@ -87,6 +90,9 @@ namespace MyAnimeList
             await InitUserAccessToken(code, state);
             
             _authHttpListener.Stop();
+            
+            // Lastly, save the token to a file for later use
+            SaveTokenToFile();
         }
 
         public static void Login()
@@ -95,7 +101,7 @@ namespace MyAnimeList
         
         
         /// <summary>
-        ///     Exchanging authorization code for refresh and access tokens
+        /// Exchanging authorization code for refresh and access tokens
         /// </summary>
         /// <param name="authorizationUrl"></param>
         /// <returns></returns>
@@ -127,7 +133,13 @@ namespace MyAnimeList
         /// </summary>
         private static void SaveTokenToFile()
         {
+#if DEBUG
+            Console.WriteLine("Saving token to file");
+#endif
+            
             if (_tokenRefreshInfo == null) return;
+
+            token = _tokenRefreshInfo.access_token;
             
             const string filePath = "TOKENS.xml";
             
@@ -136,6 +148,10 @@ namespace MyAnimeList
             serializer.Serialize(tw, _tokenRefreshInfo);
             
             _tokenRefreshInfo = null;
+            
+#if DEBUG
+            Console.WriteLine("Token successfully saved to file");
+#endif
         }
 
         /// <summary>
@@ -156,14 +172,14 @@ namespace MyAnimeList
         /// <summary>
         /// Used to refresh the access token for the client
         /// </summary>
-        public static async Task RefreshToken()
+        public static async Task<bool> RefreshToken()
         {
             
-            if (_oAuthMyAnimeListHttpClient == null) return;
+            if (_oAuthMyAnimeListHttpClient == null) return false;
             
             // loading refresh tokens from file, if loading failed wont refresh
             LoadTokenFromFile();
-            if (_tokenRefreshInfo == null) return;
+            if (_tokenRefreshInfo == null) return false;
             
             // preparing a http form to get the token type, expires in, access token and refresh token
             var parameters = new Dictionary<string, string>();
@@ -184,7 +200,9 @@ namespace MyAnimeList
             
             // saving the new token
             SaveTokenToFile();
-            
+
+            return response.StatusCode == HttpStatusCode.OK;
+
         }
         
         
@@ -219,6 +237,11 @@ namespace MyAnimeList
                 code = Regex.Replace(code, "=+$", "");
                 return code;
             }
+        }
+
+        public static string? GetToken()
+        {
+            return token;
         }
     }
     
