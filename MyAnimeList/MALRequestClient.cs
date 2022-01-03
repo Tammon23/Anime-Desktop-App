@@ -65,10 +65,10 @@ namespace MyAnimeList
         /// <summary>
         /// Used to preform a get request to my anime list
         /// </summary>
-        /// <param name="url"> The url that a request will be made to </param>
+        /// <param name="url">The url that a request will be made to</param>
         /// <param name="requiresLogin">Whether the request needs the user to be logged in to be fulfilled</param>
-        /// <typeparam name="T"> Generic return type </typeparam>
-        /// <returns> A formatted object of type T, null if bad request </returns>
+        /// <typeparam name="T">Generic return type</typeparam>
+        /// <returns>A formatted object of type T, null if bad request</returns>
         public static async Task<T?> Get<T>(Uri url, bool requiresLogin = false)
         {
             if (_myAnimeListClient == null)
@@ -78,7 +78,7 @@ namespace MyAnimeList
             
             using var requestMessage = new HttpRequestMessage(HttpMethod.Get, url);
             if (requiresLogin)
-                requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", "token goes here");
+                requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", OAuth.GetToken());
             
             else
                 requestMessage.Headers.Add("X-MAL-CLIENT-ID", Constants.MyAnimeListConstants.ClientId);
@@ -96,52 +96,48 @@ namespace MyAnimeList
         /// <summary>
         /// Used to preform a delete request to my anime list
         /// </summary>
-        /// <param name="url"> The url that a request will be made to </param>
-        /// <returns> True if the delete was successful else false </returns>
+        /// <param name="url">The url that a request will be made to</param>
+        /// <returns>True if the delete was successful else false if not found</returns>
         public static async Task<bool> Delete(string url)
         {
             if (_myAnimeListClient == null)
             {
                 throw new HttpClientNotInitialized("Client not initialized, did you call the Init function?");
             }
-            
-            var response = await _myAnimeListClient.DeleteAsync(url);
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                return true;
-            }
 
-            return false;
+            using var requestMessage = new HttpRequestMessage(HttpMethod.Delete, url);
+            requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", OAuth.GetToken());
+
+            var response = await _myAnimeListClient.SendAsync(requestMessage);
+            return response.StatusCode == HttpStatusCode.OK;
         }
         
         /// <summary>
         /// Used to preform a delete request to my anime list
         /// </summary>
-        /// <param name="url"> The url that a request will be made to </param>
-        /// <returns> True if the delete was successful else false </returns>
+        /// <param name="url">The url that a request will be made to</param>
+        /// <returns>True if the delete was successful else false</returns>
         public static async Task<bool> Delete(Uri url)
         {
             if (_myAnimeListClient == null)
             {
                 throw new HttpClientNotInitialized("Client not initialized, did you call the Init function?");
             }
-            
-            var response = await _myAnimeListClient.DeleteAsync(url);
-            if (response.StatusCode == HttpStatusCode.OK)
-            {
-                return true;
-            }
 
-            return false;
+            using var requestMessage = new HttpRequestMessage(HttpMethod.Delete, url);
+            requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", OAuth.GetToken());
+
+            var response = await _myAnimeListClient.SendAsync(requestMessage);
+            return response.StatusCode == HttpStatusCode.OK;
         }
         
         /// <summary>
         /// Used to preform a patch request to my anime list
         /// </summary>
-        /// <param name="url"> The url that a request will be made to </param>
-        /// <param name="body"> The request body </param>
-        /// <typeparam name="T"> Generic return type </typeparam>
-        /// <returns> A formatted object of type T, null if bad request </returns>
+        /// <param name="url">The url that a request will be made to</param>
+        /// <param name="body">The request body</param>
+        /// <typeparam name="T">Generic return type</typeparam>
+        /// <returns>A formatted object of type T, null if bad request</returns>
         public static async Task<T?> Patch<T>(string url, FormUrlEncodedContent body)
         {
             if (_myAnimeListClient == null)
@@ -149,22 +145,28 @@ namespace MyAnimeList
                 throw new HttpClientNotInitialized("Client not initialized, did you call the Init function?");
             }
             
-            var response = await _myAnimeListClient.PatchAsync(url, body);
+            using var requestMessage = new HttpRequestMessage(HttpMethod.Patch, url);
+            requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", OAuth.GetToken());
+            
+            body.Headers.ContentType = new MediaTypeHeaderValue("application/x-www-form-urlencoded");
+            requestMessage.Content = body;
+            
+            var response = await _myAnimeListClient.SendAsync(requestMessage);
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 return await response.Content.ReadAsAsync<T>();
             }
-
+            
             return default;
         }
         
         /// <summary>
         /// Used to preform a patch request to my anime list
         /// </summary>
-        /// <param name="url"> The url that a request will be made to </param>
-        /// <param name="body"> The request body </param>
-        /// <typeparam name="T"> Generic return type </typeparam>
-        /// <returns> A formatted object of type T, null if bad request </returns>
+        /// <param name="url">The url that a request will be made to</param>
+        /// <param name="body">The request body</param>
+        /// <typeparam name="T">Generic return type</typeparam>
+        /// <returns>A formatted object of type T, null if bad request</returns>
         public static async Task<T?> Patch<T>(Uri url, FormUrlEncodedContent body)
         {
             if (_myAnimeListClient == null)
@@ -172,12 +174,16 @@ namespace MyAnimeList
                 throw new HttpClientNotInitialized("Client not initialized, did you call the Init function?");
             }
             
-            var response = await _myAnimeListClient.PatchAsync(url, body);
+            using var requestMessage = new HttpRequestMessage(HttpMethod.Patch, url);
+            requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", OAuth.GetToken());
+
+            
+            var response = await _myAnimeListClient.SendAsync(requestMessage);
             if (response.StatusCode == HttpStatusCode.OK)
             {
                 return await response.Content.ReadAsAsync<T>();
             }
-
+            
             return default;
         }
     }
