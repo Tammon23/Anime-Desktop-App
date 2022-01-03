@@ -80,6 +80,13 @@ namespace MyAnimeList
             return r;
         }
 
+        /// <summary>
+        /// Used to get suggested anime for the authorized user
+        /// </summary>
+        /// <param name="offset">The amount of results to skip over when retrieving results</param>
+        /// <param name="limit">The max amount of results</param>
+        /// <param name="fields">The fields that you want returned. *Does not default to all*</param>
+        /// <returns>AnimeSuggestions object or null if failure</returns>
         public async Task<AnimeSuggestions?> GetAnimeSuggestions(int offset = 0, int limit = 4,
             string fields = "")
         {
