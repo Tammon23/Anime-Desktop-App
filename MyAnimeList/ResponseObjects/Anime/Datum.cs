@@ -1,21 +1,29 @@
-﻿using System.Runtime.Serialization;
+﻿using System.Collections.Generic;
+using System.Runtime.Serialization;
+using MyAnimeList.ResponseObjects.User;
 
 namespace MyAnimeList.ResponseObjects.Anime
 {
     [DataContract]
     public class Datum
     {
-        public Datum(Node node)
+        public Datum(Node node, ListStatus? listStatus)
         {
-            Node = node;
+            this.Node = node;
+            this.ListStatus = listStatus;
         }
 
         [DataMember]
         public Node Node { get; }
-
+        
+        [DataMember(Name = "list_status")]
+        public ListStatus? ListStatus { get; }
+        
         public override string ToString()
         {
-            return $"Node: {Node}";
+            return $"Node: {Node}, "
+                    + $"List Status: {ListStatus}"
+                ;
         }
     }
 }
