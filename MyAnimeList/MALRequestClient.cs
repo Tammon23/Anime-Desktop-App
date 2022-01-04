@@ -98,7 +98,7 @@ namespace MyAnimeList
         /// </summary>
         /// <param name="url">The url that a request will be made to</param>
         /// <returns>True if the delete was successful else false if not found</returns>
-        public static async Task<bool> Delete(string url)
+        public static async Task<bool?> Delete(string url)
         {
             if (_myAnimeListClient == null)
             {
@@ -109,7 +109,13 @@ namespace MyAnimeList
             requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", OAuth.GetToken());
 
             var response = await _myAnimeListClient.SendAsync(requestMessage);
-            return response.StatusCode == HttpStatusCode.OK;
+
+            return response.StatusCode switch
+            {
+                HttpStatusCode.OK => true,
+                HttpStatusCode.NotFound => false,
+                _ => default
+            };
         }
         
         /// <summary>
@@ -128,7 +134,13 @@ namespace MyAnimeList
             requestMessage.Headers.Authorization = new AuthenticationHeaderValue("Bearer", OAuth.GetToken());
 
             var response = await _myAnimeListClient.SendAsync(requestMessage);
-            return response.StatusCode == HttpStatusCode.OK;
+            
+            return response.StatusCode switch
+            {
+                HttpStatusCode.OK => true,
+                HttpStatusCode.NotFound => false,
+                _ => default
+            };
         }
         
         /// <summary>
