@@ -10,11 +10,7 @@ namespace MyAnimeList.ResponseObjects.User
     [DataContract]
     public class AnimeListStatus
     {
-        public AnimeListStatus()
-        {
-        }
-        
-        public AnimeListStatus(StatusEnum? status = null,
+        public AnimeListStatus(StatusEnum status,
             int? score = null,
             int? numWatchedEpisodes = null,
             bool? isRewatching = null,
@@ -38,7 +34,7 @@ namespace MyAnimeList.ResponseObjects.User
         }
 
         [DataMember]
-        public StatusEnum? Status { get; }
+        public StatusEnum Status { get; }
 
         [DataMember]
         public int? Score { get; }
@@ -67,7 +63,7 @@ namespace MyAnimeList.ResponseObjects.User
         [DataMember]
         public string? Comments { get; }
 
-        public FormUrlEncodedContent? ToFormUrlEncodedContent()
+        public FormUrlEncodedContent ToFormUrlEncodedContent()
         {
             Dictionary<string, string> form = new();
 
@@ -80,7 +76,7 @@ namespace MyAnimeList.ResponseObjects.User
             if (Tags != null)               form.Add("tags", JsonSerializer.Serialize(Tags));                                  // <<<< May need redoing
             if (Comments != null)           form.Add("comments", Comments);
             
-            return form.Count == 0 ? default : new FormUrlEncodedContent(form);
+            return new FormUrlEncodedContent(form);
         }
         
         public override string ToString() =>
