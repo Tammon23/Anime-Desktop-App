@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using MyAnimeList.Exceptions;
 using MyAnimeList.ResponseObjects.Anime;
 
 namespace MyAnimeList
@@ -22,8 +23,13 @@ namespace MyAnimeList
         /// <param name="limit">The max amount of results</param>
         /// <param name="fields">The fields that you want returned. *Does not default to all*</param>
         /// <returns>AnimeList object or null if failure</returns>
-        public async Task<AnimeList?> GetAnimeList(string searchString, int offset=0, int limit=4, string fields = "")
+        public async Task<AnimeList?> GetAnimeList(string searchString, int offset=0, int limit=100, string fields = "")
         {
+            if (limit is > 100 or < 0)
+            {
+                throw new LimitOutOfRangeException("Limit must be between 0 and 100");
+            }
+            
             var r = await MALRequestClient.Get<AnimeList>(
                 $"v2/anime?offset={offset}&q={searchString}&limit={limit}&fields={fields}");
             return r;
@@ -50,9 +56,14 @@ namespace MyAnimeList
         /// <param name="limit">The max amount of results</param>
         /// <param name="fields">The fields that you want returned. *Does not default to all*</param>
         /// <returns>AnimeRanking object or null if failure</returns>
-        public async Task<AnimeRanking?> GetAnimeRanking(RankingTypeEnum rankingType, int offset = 0, int limit = 4,
+        public async Task<AnimeRanking?> GetAnimeRanking(RankingTypeEnum rankingType, int offset = 0, int limit = 100,
             string fields = "")
         {
+            if (limit is > 500 or < 0)
+            {
+                throw new LimitOutOfRangeException("Limit must be between 0 and 500");
+            }
+            
             string ranking = Util.RankingTypeToString(rankingType);
 
             var r = await MALRequestClient.Get<AnimeRanking>(
@@ -70,9 +81,13 @@ namespace MyAnimeList
         /// <param name="limit">The max amount of results</param>
         /// <param name="fields">The fields that you want returned. *Does not default to all*</param>
         /// <returns>AnimeSeasonal object or null if failure</returns>
-        public async Task<AnimeSeasonal?> GetSeasonalAnime(int year, SeasonEnum season, int offset = 0, int limit = 4,
+        public async Task<AnimeSeasonal?> GetSeasonalAnime(int year, SeasonEnum season, int offset = 0, int limit = 100,
             string fields = "")
         {
+            if (limit is > 500 or < 0)
+            {
+                throw new LimitOutOfRangeException("Limit must be between 0 and 500");
+            }
             string searchSeason = Util.SeasonToString(season);
 
             var r = await MALRequestClient.Get<AnimeSeasonal>(
@@ -87,9 +102,14 @@ namespace MyAnimeList
         /// <param name="limit">The max amount of results</param>
         /// <param name="fields">The fields that you want returned. *Does not default to all*</param>
         /// <returns>AnimeSuggestions object or null if failure</returns>
-        public async Task<AnimeSuggestions?> GetAnimeSuggestions(int offset = 0, int limit = 4,
+        public async Task<AnimeSuggestions?> GetAnimeSuggestions(int offset = 0, int limit = 100,
             string fields = "")
         {
+            if (limit is > 100 or < 0)
+            {
+                throw new LimitOutOfRangeException("Limit must be between 0 and 100");
+            }
+            
             var r = await MALRequestClient.Get<AnimeSuggestions>(
                 $"v2/anime/suggestions?offset={offset}&limit={limit}&fields={fields}", true);
             return r;
