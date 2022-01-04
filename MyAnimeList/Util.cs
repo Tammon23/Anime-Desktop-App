@@ -1,4 +1,6 @@
 ﻿using MyAnimeList.ResponseObjects.Anime;
+using MyAnimeList.ResponseObjects.User;
+using MyAnimeList.ResponseObjects.User.MyAnimeList.ResponseObjects.User;
 
 namespace MyAnimeList
 {
@@ -36,5 +38,16 @@ namespace MyAnimeList
             StatusEnum.PlanToWatch => "plan_to_watch",
             _                      => "plan_to_watch"
         };
+        
+        public static string SortToString(SortEnum? status) => status switch
+        {
+            SortEnum.ListScore      => "list_score",
+            SortEnum.ListUpdatedAt  => "list_updated_at",
+            SortEnum.AnimeTitle     => "anime_title",
+            SortEnum.AnimeStartDate => "anime_start_date",
+            SortEnum.AnimeId        => "anime_id ",
+            _                       => "anime_title"
+        };
     }
 }
+
