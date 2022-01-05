@@ -64,5 +64,16 @@ namespace MyAnimeList
                 $"v2/anime/{animeId}/my_list_status");
             return r;
         }
+        
+        /// <summary>
+        /// Gets the current logged in user's information 
+        /// </summary>
+        /// <returns>UserInformation object or null if failure</returns>
+        public async Task<UserInformation?> GetMyInformation()
+        {
+              var r = await MALRequestClient.Get<UserInformation>(
+                  "v2/users/@me?fields=anime_statistics", true);
+              return r;
+        }
     }
 }
