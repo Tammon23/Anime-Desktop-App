@@ -1,8 +1,10 @@
 ﻿using System.Runtime.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace MyAnimeList.ResponseObjects.Anime
 {
-    [DataContract]
+    [DataContract(Name = "Status")][JsonConverter(typeof(StringEnumConverter))]
     public enum StatusEnum
     {
         [EnumMember(Value="watching")]
@@ -17,7 +19,7 @@ namespace MyAnimeList.ResponseObjects.Anime
         [EnumMember(Value="dropped")]
         Dropped,
         
-        [EnumMember(Value="plan_to_watch")]
+        [EnumMember(Value ="plan_to_watch")]
         PlanToWatch
     }
 }

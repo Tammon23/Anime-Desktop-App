@@ -1,9 +1,11 @@
 ﻿using System.ComponentModel;
 using System.Runtime.Serialization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Converters;
 
 namespace MyAnimeList.ResponseObjects.Anime
 {
-    [DataContract]
+    [DataContract][JsonConverter(typeof(StringEnumConverter))]
     public enum SeasonEnum
     {
         [EnumMember(Value = "winter")] [Description("January, February, March")]
