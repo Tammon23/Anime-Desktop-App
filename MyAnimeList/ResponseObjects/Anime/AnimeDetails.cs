@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Runtime.Serialization;
+using MyAnimeList.ResponseObjects.General;
 
 namespace MyAnimeList.ResponseObjects.Anime
 {

@@ -1,5 +1,5 @@
 ﻿using System.Runtime.Serialization;
-using MyAnimeList.ResponseObjects.Anime;
+using MyAnimeList.ResponseObjects.General;
 
 namespace MyAnimeList.ResponseObjects.User
 {

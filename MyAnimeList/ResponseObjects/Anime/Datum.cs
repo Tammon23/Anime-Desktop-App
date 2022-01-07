@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
+using MyAnimeList.ResponseObjects.General;
 using MyAnimeList.ResponseObjects.User;
 
 namespace MyAnimeList.ResponseObjects.Anime
