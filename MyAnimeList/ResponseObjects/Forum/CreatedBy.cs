@@ -3,30 +3,22 @@
 namespace MyAnimeList.ResponseObjects.Forum
 {
     [DataContract]
-    public class CreatedBy
+    public class CreatedBy : User.User
     {
-        public CreatedBy(string id, string name, string forumAvator)
+        public CreatedBy(int id, string name, string forumAvator)
+            :base(id, name)
         {
-            this.Id = id;
-            this.Name = name;
             this.ForumAvator = forumAvator;
         }
-
-        [DataMember]
-        public string Id { get; }
-
-        [DataMember]
-        public string Name { get; }
 
         [DataMember(Name="forum_avator")]
         public string ForumAvator { get; }
 
         public override string ToString()
         {
-            return $"Id: {Id}, "
-                   + $"Name: {Name}, "
-                   + $"Forum Avator: {ForumAvator}"
-                ;
+            return base.ToString()
+                   + $", Forum Avator: {ForumAvator}"
+                   ;
         }
     }
 }

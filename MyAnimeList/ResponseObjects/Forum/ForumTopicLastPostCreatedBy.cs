@@ -2,26 +2,12 @@
 
 namespace MyAnimeList.ResponseObjects.Forum
 {
-    public class ForumTopicLastPostCreatedBy
+    [DataContract]
+    public class ForumTopicLastPostCreatedBy : User.User
     {
-        public ForumTopicLastPostCreatedBy(string id, string name)
+        public ForumTopicLastPostCreatedBy(int id, string name)
+            :base(id, name)
         {
-            this.Id = id;
-            this.Name = name;
-        }
-
-        [DataMember]
-        public string Id { get; }
-
-        [DataMember]
-        public string Name { get; }
-
-
-        public override string ToString()
-        {
-            return $"Id: {Id}, "
-                   + $"Name: {Name}, "
-                ;
         }
     }
 }
