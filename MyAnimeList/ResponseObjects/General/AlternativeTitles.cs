@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace MyAnimeList.ResponseObjects.Anime
+namespace MyAnimeList.ResponseObjects.General
 {
     [DataContract]
     public class AlternativeTitles
