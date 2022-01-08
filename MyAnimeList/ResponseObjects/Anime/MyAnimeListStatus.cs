@@ -4,11 +4,11 @@ using System.Runtime.Serialization;
 namespace MyAnimeList.ResponseObjects.Anime
 {
     [DataContract]
-    public class MyListStatus
+    public class MyAnimeListStatus
     {
-        public MyListStatus(StatusEnum status, int score, int numEpisodesWatched, bool isRewatching, DateTime updatedAt)
+        public MyAnimeListStatus(AnimeStatusEnum animeStatus, int score, int numEpisodesWatched, bool isRewatching, DateTime updatedAt)
         {
-            this.Status = status;
+            this.AnimeStatus = animeStatus;
             this.Score = score;
             this.NumEpisodesWatched = numEpisodesWatched;
             this.IsRewatching = isRewatching;
@@ -16,7 +16,7 @@ namespace MyAnimeList.ResponseObjects.Anime
         }
 
         [DataMember]
-        public StatusEnum? Status { get; }
+        public AnimeStatusEnum? AnimeStatus { get; }
 
         [DataMember]
         public int Score { get; }
@@ -32,9 +32,9 @@ namespace MyAnimeList.ResponseObjects.Anime
         
         public override string ToString()
         {
-            return $"Status: {Status}, "
+            return $"Status: {AnimeStatus}, "
                    + $"Score: {Score}, "
-                   + $"Number of Epsiodes Watched: {NumEpisodesWatched}, "
+                   + $"Number of Episodes Watched: {NumEpisodesWatched}, "
                    + $"Is Rewatching: {IsRewatching}, "
                    + $"Updated At: {UpdatedAt}"
                 ;

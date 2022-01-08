@@ -5,7 +5,7 @@ using Newtonsoft.Json.Converters;
 namespace MyAnimeList.ResponseObjects.Anime
 {
     [DataContract(Name = "Status")][JsonConverter(typeof(StringEnumConverter))]
-    public enum StatusEnum
+    public enum AnimeStatusEnum
     {
         [EnumMember(Value="watching")]
         Watching,

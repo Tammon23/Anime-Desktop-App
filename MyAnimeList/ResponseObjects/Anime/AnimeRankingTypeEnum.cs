@@ -6,7 +6,7 @@ using Newtonsoft.Json.Converters;
 namespace MyAnimeList.ResponseObjects.Anime
 {
     [DataContract, JsonConverter(typeof(StringEnumConverter))]
-    public enum RankingTypeEnum
+    public enum AnimeRankingTypeEnum
     {
         [EnumMember(Value = "all")] [Description("Top Anime Series")]
         All,
