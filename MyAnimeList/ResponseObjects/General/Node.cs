@@ -5,7 +5,7 @@ namespace MyAnimeList.ResponseObjects.General
     [DataContract]
     public class Node
     {
-        public Node(int id, string title, MainPicture mainPicture)
+        public Node(int id, string title, Picture mainPicture)
         {
             Id = id;
             Title = title;
@@ -19,7 +19,7 @@ namespace MyAnimeList.ResponseObjects.General
         public string Title { get; }
 
         [DataMember(Name = "main_picture")]
-        public MainPicture MainPicture { get; }
+        public Picture MainPicture { get; }
         
         public override string ToString()
         {

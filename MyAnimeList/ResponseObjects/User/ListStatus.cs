@@ -7,9 +7,9 @@ namespace MyAnimeList.ResponseObjects.User
     [DataContract]
     public class ListStatus
     {
-        public ListStatus(StatusEnum status, int score, int numEpisodesWatched, bool isRewatching, DateTime updatedAt, DateTime startDate)
+        public ListStatus(AnimeStatusEnum animeStatus, int score, int numEpisodesWatched, bool isRewatching, DateTime updatedAt, DateTime startDate)
         {
-            this.Status = status;
+            this.AnimeStatus = animeStatus;
             this.Score = score;
             this.NumEpisodesWatched = numEpisodesWatched;
             this.IsRewatching = isRewatching;
@@ -18,7 +18,7 @@ namespace MyAnimeList.ResponseObjects.User
         }
 
         [DataMember]
-        public StatusEnum Status { get; }
+        public AnimeStatusEnum AnimeStatus { get; }
 
         [DataMember]
         public int Score { get; }
@@ -37,7 +37,7 @@ namespace MyAnimeList.ResponseObjects.User
 
 
         public override string ToString() =>
-            $"Status: {Status}, "
+            $"Status: {AnimeStatus}, "
             + $"Score: {Score}, "
             + $"Number of Episodes Watched: {NumEpisodesWatched}, "
             + $"Is Rewatching: {IsRewatching}, "

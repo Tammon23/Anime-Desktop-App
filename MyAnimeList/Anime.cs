@@ -51,12 +51,12 @@ namespace MyAnimeList
         /// <summary>
         /// Used to get the ranking of anime based on the ranking type
         /// </summary>
-        /// <param name="rankingType">The ranking type to rank the anime by</param>
+        /// <param name="animeRankingType">The ranking type to rank the anime by</param>
         /// <param name="offset">The amount of results to skip over when retrieving results</param>
         /// <param name="limit">The max amount of results</param>
         /// <param name="fields">The fields that you want returned. *Does not default to all*</param>
         /// <returns>AnimeRanking object or null if failure</returns>
-        public async Task<AnimeRanking?> GetAnimeRanking(RankingTypeEnum rankingType, int offset = 0, int limit = 100,
+        public async Task<AnimeRanking?> GetAnimeRanking(AnimeRankingTypeEnum animeRankingType, int offset = 0, int limit = 100,
             string fields = "")
         {
             if (limit is > 500 or < 0)
@@ -64,7 +64,7 @@ namespace MyAnimeList
                 throw new LimitOutOfRangeException("Limit must be between 0 and 500");
             }
             
-            string ranking = Util.RankingTypeToString(rankingType);
+            string ranking = Util.AnimeRankingTypeToString(animeRankingType);
 
             var r = await MALRequestClient.Get<AnimeRanking>(
                 $"v2/anime/ranking?ranking_type={ranking}&offset={offset}&limit={limit}&fields={fields}");

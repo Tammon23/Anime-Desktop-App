@@ -11,7 +11,7 @@ namespace MyAnimeList.ResponseObjects.Anime
         public AnimeDetails(
             int id,
             string title,
-            MainPicture? mainPicture,
+            Picture? mainPicture,
             AlternativeTitles? alternativeTitles,
             DateTime? startDate,
             DateTime? endDate,
@@ -27,7 +27,7 @@ namespace MyAnimeList.ResponseObjects.Anime
             string? mediaType,
             string? status,
             List<Genre> genres,
-            MyListStatus? myListStatus,
+            MyAnimeListStatus? myListStatus,
             int? numEpisodes,
             StartSeason? startSeason,
             Broadcast? broadcast,
@@ -84,7 +84,7 @@ namespace MyAnimeList.ResponseObjects.Anime
         public string Title { get; }
 
         [DataMember(Name = "main_picture")]
-        public MainPicture? MainPicture { get; }
+        public Picture? MainPicture { get; }
 
         [DataMember(Name = "alternative_titles")]
         public AlternativeTitles? AlternativeTitles { get; }
@@ -132,7 +132,7 @@ namespace MyAnimeList.ResponseObjects.Anime
         public IReadOnlyList<Genre>? Genres { get; }
 
         [DataMember(Name ="my_list_status")]
-        public MyListStatus? MyListStatus { get; }
+        public MyAnimeListStatus? MyListStatus { get; }
 
         [DataMember(Name ="num_episodes")]
         public int? NumEpisodes { get; }

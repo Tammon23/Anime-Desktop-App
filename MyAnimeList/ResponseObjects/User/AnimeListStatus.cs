@@ -10,7 +10,7 @@ namespace MyAnimeList.ResponseObjects.User
     [DataContract]
     public class AnimeListStatus
     {
-        public AnimeListStatus(StatusEnum status,
+        public AnimeListStatus(AnimeStatusEnum animeStatus,
             int? score = null,
             int? numWatchedEpisodes = null,
             bool? isRewatching = null,
@@ -21,7 +21,7 @@ namespace MyAnimeList.ResponseObjects.User
             List<string>? tags = null,
             string? comments = null)
         {
-            this.Status = status;
+            this.AnimeStatus = animeStatus;
             this.Score = score;
             this.NumWatchedEpisodes = numWatchedEpisodes;
             this.IsRewatching = isRewatching;
@@ -34,7 +34,7 @@ namespace MyAnimeList.ResponseObjects.User
         }
 
         [DataMember]
-        public StatusEnum Status { get; }
+        public AnimeStatusEnum AnimeStatus { get; }
 
         [DataMember]
         public int? Score { get; }
@@ -67,7 +67,7 @@ namespace MyAnimeList.ResponseObjects.User
         {
             Dictionary<string, string> form = new();
 
-            if (Status != null)             form.Add("status", Util.StatusToString(Status));
+            if (AnimeStatus != null)             form.Add("status", Util.StatusToString(AnimeStatus));
             if (Score != null)              form.Add("score", Score.ToString());
             if (NumWatchedEpisodes != null) form.Add("num_watched_episodes", NumWatchedEpisodes.ToString());
             if (IsRewatching != null)       form.Add("is_rewatching", IsRewatching.ToString());
@@ -80,7 +80,7 @@ namespace MyAnimeList.ResponseObjects.User
         }
         
         public override string ToString() =>
-            $"Status: {Status}, "
+            $"Status: {AnimeStatus}, "
             + $"Score: {Score}, " 
             + $"Number of Watched Episodes: {NumWatchedEpisodes}, "
             + $"Is Rewatching: {IsRewatching}, "

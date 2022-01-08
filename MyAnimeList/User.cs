@@ -33,7 +33,7 @@ namespace MyAnimeList
         /// <exception cref="LimitOutOfRangeException">Limit must be between 0 and 1000 inclusively</exception>
         
         public async Task<UserAnimeList?> GetUserAnimeList(string username = "@me",
-            StatusEnum? status = null,
+            AnimeStatusEnum? status = null,
             SortEnum? sort = null,
             int offset = 0,
             int limit = 4)
