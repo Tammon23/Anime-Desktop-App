@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 using MyAnimeList.ResponseObjects.General;
+using MyAnimeList.ResponseObjects.Manga;
 
 namespace MyAnimeList.ResponseObjects.Anime
 {
@@ -37,7 +38,7 @@ namespace MyAnimeList.ResponseObjects.Anime
             List<Picture> pictures,
             string? background,
             List<RelatedAnime> relatedAnime,
-            List<object> relatedManga,
+            List<RelatedManga> relatedManga,
             List<Recommendation> recommendations,
             List<Studio> studios,
             Statistics? statistics
@@ -162,7 +163,7 @@ namespace MyAnimeList.ResponseObjects.Anime
         public IReadOnlyList<RelatedAnime> RelatedAnime { get; }
 
         [DataMember(Name ="related_manga")]
-        public IReadOnlyList<object>? RelatedManga { get; }
+        public IReadOnlyList<RelatedManga>? RelatedManga { get; }
 
         [DataMember]
         public IReadOnlyList<Recommendation>? Recommendations { get; }
@@ -179,7 +180,7 @@ namespace MyAnimeList.ResponseObjects.Anime
                    + $"Title: {Title}, "
                    + $"Main Picture: {MainPicture}, "
                    + $"Alt Titles: {AlternativeTitles}, "
-                   + $"Start Date: {EndDate}, "
+                   + $"Start Date: {StartDate}, "
                    + $"End Date: {EndDate}, "
                    + $"Synopsis: {Synopsis}, "
                    + $"Mean: {Mean}, "
