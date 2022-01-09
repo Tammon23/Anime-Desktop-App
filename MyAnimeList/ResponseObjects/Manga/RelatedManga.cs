@@ -20,5 +20,13 @@ namespace MyAnimeList.ResponseObjects.Manga
 
         [DataMember(Name="relation_type_formatted")]
         public string RelationTypeFormatted { get; }
+
+        public override string ToString()
+        {
+            return $"Node: {Node}"
+                   + $", Relation Type: {RelationType}"
+                   + $", Relation Type : {RelationTypeFormatted}"
+                ;
+        }
     }
 }
