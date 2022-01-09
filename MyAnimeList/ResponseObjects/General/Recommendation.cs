@@ -1,7 +1,6 @@
 ﻿using System.Runtime.Serialization;
-using MyAnimeList.ResponseObjects.General;
 
-namespace MyAnimeList.ResponseObjects.Anime
+namespace MyAnimeList.ResponseObjects.General
 {
     [DataContract]
     public class Recommendation
