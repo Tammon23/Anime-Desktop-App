@@ -5,6 +5,7 @@
         <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
         <UseWindowsForms>true</UseWindowsForms>
         <ImportWindowsDesktopTargets>true</ImportWindowsDesktopTargets>
+		<PublishSingleFile>true</PublishSingleFile>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="FontAwesome.Sharp" Version="5.15.3" />

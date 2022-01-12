@@ -11,9 +11,4 @@
     <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Manga" />
-    <Folder Include="User" />
-  </ItemGroup>
-
 </Project>
