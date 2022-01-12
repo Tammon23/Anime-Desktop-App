@@ -7,9 +7,7 @@
         x:Class="Avalonia.AnimeViewer.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
         Title="Avalonia.AnimeViewer"
-        Background="Transparent"
-        TransparencyLevelHint="AcrylicBlur"
-        ExtendClientAreaToDecorationsHint="True">  <!-- Extends the window to the top menu bar -->
+        ExtendClientAreaToDecorationsHint="False">  <!-- Extends the window to the top menu bar -->
 
 
     <Design.DataContext>
@@ -17,85 +15,103 @@
     </Design.DataContext>
     
     <DockPanel>
-
-        <!--Menu Buttons Panel-->
-        <DockPanel Background="#1f1e44" Width="220" Height="630" DockPanel.Dock="Left">
-            
+        <!--Aside Buttons Panel-->
+        <StackPanel Classes="bgColourDark" VerticalAlignment="Stretch" DockPanel.Dock="Left">
             <!--Logo Panel-->
-            <Panel Background="White" Width="220" Height="140" DockPanel.Dock="Top">
-                
+            <Panel Background="White" Width="220" Height="140" >
+            
             </Panel>
-            
-            <!--Aside Buttons Panel-->
-            <StackPanel Name="PanelPageBtn">
-                <Button Name="BtnAnimeList" 
-                        HorizontalAlignment="Stretch" 
-                        VerticalAlignment="Top" 
-                        Height="60"
-                        Background="#1f1e44"
-                        ToolTip.Tip="Anime List">
-                    <PathIcon Data="{StaticResource list_regular}" Name="ites"></PathIcon>
-                </Button>
-                
-                <Button Name="BtnSeasonalAnime" 
-                        HorizontalAlignment="Stretch" 
-                        VerticalAlignment="Top" 
-                        Height="60"
-                        Background="#1f1e44"
-                        ToolTip.Tip="Seasonal Anime">
-                    <PathIcon Data="{StaticResource weather_duststorm_regular}"></PathIcon>
-                </Button>
-                
-                <Button Name="BtnTopAnime" 
-                        HorizontalAlignment="Stretch" 
-                        VerticalAlignment="Top" 
-                        Height="60"
-                        Background="#1f1e44"
-                        ToolTip.Tip="Top Anime">
-                    <PathIcon Data="{StaticResource star_regular}"></PathIcon>
-                </Button>
-                
-                <Button Name="BtnSearch"
-                        HorizontalAlignment="Stretch" 
-                        VerticalAlignment="Top" 
-                        Height="60"
-                        Background="#1f1e44"
-                        ToolTip.Tip="Search">
-                    <PathIcon Data="{StaticResource search_info_regular}"></PathIcon>
-                </Button>
-                
-                <Button Name="BtnCalender"
-                        HorizontalAlignment="Stretch" 
-                        VerticalAlignment="Top" 
-                        Height="60"
-                        Background="#1f1e44"
-                        ToolTip.Tip="Calender">
-                    <PathIcon Data="{StaticResource calendar_regular}"></PathIcon>
-                </Button>
-                
-                <Button Name="BtnRecommendations"
-                        HorizontalAlignment="Stretch" 
-                        VerticalAlignment="Top" 
-                        Height="60"
-                        Background="#1f1e44"
-                        ToolTip.Tip="Recommendations">
-                    <PathIcon Data="{StaticResource recommended_regular}"></PathIcon>
-                </Button>
-                
-                <Button Name="BtnProfile"
-                        HorizontalAlignment="Stretch" 
-                        VerticalAlignment="Top" 
-                        Height="60"
-                        Background="#1f1e44"
-                        ToolTip.Tip="Profile">
-                    <PathIcon Data="{StaticResource person_regular}"></PathIcon>
-                </Button>
-            </StackPanel>
-            
-        </DockPanel>
+            <ScrollViewer>
+                <StackPanel Name="PanelPageBtn">
+                    <Button Name="BtnAnimeList"
+                            Classes="PageButton"
+                            ToolTip.Tip="Anime List">
+                        <PathIcon Data="{StaticResource list_regular}"></PathIcon>
+                    </Button>
+                    
+                    <Button Name="BtnSeasonalAnime" 
+                            Classes="PageButton"
+                            ToolTip.Tip="Seasonal Anime">
+                        <PathIcon Data="{StaticResource weather_duststorm_regular}"></PathIcon>
+                    </Button>
+                    
+                    <Button Name="BtnTopAnime" 
+                            Classes="PageButton"
+                            ToolTip.Tip="Top Anime">
+                        <PathIcon Data="{StaticResource star_regular}"></PathIcon>
+                    </Button>
+                    
+                    <Button Name="BtnSearch"
+                            Classes="PageButton"
+                            ToolTip.Tip="Search">
+                        <PathIcon Data="{StaticResource search_info_regular}"></PathIcon>
+                    </Button>
+                    
+                    <Button Name="BtnCalender"
+                            Classes="PageButton"
+                            ToolTip.Tip="Calender">
+                        <PathIcon Data="{StaticResource calendar_regular}"></PathIcon>
+                    </Button>
+                    
+                    <Button Name="BtnRecommendations"
+                            Classes="PageButton"
+                            ToolTip.Tip="Recommendations">
+                        <PathIcon Data="{StaticResource recommended_regular}"></PathIcon>
+                    </Button>
+                    
+                    <Button Name="BtnProfile"
+                            Classes="PageButton"
+                            ToolTip.Tip="Profile">
+                        <PathIcon Data="{StaticResource person_regular}"></PathIcon>
+                    </Button>
+                </StackPanel>
+            </ScrollViewer>
+        </StackPanel>
+
         <!--Title Bar Panel-->
-        <Panel Name="PanelTitleBar" Background="Red" DockPanel.Dock="Top" HorizontalAlignment="Stretch">
+        <Panel Classes="bgColourDark" Name="PanelTitleBar" HorizontalAlignment="Stretch" Height="65" DockPanel.Dock="Top">
+            <Label Name="LabelCurrentPage" 
+                   VerticalContentAlignment="Center" 
+                   HorizontalContentAlignment="Left" 
+                   FontSize="20" 
+                   Margin="20">
+                Anime List
+            </Label>
+            
+            <!--Search Bar-->
+            <TextBox AcceptsReturn="True" Watermark="Search" HorizontalAlignment="Right" Width="300" Margin="20"/>
         </Panel>
+        
+        <!--Main Content Area-->
+        <Border Background="Red"
+                BorderBrush="Black"
+                BorderThickness="2"
+                CornerRadius="3"
+                Padding="4"
+                BoxShadow="5 5 10 2 Blue">
+            <Panel Name="PanelPages" HorizontalAlignment="Stretch" Background="Red" DockPanel.Dock="Bottom">
+                <ScrollViewer>
+                    <WrapPanel Margin="10" Background="Green">
+                        <StackPanel Classes="Card">
+                            <Image Source="{Binding Chessboard}"
+                                   Width="210"
+                                   Height="300"
+                                   Margin="10"
+                                   Name="MyImage"></Image>
+                            <Button Background="Transparent" Margin="10" Content="{Binding ChessboardUrl}"></Button>
+                        </StackPanel>
+                        <StackPanel Classes="Card"></StackPanel>
+                        <StackPanel Classes="Card"></StackPanel>
+                        <StackPanel Classes="Card"></StackPanel>
+                    </WrapPanel>
+                </ScrollViewer>
+            </Panel>
+        </Border>
+
+        <!--Pages Panel-->
+
+        
+        
 
     </DockPanel>
 
