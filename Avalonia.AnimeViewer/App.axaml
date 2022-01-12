@@ -9,5 +9,6 @@
     <Application.Styles>
         <FluentTheme Mode="Dark"/>
         <StyleInclude Source="avares://Avalonia.AnimeViewer/Icons.axaml"></StyleInclude> 
+        <StyleInclude Source="avares://Avalonia.AnimeViewer/Styles.axaml"></StyleInclude> 
     </Application.Styles>
 </Application>
