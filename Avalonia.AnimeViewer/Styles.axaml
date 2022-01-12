@@ -1,0 +1,39 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+    <Style Selector="Panel.bgColourDark">
+        <Setter Property="Background" Value="#1f1e44"></Setter>
+    </Style>
+    
+    <Style Selector="StackPanel.bgColourDark">
+        <Setter Property="Background" Value="#1f1e44"></Setter>
+    </Style>
+    
+    <Style Selector="Button.bgColourDark">
+        <Setter Property="Background" Value="#1f1e44"></Setter>
+    </Style>
+    
+    <!--Defines the shape and size of the page buttons-->
+    <Style Selector="Button.PageButton">
+        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
+        <Setter Property="VerticalAlignment" Value="Top"></Setter>
+        <Setter Property="Height" Value="60"></Setter>
+        <Setter Property="Background" Value="#1f1e44"></Setter>
+    </Style>
+    
+    <!--Defines the style at which each information card should have-->
+    <!--Images inside this card should be resized to the 7:10 ratio if possible-->
+    <Style Selector="StackPanel.Card">
+        <Setter Property="Width" Value="230"></Setter>
+        <Setter Property="Height" Value="370"></Setter>
+        <Setter Property="Background" Value="Blue"></Setter>
+        <Setter Property="Margin" Value="10"></Setter>
+    </Style>
+</Styles>
+
