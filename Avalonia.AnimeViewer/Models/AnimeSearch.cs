@@ -117,9 +117,7 @@ public class AnimeSearch
     // Change to enum this class
     public static async Task<IReadOnlyList<Datum>> SearchAsync(string searchString, int offset=0, int limit=100, string fields = "")
     {
-        var an = new Anime();
-        var r = await an.GetAnime(searchString);
+        var r = await Anime.GetAnime(searchString);
         return r.Data;
-
     }
 }
