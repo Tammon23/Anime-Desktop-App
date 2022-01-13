@@ -23,7 +23,7 @@ namespace MyAnimeList
         /// <param name="limit">The max amount of results</param>
         /// <param name="fields">The fields that you want returned. *Does not default to all*</param>
         /// <returns>AnimeList object or null if failure</returns>
-        public async Task<AnimeList?> GetAnimeList(string searchString, int offset=0, int limit=100, string fields = "")
+        public static async Task<AnimeList?> GetAnime(string searchString, int offset=0, int limit=100, string fields = "")
         {
             if (limit is > 100 or < 0)
             {
@@ -41,7 +41,7 @@ namespace MyAnimeList
         /// <param name="id">The Id of the anime</param>
         /// <param name="fields">The fields that you want returned. *Does not default to all*</param>
         /// <returns>AnimeDetails object or null if failure</returns>
-        public async Task<AnimeDetails?> GetAnimeDetails(int id, string fields = "")
+        public static async Task<AnimeDetails?> GetAnimeDetails(int id, string fields = "")
         {
             var r = await MALRequestClient.Get<AnimeDetails>(
                 $"v2/anime/{id}?fields={fields}");
@@ -56,7 +56,7 @@ namespace MyAnimeList
         /// <param name="limit">The max amount of results</param>
         /// <param name="fields">The fields that you want returned. *Does not default to all*</param>
         /// <returns>AnimeRanking object or null if failure</returns>
-        public async Task<AnimeRanking?> GetAnimeRanking(AnimeRankingTypeEnum animeRankingType, int offset = 0, int limit = 100,
+        public static async Task<AnimeRanking?> GetAnimeRanking(AnimeRankingTypeEnum animeRankingType, int offset = 0, int limit = 100,
             string fields = "")
         {
             if (limit is > 500 or < 0)
@@ -81,7 +81,7 @@ namespace MyAnimeList
         /// <param name="limit">The max amount of results</param>
         /// <param name="fields">The fields that you want returned. *Does not default to all*</param>
         /// <returns>AnimeSeasonal object or null if failure</returns>
-        public async Task<AnimeSeasonal?> GetSeasonalAnime(int year, SeasonEnum season, int offset = 0, int limit = 100,
+        public static async Task<AnimeSeasonal?> GetSeasonalAnime(int year, SeasonEnum season, int offset = 0, int limit = 100,
             string fields = "")
         {
             if (limit is > 500 or < 0)
@@ -102,7 +102,7 @@ namespace MyAnimeList
         /// <param name="limit">The max amount of results</param>
         /// <param name="fields">The fields that you want returned. *Does not default to all*</param>
         /// <returns>AnimeSuggestions object or null if failure</returns>
-        public async Task<AnimeSuggestions?> GetAnimeSuggestions(int offset = 0, int limit = 100,
+        public static async Task<AnimeSuggestions?> GetAnimeSuggestions(int offset = 0, int limit = 100,
             string fields = "")
         {
             if (limit is > 100 or < 0)

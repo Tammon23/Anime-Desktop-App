@@ -1,6 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using System.Threading.Tasks;
-using MyAnimeList.Exceptions;
+﻿using MyAnimeList.Exceptions;
 using MyAnimeList.ResponseObjects.Forum;
 
 namespace MyAnimeList
@@ -11,7 +9,7 @@ namespace MyAnimeList
         /// Gets the forum boards
         /// </summary>
         /// <returns>ForumBoard object or null if failure</returns>
-        public async Task<ForumBoard?> GetForumBoards()
+        public static async Task<ForumBoard?> GetForumBoards()
         {
             var r = await MALRequestClient.Get<ForumBoard>(
                 "v2/forum/boards"
@@ -29,7 +27,7 @@ namespace MyAnimeList
         /// <param name="limit">The max amount of results</param>
         /// <returns>ForumTopicDetail object or null if failure</returns>
         /// <exception cref="LimitOutOfRangeException">Limit must be between 0 and 100</exception>
-        public async Task<ForumTopicDetail> GetForumTopicDetail(int topic_id, int limit = 100, int offset=0)
+        public static async Task<ForumTopicDetail> GetForumTopicDetail(int topic_id, int limit = 100, int offset=0)
         {
             if (limit is > 100 or < 0)
             {
@@ -43,7 +41,8 @@ namespace MyAnimeList
             return r;
         }
         
-        public async Task<ForumTopic> GetForumTopic(int? boardId = null,
+        // ----> requires testing
+        public static async Task<ForumTopicDetail> GetForumTopic(int? boardId = null,
             int? subboardId = null,
             string? q = null,
             string? topicUserName = null,
