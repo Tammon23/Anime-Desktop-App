@@ -6,15 +6,6 @@ namespace MyAnimeList
 {
     public class Anime
     {
-        public Anime()
-        {
-        }
-
-        public async Task authorizateUser()
-        {
-            await MALRequestClient.Init();
-        }
-        
         /// <summary>
         /// Used to search for anime
         /// </summary>
