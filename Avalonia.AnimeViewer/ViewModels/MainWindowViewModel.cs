@@ -7,27 +7,44 @@ namespace Avalonia.AnimeViewer.ViewModels
 {
     public class MainWindowViewModel : ViewModelBase
     {
-        private string chessboardUrl = "https://cdn.myanimelist.net/images/anime/1988/119437.jpg";
-        public string ChessboardUrl
+        
+        private string? _animeSearchText;
+        private bool _isBusy;
+        private string _imageLink = "https://cdn.myanimelist.net/images/anime/1988/119437.jpg";
+
+
+        public string? AnimeSearchText
         {
-            get => chessboardUrl;
+            get => _animeSearchText;
+            set => this.RaiseAndSetIfChanged(ref _animeSearchText, value);
+        }
+
+        public bool IsBusy
+        {
+            get => _isBusy;
+            set => this.RaiseAndSetIfChanged(ref _isBusy, value);
+        }
+
+        public string AnimeTitle
+        {
+            get => _imageLink;
             set {
-                this.RaiseAndSetIfChanged(ref chessboardUrl, value);
-                DownloadImage(ChessboardUrl);
-                System.Diagnostics.Debug.WriteLine(ChessboardUrl);
+                this.RaiseAndSetIfChanged(ref _imageLink, value);
+                DownloadImage(AnimeTitle);
+                System.Diagnostics.Debug.WriteLine(AnimeTitle);
             }
         }
 
-        private Avalonia.Media.Imaging.Bitmap chessboard = null;
-        public Avalonia.Media.Imaging.Bitmap Chessboard
+        private Avalonia.Media.Imaging.Bitmap _imageBitmap = null;
+        public Avalonia.Media.Imaging.Bitmap ImageBitmap
         {
-            get => chessboard;
-            set => this.RaiseAndSetIfChanged(ref chessboard, value);
+            get => _imageBitmap;
+            set => this.RaiseAndSetIfChanged(ref _imageBitmap, value);
         }
 
         public MainWindowViewModel()
         {
-            DownloadImage(ChessboardUrl);
+            DownloadImage(AnimeTitle);
         }
 
         public void DownloadImage(string url)
@@ -48,12 +65,12 @@ namespace Avalonia.AnimeViewer.ViewModels
                 Stream stream = new MemoryStream(bytes);
 
                 var image = new Avalonia.Media.Imaging.Bitmap(stream);
-                Chessboard = image;
+                ImageBitmap = image;
             }
             catch (Exception ex)
             {
                 System.Diagnostics.Debug.WriteLine(ex);
-                Chessboard = null; // Could not download...
+                ImageBitmap = null; // Could not download...
             }
             
         }
