@@ -78,8 +78,11 @@
                 Anime List
             </Label>
             
-            <!--Search Bar-->
-            <TextBox AcceptsReturn="True" Watermark="Search" HorizontalAlignment="Right" Width="300" Margin="20"/>
+            <StackPanel>
+                <!--Search Bar-->
+                <TextBox AcceptsReturn="True" Watermark="Search for Anime..." Text="{Binding AnimeSearchText}" HorizontalAlignment="Right" Width="300" Margin="20"/>
+                <ProgressBar IsIndeterminate="True" IsVisible="{Binding IsBusy}"></ProgressBar>
+            </StackPanel>
         </Panel>
         
         <!--Main Content Area-->
@@ -90,20 +93,25 @@
                 Padding="4"
                 BoxShadow="5 5 10 2 Blue">
             <Panel Name="PanelPages" HorizontalAlignment="Stretch" Background="Red" DockPanel.Dock="Bottom">
-                <ScrollViewer>
-                    <WrapPanel Margin="10" Background="Green">
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ItemsRepeater Name="repeater" 
+                                   Background="Transparent" 
+                                   Items="{Binding Items}"
+                                   ItemTemplate="{StaticResource elementFactory}"/>
+                    <!--TODO Consider changing to a UniformGridLayout -->
+                    <!--<WrapPanel Margin="40" Background="Green">
                         <StackPanel Classes="Card">
-                            <Image Source="{Binding Chessboard}"
+                            <Image Source="{Binding ImageBitmap}"
                                    Width="210"
                                    Height="300"
                                    Margin="10"
                                    Name="MyImage"></Image>
-                            <Button Background="Transparent" Margin="10" Content="{Binding ChessboardUrl}"></Button>
+                            <Button Background="Transparent" Margin="10" Content="{Binding AnimeTitle}"></Button>
                         </StackPanel>
                         <StackPanel Classes="Card"></StackPanel>
                         <StackPanel Classes="Card"></StackPanel>
                         <StackPanel Classes="Card"></StackPanel>
-                    </WrapPanel>
+                    </WrapPanel>-->
                 </ScrollViewer>
             </Panel>
         </Border>
