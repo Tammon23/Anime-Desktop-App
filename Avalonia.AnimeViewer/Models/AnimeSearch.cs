@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using MyAnimeList;
 using MyAnimeList.ResponseObjects.General;
-using Datum = MyAnimeList.ResponseObjects.Anime.Datum;
 
 namespace Avalonia.AnimeViewer.Models;
 
@@ -13,18 +13,11 @@ public class AnimeSearch
 {
     private static HttpClient s_httpClient = new();
     
-    public AnimeSearch(string searchString, int offset=0, int limit=100, string fields = "")
+    public AnimeSearch(Node searchResult)
     {
-        SearchString = searchString;
-        Offset = offset;
-        Limit = limit;
-        Fields = fields;
+        SearchResult = searchResult;
     }
-
-    public string SearchString { get; set; }
-    public int Offset { get; set; }
-    public int Limit { get; set; }
-    public string Fields { get; set; }
+    
     
     public Node SearchResult { get; set; }
     
@@ -115,9 +108,10 @@ public class AnimeSearch
     }
 
     // Change to enum this class
-    public static async Task<IReadOnlyList<Datum>> SearchAsync(string searchString, int offset=0, int limit=100, string fields = "")
+    public static async Task<IEnumerable<Node>> SearchAsync(string searchString, int offset=0, int limit=100, string fields = "")
     {
         var r = await Anime.GetAnime(searchString);
-        return r.Data;
+
+        return r.Data.Select(node => node.Node).ToList();
     }
 }
