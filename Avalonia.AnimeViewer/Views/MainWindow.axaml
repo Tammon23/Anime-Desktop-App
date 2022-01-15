@@ -80,7 +80,7 @@
             
             <StackPanel>
                 <!--Search Bar-->
-                <TextBox AcceptsReturn="True" Watermark="Search for Anime..." Text="{Binding AnimeSearchText}" HorizontalAlignment="Right" Width="300" Margin="20"/>
+                <TextBox AcceptsReturn="False" Watermark="Search for Anime..." Text="{Binding AnimeSearchText}" HorizontalAlignment="Right" Width="300" Margin="20"/>
                 <ProgressBar IsIndeterminate="True" IsVisible="{Binding IsBusy}"></ProgressBar>
             </StackPanel>
         </Panel>
@@ -94,37 +94,24 @@
                 BoxShadow="5 5 10 2 Blue">
             <Panel Name="PanelPages" HorizontalAlignment="Stretch" Background="Red" DockPanel.Dock="Bottom">
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <ItemsRepeater Name="repeater" 
-                                   Background="Transparent" 
-                                   Items="{Binding Items}"
-                                   ItemTemplate="{StaticResource elementFactory}"/>
                     <!--TODO Consider changing to a UniformGridLayout -->
-                    <!--<WrapPanel Margin="40" Background="Green">
-                        <StackPanel Classes="Card">
-                            <Image Source="{Binding ImageBitmap}"
-                                   Width="210"
-                                   Height="300"
-                                   Margin="10"
-                                   Name="MyImage"></Image>
-                            <Button Background="Transparent" Margin="10" Content="{Binding AnimeTitle}"></Button>
-                        </StackPanel>
-                        <StackPanel Classes="Card"></StackPanel>
-                        <StackPanel Classes="Card"></StackPanel>
-                        <StackPanel Classes="Card"></StackPanel>
-                    </WrapPanel>-->
+                    <!--Pages Panel-->
+                    <ItemsRepeater Name="ItemsRepeaterAnimeInfoCard" Background="Transparent" Items="{Binding SearchForAnimeResult}">
+                        <ItemsRepeater.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Classes="Card">
+                                    <Image Source="{Binding ImageBitmap}"
+                                           Width="210"
+                                           Height="300"
+                                           Margin="10"
+                                           Name="MyImage"/>
+                                    <Button Background="Transparent" Margin="10" Content="{Binding AnimeTitle}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsRepeater.ItemTemplate>
+                    </ItemsRepeater>
                 </ScrollViewer>
             </Panel>
         </Border>
-
-        <!--Pages Panel-->
-
-        
-        
-
     </DockPanel>
-
-    <!--
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-    -->
-
 </Window>

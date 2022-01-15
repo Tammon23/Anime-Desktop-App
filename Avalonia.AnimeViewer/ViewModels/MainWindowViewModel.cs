@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Net;
 using ReactiveUI;
@@ -11,8 +12,7 @@ namespace Avalonia.AnimeViewer.ViewModels
         private string? _animeSearchText;
         private bool _isBusy;
         private string _imageLink = "https://cdn.myanimelist.net/images/anime/1988/119437.jpg";
-
-
+        private ObservableCollection<string> _searchForAnimeResult;
         public string? AnimeSearchText
         {
             get => _animeSearchText;
@@ -34,6 +34,13 @@ namespace Avalonia.AnimeViewer.ViewModels
                 System.Diagnostics.Debug.WriteLine(AnimeTitle);
             }
         }
+
+        public ObservableCollection<string> SearchForAnimeResult
+        {
+            get => _searchForAnimeResult;
+            set => this.RaiseAndSetIfChanged(ref _searchForAnimeResult, value);
+        }
+        
 
         private Avalonia.Media.Imaging.Bitmap _imageBitmap = null;
         public Avalonia.Media.Imaging.Bitmap ImageBitmap
