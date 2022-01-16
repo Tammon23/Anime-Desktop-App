@@ -15,10 +15,10 @@ namespace MyAnimeList
         /// <summary>
         /// A static constructor used to create the httpclient
         /// </summary>
-        public static async Task<bool> Init()
+        public static async Task<bool> Init(bool requireAuthInit = false)
         {
-            await OAuth.Init();
-            //OAuth.Login();
+            if (requireAuthInit)
+                await OAuth.Init();
             
             if (_myAnimeListClient == null)
             {
