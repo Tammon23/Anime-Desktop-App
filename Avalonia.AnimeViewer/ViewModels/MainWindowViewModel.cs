@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Net;
+using System.Linq;
+using System.Reactive.Linq;
+using System.Threading;
+using Avalonia.AnimeViewer.Models;
 using ReactiveUI;
 
 namespace Avalonia.AnimeViewer.ViewModels
@@ -12,7 +14,17 @@ namespace Avalonia.AnimeViewer.ViewModels
         private string? _animeSearchText;
         private bool _isBusy;
         private string _imageLink = "https://cdn.myanimelist.net/images/anime/1988/119437.jpg";
-        private ObservableCollection<string> _searchForAnimeResult;
+        private CancellationTokenSource? _cancellationTokenSource;
+
+        public MainWindowViewModel()
+        {
+            this.WhenAnyValue(x => x.AnimeSearchText)
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .Throttle(TimeSpan.FromMilliseconds(400))
+                .ObserveOn(RxApp.MainThreadScheduler)
+                .Subscribe(DoAnimeSearch!);
+
+        }
         public string? AnimeSearchText
         {
             get => _animeSearchText;
@@ -30,56 +42,54 @@ namespace Avalonia.AnimeViewer.ViewModels
             get => _imageLink;
             set {
                 this.RaiseAndSetIfChanged(ref _imageLink, value);
-                DownloadImage(AnimeTitle);
                 System.Diagnostics.Debug.WriteLine(AnimeTitle);
             }
         }
 
-        public ObservableCollection<string> SearchForAnimeResult
+        public ObservableCollection<AnimeSearchViewModel> SearchForAnimeResult { get; } = new();
+
+        private async void DoAnimeSearch(string searchTerm)
         {
-            get => _searchForAnimeResult;
-            set => this.RaiseAndSetIfChanged(ref _searchForAnimeResult, value);
+            IsBusy = true;
+            SearchForAnimeResult.Clear();
+            
+            _cancellationTokenSource?.Cancel();
+            _cancellationTokenSource = new CancellationTokenSource();
+
+            var animeSearchResults = await AnimeSearch.SearchAsync(searchTerm);
+
+            foreach (var anime in animeSearchResults)
+            {
+                var vm = new AnimeSearchViewModel(anime);
+                SearchForAnimeResult.Add(vm);
+            }
+
+            if (!_cancellationTokenSource.IsCancellationRequested)
+            {
+                LoadCovers(_cancellationTokenSource.Token);
+            }
+            
+            IsBusy = false;
         }
         
+        private async void LoadCovers(CancellationToken cancellationToken)
+        {
+            foreach (var anime in SearchForAnimeResult.ToList())
+            {
+                await anime.LoadCover();
+
+                if (cancellationToken.IsCancellationRequested)
+                {
+                    return;
+                }
+            }
+        }
 
         private Avalonia.Media.Imaging.Bitmap _imageBitmap = null;
         public Avalonia.Media.Imaging.Bitmap ImageBitmap
         {
             get => _imageBitmap;
             set => this.RaiseAndSetIfChanged(ref _imageBitmap, value);
-        }
-
-        public MainWindowViewModel()
-        {
-            DownloadImage(AnimeTitle);
-        }
-
-        public void DownloadImage(string url)
-        {
-            using (WebClient client = new WebClient())
-            {
-                client.DownloadDataAsync(new Uri(url));
-                client.DownloadDataCompleted += DownloadComplete;
-            }
-        }
-
-        private void DownloadComplete(object sender, DownloadDataCompletedEventArgs e)
-        {
-            try
-            {
-                byte[] bytes = e.Result;
-
-                Stream stream = new MemoryStream(bytes);
-
-                var image = new Avalonia.Media.Imaging.Bitmap(stream);
-                ImageBitmap = image;
-            }
-            catch (Exception ex)
-            {
-                System.Diagnostics.Debug.WriteLine(ex);
-                ImageBitmap = null; // Could not download...
-            }
-            
         }
     }
 }
