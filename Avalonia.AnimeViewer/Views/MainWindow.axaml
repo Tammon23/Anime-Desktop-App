@@ -3,6 +3,7 @@
         xmlns:vm="using:Avalonia.AnimeViewer.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:Avalonia.AnimeViewer.Views"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Avalonia.AnimeViewer.Views.MainWindow"
         Icon="/Assets/avalonia-logo.ico"
@@ -85,33 +86,6 @@
             </StackPanel>
         </Panel>
         
-        <!--Main Content Area-->
-        <Border Background="Red"
-                BorderBrush="Black"
-                BorderThickness="2"
-                CornerRadius="3"
-                Padding="4"
-                BoxShadow="5 5 10 2 Blue">
-            <Panel Name="PanelPages" HorizontalAlignment="Stretch" Background="Red" DockPanel.Dock="Bottom">
-                <ScrollViewer VerticalScrollBarVisibility="Auto">
-                    <!--TODO Consider changing to a UniformGridLayout -->
-                    <!--Pages Panel-->
-                    <ItemsRepeater Name="ItemsRepeaterAnimeInfoCard" Background="Transparent" Items="{Binding SearchForAnimeResult}">
-                        <ItemsRepeater.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Classes="Card">
-                                    <Image Source="{Binding ImageBitmap}"
-                                           Width="210"
-                                           Height="300"
-                                           Margin="10"
-                                           Name="MyImage"/>
-                                    <Button Background="Transparent" Margin="10" Content="{Binding AnimeTitle}"/>
-                                </StackPanel>
-                            </DataTemplate>
-                        </ItemsRepeater.ItemTemplate>
-                    </ItemsRepeater>
-                </ScrollViewer>
-            </Panel>
-        </Border>
+        <views:AnimeSearchView/>
     </DockPanel>
 </Window>
