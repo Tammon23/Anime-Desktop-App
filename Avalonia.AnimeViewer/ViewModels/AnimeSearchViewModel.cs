@@ -27,10 +27,8 @@ public class AnimeSearchViewModel : ViewModelBase
 
     public async Task LoadCover()
     {
-        await using (var imageStream = await _anime.LoadAnimeArtLargeBitmapAsync())
-        {
-            Art = await Task.Run(() => Bitmap.DecodeToWidth(imageStream, 400));
-        }
+        await using var imageStream = await _anime.LoadAnimeArtLargeBitmapAsync();
+        Art = await Task.Run(() => Bitmap.DecodeToWidth(imageStream, 400));
     }
 
     public static async Task<IEnumerable<AnimeSearchViewModel>> LoadCached()
