@@ -8,32 +8,46 @@
 
     <!-- Add Styles Here -->
     <Style Selector="Panel.bgColourDark">
-        <Setter Property="Background" Value="#1f1e44"></Setter>
+        <Setter Property="Background" Value="#1f1e44"/>
     </Style>
     
     <Style Selector="StackPanel.bgColourDark">
-        <Setter Property="Background" Value="#1f1e44"></Setter>
+        <Setter Property="Background" Value="#1f1e44"/>
     </Style>
     
     <Style Selector="Button.bgColourDark">
-        <Setter Property="Background" Value="#1f1e44"></Setter>
+        <Setter Property="Background" Value="#1f1e44"/>
+    </Style>
+    
+    <Style Selector="Border.bgColourDark">
+        <Setter Property="Background" Value="#1f1e44"/>
+        <Setter Property="BorderBrush" Value="#1f1e44"/>
+        <Setter Property="Width" Value="230"/>
+        <Setter Property="Height" Value="370"/>
+        <Setter Property="Margin" Value="10"/>
     </Style>
     
     <!--Defines the shape and size of the page buttons-->
     <Style Selector="Button.PageButton">
-        <Setter Property="HorizontalAlignment" Value="Stretch"></Setter>
-        <Setter Property="VerticalAlignment" Value="Top"></Setter>
-        <Setter Property="Height" Value="60"></Setter>
-        <Setter Property="Background" Value="#1f1e44"></Setter>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="Height" Value="60"/>
+        <Setter Property="Background" Value="#1f1e44"/>
     </Style>
     
     <!--Defines the style at which each information card should have-->
     <!--Images inside this card should be resized to the 7:10 ratio if possible-->
     <Style Selector="StackPanel.Card">
-        <Setter Property="Width" Value="230"></Setter>
-        <Setter Property="Height" Value="370"></Setter>
-        <Setter Property="Background" Value="Blue"></Setter>
-        <Setter Property="Margin" Value="10"></Setter>
+        <Setter Property="Width" Value="230"/>
+        <Setter Property="Height" Value="370"/>
+        <Setter Property="Margin" Value="10"/>
     </Style>
+    
+    <!--Buttons with a textblock as a label-->
+    <Style Selector="Button TextBlock">
+        <Setter Property="TextAlignment" Value="Center"/>
+        <Setter Property="Background" Value="Transparent"/>
+    </Style>
+    
 </Styles>
 
