@@ -14,7 +14,7 @@ namespace Avalonia.AnimeViewer.Models;
 public class AnimeSearch
 {
     private static HttpClient s_httpClient = new();
-    public static bool ClientInitialized = false;
+    public static bool ClientInitialized;
     public AnimeSearch(Node searchResult)
     {
         SearchResult = searchResult;
@@ -112,19 +112,13 @@ public class AnimeSearch
     // Change to enum this class
     public static async Task<IEnumerable<AnimeSearch>> SearchAsync(string searchString, int offset=0, int limit=100, string fields = "")
     {
-        Console.WriteLine("Called searchasync");
-        Debug.WriteLine("Called searchasync");
-        
         if (!ClientInitialized)
         {
             await MALRequestClient.Init();
             ClientInitialized = true;
         }
         var r = await Anime.GetAnime(searchString);
-        Console.WriteLine($"{((r == null) ? "r is null" : r)}");
-        return r.
-            Data.
-            Select(node => new AnimeSearch(node.Node))
-            .ToList();
+
+        return r == null ? new List<AnimeSearch>() : r.Data.Select(node => new AnimeSearch(node.Node)).ToList();
     }
 }
