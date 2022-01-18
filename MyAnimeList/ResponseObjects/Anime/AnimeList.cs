@@ -7,14 +7,14 @@ namespace MyAnimeList.ResponseObjects.Anime
     [DataContract]
     public class AnimeList
     {
-        public AnimeList(List<Datum> data, Paging paging)
+        public AnimeList(List<AnimeListDatum> data, Paging paging)
         {
             Data = data;
             Paging = paging;
         }
 
         [DataMember]
-        public IReadOnlyList<Datum> Data { get; }
+        public IReadOnlyList<AnimeListDatum> Data { get; }
 
         [DataMember]
         public Paging Paging { get; }

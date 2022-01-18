@@ -1,4 +1,5 @@
 ﻿using MyAnimeList.ResponseObjects.Anime;
+using MyAnimeList.ResponseObjects.General;
 using MyAnimeList.ResponseObjects.Manga;
 using MyAnimeList.ResponseObjects.User.MyAnimeList.ResponseObjects.User;
 
@@ -62,6 +63,25 @@ namespace MyAnimeList
             MangaRankingTypeEnum.ByPopularity => "bypopularity",
             MangaRankingTypeEnum.OneShots     => "oneshot",
             _                                 => "all"
+        };
+
+        public static string NsfwToString(NsfwEnum? nsfw) => nsfw switch
+        {
+            NsfwEnum.White => "white",
+            NsfwEnum.Black => "black",
+            NsfwEnum.Gray  => "gray",
+            _              => "unknown"
+        };
+        
+        public static string RatingToString(RatingEnum? rating) => rating switch
+        {
+            RatingEnum.G     => "g",
+            RatingEnum.Pg    => "pg",
+            RatingEnum.Pg13  => "pg_13",
+            RatingEnum.R     => "r",
+            RatingEnum.RPlus => "r+",
+            RatingEnum.Rx    => "rx",
+            _                => "unknown"
         };
     }
 }

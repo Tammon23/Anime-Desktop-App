@@ -7,7 +7,7 @@ namespace MyAnimeList.ResponseObjects.Anime
 
     public class AnimeSeasonal
     {
-        public AnimeSeasonal(List<Datum>? data, Paging? paging, SeasonInfo? season
+        public AnimeSeasonal(List<AnimeListDatum>? data, Paging? paging, SeasonInfo? season
         )
         {
             this.Data = data;
@@ -16,7 +16,7 @@ namespace MyAnimeList.ResponseObjects.Anime
         }
 
         [DataMember]
-        public IReadOnlyList<Datum>? Data { get; }
+        public IReadOnlyList<AnimeListDatum>? Data { get; }
     
         [DataMember]
         public Paging? Paging { get; }

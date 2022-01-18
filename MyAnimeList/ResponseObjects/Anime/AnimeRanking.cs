@@ -6,14 +6,14 @@ namespace MyAnimeList.ResponseObjects.Anime
 {
     public class AnimeRanking
     {
-        public AnimeRanking(List<Datum>? data, Paging? paging)
+        public AnimeRanking(List<AnimeListDatum>? data, Paging? paging)
         {
             this.Data = data;
             this.Paging = paging;
         }
 
         [DataMember]
-        public IReadOnlyList<Datum>? Data { get; }
+        public IReadOnlyList<AnimeListDatum>? Data { get; }
 
         [DataMember]
         public Paging? Paging { get; }

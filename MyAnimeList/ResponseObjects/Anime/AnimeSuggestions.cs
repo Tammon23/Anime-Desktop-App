@@ -7,7 +7,7 @@ namespace MyAnimeList.ResponseObjects.Anime
     [DataContract]
     public class AnimeSuggestions
     {
-        public AnimeSuggestions(List<Datum>? data, Paging? paging
+        public AnimeSuggestions(List<AnimeListDatum>? data, Paging? paging
         )
         {
             this.Data = data;
@@ -15,7 +15,7 @@ namespace MyAnimeList.ResponseObjects.Anime
         }
 
         [DataMember]
-        public IReadOnlyList<Datum>? Data { get; }
+        public IReadOnlyList<AnimeListDatum>? Data { get; }
 
         [DataMember]
         public Paging? Paging { get; }
