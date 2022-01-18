@@ -6,7 +6,10 @@
         <entry key="Avalonia.AnimeViewer/App.axaml" value="Avalonia.AnimeViewer/Avalonia.AnimeViewer.csproj" />
         <entry key="Avalonia.AnimeViewer/Icons.axaml" value="Avalonia.AnimeViewer/Avalonia.AnimeViewer.csproj" />
         <entry key="Avalonia.AnimeViewer/Styles.axaml" value="Avalonia.AnimeViewer/Avalonia.AnimeViewer.csproj" />
+        <entry key="Avalonia.AnimeViewer/Views/AnimeSearchViedw.axaml" value="Avalonia.AnimeViewer/Avalonia.AnimeViewer.csproj" />
+        <entry key="Avalonia.AnimeViewer/Views/AnimeSearchView.axaml" value="Avalonia.AnimeViewer/Avalonia.AnimeViewer.csproj" />
         <entry key="Avalonia.AnimeViewer/Views/MainWindow.axaml" value="Avalonia.AnimeViewer/Avalonia.AnimeViewer.csproj" />
+        <entry key="Avalonia.AnimeViewer/Views/Tabinator.axaml" value="Avalonia.AnimeViewer/Avalonia.AnimeViewer.csproj" />
       </map>
     </option>
   </component>
