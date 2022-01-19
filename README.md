@@ -8,9 +8,9 @@ Additionally, there will be support for directly streaming anime through the app
 
 
 ## TODO:
-1. Add Support for video streaming
-  > Include support for poppping out the streamer into its own window
-  > Add support for skipping intro using user defined buttons or public dbs
-2. Add Support for viewing profiles
-3. Add support for reading manga
-4. Add Notification system for when new anime comes out
+- [ ] Add Support for video streaming
+  - [ ] Include support for poppping out the streamer into its own window
+  - [ ] Add support for skipping intro using user defined buttons or public dbs
+- [ ] Add Support for viewing profiles
+- [ ] Add support for reading manga
+- [ ] Add Notification system for when new anime comes out
