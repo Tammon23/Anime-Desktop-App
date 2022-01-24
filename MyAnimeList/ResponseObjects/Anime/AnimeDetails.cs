@@ -7,6 +7,7 @@ namespace MyAnimeList.ResponseObjects.Anime
     [DataContract]
     public class AnimeDetails : AnimeNode
     {
+        // details
         public AnimeDetails(
             int id,
             string title,
