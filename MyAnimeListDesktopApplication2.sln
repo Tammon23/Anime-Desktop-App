@@ -9,16 +9,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyAnimeList", "MyAnimeList\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Avalonia.AnimeViewer", "Avalonia.AnimeViewer\Avalonia.AnimeViewer.csproj", "{F07271D0-6108-4F7E-B9FA-36EF23D207D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UIManager", "UIManager\UIManager.csproj", "{894AE8EE-A00F-4BA3-A1A3-1BFEAE3FE4E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LibVLCSharp.Avalonia", "LibVLCSharp.Avalonia\LibVLCSharp.Avalonia.csproj", "{DF9C77AE-2E9C-41E8-8351-854C275E4DA2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DBF6ACF2-CAD7-4829-AD30-A7B59CC0F322}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DBF6ACF2-CAD7-4829-AD30-A7B59CC0F322}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DBF6ACF2-CAD7-4829-AD30-A7B59CC0F322}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DBF6ACF2-CAD7-4829-AD30-A7B59CC0F322}.Release|Any CPU.Build.0 = Release|Any CPU
 		{14B14FE0-8FC4-4F2B-AF80-F7EFEB674F1D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{14B14FE0-8FC4-4F2B-AF80-F7EFEB674F1D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14B14FE0-8FC4-4F2B-AF80-F7EFEB674F1D}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -27,6 +27,14 @@ Global
 		{F07271D0-6108-4F7E-B9FA-36EF23D207D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F07271D0-6108-4F7E-B9FA-36EF23D207D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F07271D0-6108-4F7E-B9FA-36EF23D207D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{894AE8EE-A00F-4BA3-A1A3-1BFEAE3FE4E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{894AE8EE-A00F-4BA3-A1A3-1BFEAE3FE4E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{894AE8EE-A00F-4BA3-A1A3-1BFEAE3FE4E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{894AE8EE-A00F-4BA3-A1A3-1BFEAE3FE4E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF9C77AE-2E9C-41E8-8351-854C275E4DA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF9C77AE-2E9C-41E8-8351-854C275E4DA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF9C77AE-2E9C-41E8-8351-854C275E4DA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF9C77AE-2E9C-41E8-8351-854C275E4DA2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
