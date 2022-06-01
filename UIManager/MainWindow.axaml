@@ -1,0 +1,58 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:local="clr-namespace:UIManager"
+             xmlns:vm="clr-namespace:UIManager.ViewModels"
+             xmlns:v="clr-namespace:UIManager.Views"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             MinWidth="500" MinHeight="300"
+             Width="1024" Height="800"
+             x:Class="UIManager.MainWindow"
+             Title="MainWindow"
+             Icon="/Assets/avalonia-logo.ico">
+    <NativeMenu.Menu>
+        <NativeMenu>
+            <NativeMenuItem Header="File">
+                <NativeMenuItem.Menu>
+                    <NativeMenu>
+                        <NativeMenuItem Header="Open" Clicked="OnOpenClicked"/>
+                        <NativeMenuItemSeperator/>
+                        <NativeMenuItem Header="Recent">
+                            <NativeMenuItem.Menu>
+                                <NativeMenu/>
+                            </NativeMenuItem.Menu>
+                        </NativeMenuItem>
+                        <NativeMenuItemSeperator/>
+                        <NativeMenuItem Header="Quit Avalonia" Clicked="OnCloseClicked" Gesture="CMD+Q"/>
+                    </NativeMenu>
+                </NativeMenuItem.Menu>
+            </NativeMenuItem>
+            <NativeMenuItem Header="Edit">
+                <NativeMenuItem.Menu>
+                    <NativeMenu>
+                        <NativeMenuItem Header="Copy"/>
+                        <NativeMenuItem Header="Paste"/>
+                    </NativeMenu>
+                </NativeMenuItem.Menu>
+            </NativeMenuItem>
+        </NativeMenu>
+    </NativeMenu.Menu>
+
+    <Window.DataTemplates>
+        <DataTemplate DataType="vm:NotificationViewModel">
+            <v:NotificationView />
+        </DataTemplate>
+    </Window.DataTemplates>
+    <DockPanel LastChildFill="True">
+        <Menu Name="MainMenu" DockPanel.Dock="Top">
+            <MenuItem Header="File">
+                <MenuItem Header="Exit" Command="{Binding ExitCommand}" />
+            </MenuItem>
+            <MenuItem Header="Help">
+                <MenuItem Header="About" Command="{Binding AboutCommand}" />
+            </MenuItem>
+        </Menu>
+        <local:MainView />
+    </DockPanel>
+</Window>

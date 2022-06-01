@@ -1,0 +1,44 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:UIManager.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="UIManager.Views.AnimeListPageView">
+    <Design.DataContext>
+        <vm:AnimeListPageViewModel/>
+    </Design.DataContext>
+    <StackPanel>
+        <StackPanel Margin="10">
+            <ProgressBar IsIndeterminate="True" Height="5" MinHeight="5" IsVisible="{Binding IsBusy}" DockPanel.Dock="Bottom"/>
+            <TextBox AcceptsReturn="False" 
+                     Watermark="Search for Anime…" 
+                     Text="{Binding AnimeSearchText}"
+                     HorizontalAlignment="Right" 
+                     Width="300" 
+                     x:Name="SearchTextBox"
+                     DockPanel.Dock="Right"/>
+        </StackPanel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <ItemsRepeater Name="ItemsRepeaterAnimeInfoCard" 
+                           Background="Transparent"
+                           Items="{Binding SearchForAnimeResult}"> <!-- <- - - - no data context redo SearchForAnimEresult-->
+                <ItemsRepeater.ItemTemplate>
+                    <DataTemplate DataType="{x:Type vm:ContentCardViewModel}">
+                        <Border Classes="cardRepeater">
+                            <Button ToolTip.Tip="{Binding AnimeTitle}">
+                                <StackPanel>
+                                    <Image Source="{Binding Art}"/>
+                                    <TextBlock Classes="h1" Text="{Binding AnimeTitle}"/>
+                                </StackPanel>
+                            </Button>
+                        </Border>
+                    </DataTemplate>
+                </ItemsRepeater.ItemTemplate>
+                <ItemsRepeater.Layout>
+                    <UniformGridLayout ItemsJustification="SpaceEvenly"/>
+                </ItemsRepeater.Layout>
+            </ItemsRepeater>
+        </ScrollViewer>
+    </StackPanel>
+</UserControl>

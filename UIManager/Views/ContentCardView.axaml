@@ -1,0 +1,31 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="UIManager.Views.ContentCardView">
+    
+    <!--Main Content Area-->
+    <Panel Name="PanelPages" HorizontalAlignment="Stretch" Background="#8C93A8" DockPanel.Dock="Bottom">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <!--Pages Panel-->
+            <ItemsRepeater Name="ItemsRepeaterAnimeInfoCard" Background="Transparent" Items="{Binding SearchForAnimeResult}">
+                <ItemsRepeater.ItemTemplate>
+                    <DataTemplate>
+                        <Border CornerRadius="7">
+                            <StackPanel HorizontalAlignment="Center">
+                                <Button Background="Transparent">
+                                    <Image Source="{Binding Art}" Width="210" Height="300" Margin="10"/>
+                                </Button>
+                                <Button Background="Transparent" HorizontalAlignment="Center" HorizontalContentAlignment="Center" Width="210">
+                                    <TextBlock Text="{Binding AnimeTitle}" TextTrimming="CharacterEllipsis" HorizontalAlignment="Center" ToolTip.Tip="{Binding AnimeTitle}"/>
+                                </Button>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ItemsRepeater.ItemTemplate>
+                <ItemsRepeater.Layout>
+                    <UniformGridLayout ItemsJustification="SpaceEvenly"/>
+                </ItemsRepeater.Layout>
+            </ItemsRepeater>
+            <!--End of pages panel-->
+        </ScrollViewer>
+    </Panel>
+</UserControl>

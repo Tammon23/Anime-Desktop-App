@@ -1,0 +1,72 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:vm="clr-namespace:UIManager.ViewModels"
+             xmlns:v="clr-namespace:UIManager.Views"
+             xmlns:m="clr-namespace:UIManager.Models"
+             x:Class="UIManager.MainView"
+             Background="{DynamicResource ThemeBackgroundBrush}"
+             Foreground="{DynamicResource ThemeForegroundBrush}"
+             FontSize="{DynamicResource FontSizeNormal}">
+    <!--<DockPanel>
+        <ContentControl DockPanel.Dock="Top">
+            <ContentControl.Content>
+                <v:StatusBarView />
+            </ContentControl.Content>
+        </ContentControl>
+        ~1~
+        <v:StatusBarView DockPanel.Dock="Top"/>
+        @1@
+        <Grid>
+            <Grid.Styles>
+                <Style Selector="TextBlock.h2">
+                    <Setter Property="TextWrapping" Value="Wrap"/>
+                    <Setter Property="MaxWidth" Value="400"/>
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                </Style>
+            </Grid.Styles>  
+            <TabControl Classes="sidebar" Name="Sidebar">
+                <TabItem Header="Slider"><pages:SliderPage/></TabItem>
+                <TabItem Header="Anime List"><pages:AnimeListPage/></TabItem>
+                ~1~<TabControl.Tag>
+                    <ComboBox x:Name="Themes" SelectedIndex="0" Width="100" Margin="8" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                        <ComboBoxItem>Light</ComboBoxItem>
+                        <ComboBoxItem>Dark</ComboBoxItem>
+                    </ComboBox>
+                </TabControl.Tag>@1@
+            </TabControl>
+        </Grid>
+    </DockPanel>-->
+    
+    <!--Alternate method-->
+    <UserControl.DataContext>
+        <vm:MainViewModel/>
+    </UserControl.DataContext>
+    
+    <DockPanel>
+        <!--
+        <ContentControl Content="{Binding StatusBarView}" DockPanel.Dock="Top"/>
+        -->
+        <Grid>
+            <Grid.Styles>
+                <Style Selector="TextBlock.h2">
+                    <Setter Property="TextWrapping" Value="Wrap"/>
+                    <Setter Property="MaxWidth" Value="400"/>
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                </Style>
+            </Grid.Styles>  
+            <TabControl Classes="sidebar" Name="Sidebar" Items="{Binding Items}">
+                <TabControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type m:CustomTabItem}">
+                        <TextBlock Text="{Binding Header}"/>
+                    </DataTemplate>
+                </TabControl.ItemTemplate>
+                <TabControl.ContentTemplate>
+                    <DataTemplate DataType="{x:Type m:CustomTabItem}">
+                        <ContentControl Content="{Binding Content}"/>
+                    </DataTemplate>
+                </TabControl.ContentTemplate>
+            </TabControl>
+        </Grid>
+    </DockPanel>
+    
+</UserControl>
