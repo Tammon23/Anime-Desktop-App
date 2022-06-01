@@ -6,14 +6,16 @@ namespace MyAnimeList.ResponseObjects.Forum
     [DataContract]
     public class ForumTopicDatum
     {
-        public ForumTopicDatum(int id,
+        public ForumTopicDatum(
+            int id,
             string title,
             DateTime createdAt,
             User.User createdBy,
             int numberOfPosts,
             DateTime lastPostCreatedAt,
             User.User lastPostCreatedBy,
-            bool isLocked)
+            bool isLocked
+            )
         {
             this.Id = id;
             this.Title = title;

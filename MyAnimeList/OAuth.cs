@@ -6,6 +6,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -26,7 +27,7 @@ namespace MyAnimeList
         private static HttpListener? _authHttpListener;
         private static Process? _browserProcess;
 
-        private static string? token;
+        private static string? _token;
         
         public static async Task Init()
         {
@@ -97,6 +98,7 @@ namespace MyAnimeList
 
         public static void Login()
         {
+            // determines when to refresh the token or generate a new one
         }
         
         
@@ -139,7 +141,7 @@ namespace MyAnimeList
             
             if (_tokenRefreshInfo == null) return;
 
-            token = _tokenRefreshInfo.access_token;
+            _token = _tokenRefreshInfo.access_token;
             
             const string filePath = "TOKENS.xml";
             
@@ -168,6 +170,7 @@ namespace MyAnimeList
                 _tokenRefreshInfo = (AuthorizationResponse)deserializer.Deserialize(tr);
             }
         }
+        
 
         /// <summary>
         /// Used to refresh the access token for the client
@@ -205,7 +208,6 @@ namespace MyAnimeList
 
         }
         
-        
         /// <summary>
         ///     https://stackoverflow.com/a/65220376
         /// </summary>
@@ -241,17 +243,25 @@ namespace MyAnimeList
 
         public static string? GetToken()
         {
-            return token;
+            return _token;
         }
     }
     
+    [Serializable]
     public class AuthorizationResponse
     {
         public string token_type { get; set; }
         public int expires_in { get; set; }
         public string access_token { get; set; }
         public string refresh_token { get; set; }
+        
+        public DateTime ExpiresAt { get; set; }
 
+        [OnDeserialized]
+        private void OnDeserializedMethod(StreamingContext context)
+        {
+            ExpiresAt = DateTime.UtcNow.AddSeconds(expires_in);
+        }
         public override string ToString()
         {
             return $"{token_type}, {expires_in}, {access_token}, {refresh_token}";
