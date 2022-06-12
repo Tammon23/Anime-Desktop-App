@@ -12,4 +12,9 @@
 # Editor-based HTTP Client requests
 /httpRequests/
 
-Tokens.xml
+TOKENS.xml
+/Debug/
+
+../../.vs/
+../../packages/
+../../MyAnimeListDesktopApplication2.sln.DotSettings.user
