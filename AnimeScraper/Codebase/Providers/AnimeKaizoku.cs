@@ -1,4 +1,4 @@
-﻿using AnimeScraper.Codebase.Helper;
+﻿using AnimeScraper.Codebase.Helpers;
 
 namespace AnimeScraper.Codebase.Providers;
 
@@ -34,7 +34,7 @@ public class AnimeKaizoku : IProvider
         throw new NotImplementedException();
     }
 
-    public ProviderEnum GetProvider()
+    public ProviderEnum GetProviderType()
     {
         return Provider;
     }

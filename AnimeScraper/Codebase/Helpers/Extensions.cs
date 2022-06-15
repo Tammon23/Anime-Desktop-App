@@ -1,7 +1,7 @@
 ﻿using System.Collections.Specialized;
 using System.Web;
 
-namespace AnimeScraper.Codebase.Helper;
+namespace AnimeScraper.Codebase.Helpers;
 
 /// <summary>
 /// Source: https://stackoverflow.com/a/27545010/19236048

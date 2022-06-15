@@ -1,6 +1,6 @@
 ﻿using System.Collections.Immutable;
 
-namespace AnimeScraper.Codebase.Helper;
+namespace AnimeScraper.Codebase.Helpers;
 
 [AttributeUsage(AttributeTargets.Field)] 
 public class ProviderAttribute : Attribute  

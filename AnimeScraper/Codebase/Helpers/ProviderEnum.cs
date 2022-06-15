@@ -1,4 +1,4 @@
-﻿namespace AnimeScraper.Codebase.Helper;
+﻿namespace AnimeScraper.Codebase.Helpers;
 
 public enum ProviderEnum
 {

@@ -1,5 +1,5 @@
 ﻿using System.Net;
-using AnimeScraper.Codebase.Helper;
+using AnimeScraper.Codebase.Helpers;
 using Newtonsoft.Json.Linq;
 
 namespace AnimeScraper.Codebase.Providers;
@@ -56,7 +56,7 @@ public class AllAnime : IProvider
         throw new NotImplementedException();
     }
 
-    public ProviderEnum GetProvider()
+    public ProviderEnum GetProviderType()
     {
         return Provider;
     }

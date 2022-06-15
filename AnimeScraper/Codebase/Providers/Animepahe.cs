@@ -1,5 +1,5 @@
 ﻿using System.Net;
-using AnimeScraper.Codebase.Helper;
+using AnimeScraper.Codebase.Helpers;
 using Newtonsoft.Json.Linq;
 
 namespace AnimeScraper.Codebase.Providers;
@@ -7,21 +7,9 @@ namespace AnimeScraper.Codebase.Providers;
 public class Animepahe : IProvider
 {
     private const ProviderEnum Provider = ProviderEnum.ANIMEPAHE;
+    
+    
 
-    public Task GetHtml()
-    {
-        throw new NotImplementedException();
-    }
-
-    public ProviderEnum GetProvider()
-    {
-        return Provider;
-    }
-
-    public void GetStream(string uri)
-    {
-        throw new NotImplementedException();
-    }
 
     public async IAsyncEnumerable<SearchableAnime> Search(string query)
     {
@@ -39,5 +27,20 @@ public class Animepahe : IProvider
         {
             yield return new SearchableAnime(node.title.Value, Provider.BuildContentPath() + node.session.Value);
         }
+    }
+    
+    public Task GetHtml()
+    {
+        throw new NotImplementedException();
+    }
+
+    public void GetStream(string uri)
+    {
+        throw new NotImplementedException();
+        
+    }
+    public ProviderEnum GetProviderType()
+    {
+        return Provider;
     }
 }

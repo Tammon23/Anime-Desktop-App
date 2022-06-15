@@ -1,5 +1,5 @@
 ﻿using System.Net;
-using AnimeScraper.Codebase.Helper;
+using AnimeScraper.Codebase.Helpers;
 using HtmlAgilityPack;
 using Newtonsoft.Json.Linq;
 
@@ -51,7 +51,7 @@ public class AnimixPlay : IProvider
         throw new NotImplementedException();
     }
 
-    public ProviderEnum GetProvider()
+    public ProviderEnum GetProviderType()
     {
         return Provider;
     }
