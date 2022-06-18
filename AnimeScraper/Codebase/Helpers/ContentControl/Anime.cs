@@ -1,4 +1,4 @@
-﻿namespace AnimeScraper.Codebase.Helpers;
+﻿namespace AnimeScraper.Codebase.Helpers.ContentControl;
 
 public class Anime : SearchableAnime
 {
