@@ -4,6 +4,13 @@ public class Anime : SearchableAnime
 {
     public ProviderEnum ProviderType;
     private IProvider _provider;
+    private Dictionary<int, StreamUrlManager> episodes;
+    /// <summary>
+    /// Constructor
+    /// </summary>
+    /// <param name="name">The name/title of the anime</param>
+    /// <param name="animeHomePageUrl">The url to the provider for the anime</param>
+    /// <param name="provider">The provider that this anime entry is associated with</param>
     public Anime(string name, string animeHomePageUrl, ProviderEnum provider) : base(name, animeHomePageUrl)
     {
         ProviderType = provider;
