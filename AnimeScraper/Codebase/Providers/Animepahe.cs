@@ -129,7 +129,7 @@ public class Animepahe : IProvider
             {
                 var m3u8 = await GetM3U8MRL(url);
                 if(m3u8 == null) continue;
-                urls.AddStreamUrl(url, quality, new Dictionary<AnimeUrlOptionsEnum, string>{{AnimeUrlOptionsEnum.Host, new Uri(url).Host},
+                urls.AddStreamUrl(m3u8, quality, new Dictionary<AnimeUrlOptionsEnum, string>{{AnimeUrlOptionsEnum.Host, new Uri(url).Host},
                     {AnimeUrlOptionsEnum.Referrer, "https://kwik.cx/"}});
             }
             
