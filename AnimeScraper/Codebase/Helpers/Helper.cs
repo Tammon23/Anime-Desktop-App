@@ -19,12 +19,59 @@ public class Helper
         return result;
     }
 
-    public static void ThrowIfBadEpisodeNumber(uint episode)
+    /// <summary>
+    /// Checks if the provided episode is within a correct range
+    /// </summary>
+    /// <param name="episode">The episode number to check</param>
+    /// <param name="throwOnNegative1">Determines if -1 should throw an exception, default true</param>
+    /// <exception cref="EpisodeOutOfRangeException"></exception>
+    public static void ThrowIfBadEpisodeNumber(int episode, bool throwOnNegative1=true)
     {
-        if (episode == 0)
+        if (throwOnNegative1)
+        {
+            if (episode <= 0)
+                throw new EpisodeOutOfRangeException(
+                    "First episode index should not be 0, if you think this is incorrect, submit an issue here " +
+                    "https://github.com/Tammon23/Anime-Desktop-App");
+        }
+        else if (episode <= 0 && episode != -1)
+        {
             throw new EpisodeOutOfRangeException(
                 "First episode index should not be 0, if you think this is incorrect, submit an issue here " +
                 "https://github.com/Tammon23/Anime-Desktop-App");
+        }
+    }
+    
+    /// <summary>
+    /// Checks if the provided range is a valid range
+    /// </summary>
+    /// <param name="lower">The first value of the range</param>
+    /// <param name="upper">The last value of the range</param>
+    /// <param name="continuousLowerRange">If set to true, then when param "upper" is set to -1, it is treated
+    /// as a range with no upper bound</param>
+    /// <exception cref="InvalidRangeException"></exception>
+    public static void ThrowIfBadEpisodeRange(int lower, int upper, bool continuousLowerRange=false)
+    {
+        if (continuousLowerRange)
+        {
+            if (lower > upper && upper != -1)
+                throw new InvalidRangeException("Invalid range provided");
+        }
+        else if (lower > upper)
+        {
+            throw new InvalidRangeException("Invalid range provided");
+        }
+
+    }
+    
+    public static bool IsValidUrl(string url, ProviderEnum provider)
+    {
+        return url.StartsWith(provider.GetBaseUri());
+    }
+
+    public static double CalculatePage(int episode, float episodesPerPage)
+    {
+        return Math.Ceiling((episode - 1) / episodesPerPage);
     }
 
     /*public static IProvider GetFromProviderEnum(ProviderEnum provider)
