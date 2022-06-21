@@ -1,5 +1,6 @@
 ﻿using System.Net;
 using HtmlAgilityPack;
+using Newtonsoft.Json.Linq;
 
 namespace AnimeScraper.Codebase;
 
@@ -88,6 +89,24 @@ public static class ClientManager
 
     }
     
+    public static async Task<Tuple<HtmlDocument?, HttpResponseMessage?>> LoadFromGetWeb(HttpRequestMessage requestMessage)
+    {
+        var response = await Client.SendAsync(requestMessage);
+        if (response.StatusCode != HttpStatusCode.OK)
+            return Tuple.Create<HtmlDocument?, HttpResponseMessage?>(null, response);
+        
+        HtmlDocument htmlDocument = new()
+        {
+            OptionAutoCloseOnEnd = false,
+            OptionFixNestedTags = true
+        };
+        
+        var responseHtml = await response.Content.ReadAsStringAsync();
+        htmlDocument.LoadHtml(responseHtml);
+        return Tuple.Create<HtmlDocument?, HttpResponseMessage?>(htmlDocument, response);
+
+    }
+    
     public static async Task<HtmlDocument?> LoadFromPostWeb(Uri uri, object content)
     {
         var postFormContent = new FormUrlEncodedContent(content.GetType().GetProperties().ToDictionary
@@ -113,5 +132,17 @@ public static class ClientManager
         var responseHtml = await response.Content.ReadAsStringAsync();
         htmlDocument.LoadHtml(responseHtml);
         return htmlDocument;
+    }
+
+    public static async Task<dynamic?> LoadFromGetWebJson(string uri)
+    {
+        var response = await GetClient().GetAsync(uri);
+        return response.StatusCode != HttpStatusCode.OK ? null : JObject.Parse(await response.Content.ReadAsStringAsync());
+    }
+    
+    public static async Task<dynamic?> LoadFromGetWebJson(Uri uri)
+    {
+        var response = await GetClient().GetAsync(uri);
+        return response.StatusCode != HttpStatusCode.OK ? null : JObject.Parse(await response.Content.ReadAsStringAsync());
     }
 }
