@@ -1,4 +1,6 @@
-﻿namespace AnimeScraper.Codebase.Helpers;
+﻿using System.Text;
+
+namespace AnimeScraper.Codebase.Helpers;
 
 /// <summary>
 /// A class that holds the stream links of an anime as well as the requires requests options
@@ -21,5 +23,10 @@ public class StreamUrl
     public string MRL { get;  }
     public string Quality { get;  }
     public Dictionary<AnimeUrlOptionsEnum, string>? Options { get; }
+
+    public override string ToString()
+    {
+        return $" {{ Mrl: {MRL}, Quality: {Quality}, OptionCount: {Options.Count} }} ";
+    }
 }
  

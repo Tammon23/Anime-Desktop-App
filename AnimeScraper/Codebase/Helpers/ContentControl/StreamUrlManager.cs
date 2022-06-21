@@ -1,4 +1,5 @@
 ﻿using System.Security.AccessControl;
+using System.Text;
 using System.Text.RegularExpressions;
 using static System.Int16;
 
@@ -142,6 +143,25 @@ public class StreamUrlManager
         return result;
     }
 
-    
-    
+    public override string ToString()
+    {
+        if (_mrls.Count == 0)
+            return " { } ";
+
+        var size = 0;
+        var sb = new StringBuilder();
+        sb.Append(" { ");
+
+        foreach (var mrl in _mrls)
+        {
+            size++;
+            if(size == _mrls.Count)
+                sb.Append($"<Mrl: {mrl}> ");
+            else
+                sb.Append($"<Mrl: {mrl}>, ");
+        }
+
+        sb.Append(" }");
+        return sb.ToString();
+    }
 }
