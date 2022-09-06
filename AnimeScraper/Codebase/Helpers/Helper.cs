@@ -66,7 +66,7 @@ public class Helper
     
     public static bool IsValidUrl(string url, ProviderEnum provider)
     {
-        return url.StartsWith(provider.GetBaseUri());
+        return url.StartsWith(provider.GetBaseUri()) || Enumerable.Any(provider.GetBaseUriAlternatives(), url.StartsWith);
     }
 
     public static double CalculatePage(int episode, float episodesPerPage)
