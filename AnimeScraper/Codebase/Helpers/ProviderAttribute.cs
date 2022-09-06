@@ -31,7 +31,7 @@ public class ProviderAttribute : Attribute
 
     public string? ContentPath { get; }
 
-    public ImmutableArray<string>? BaseUriAlternatives { get; }
+    public ImmutableArray<string> BaseUriAlternatives { get; }
 }   
 
 public static class ProviderEnumExtenstionClass  
@@ -66,14 +66,14 @@ public static class ProviderEnumExtenstionClass
         return attribs?.Length > 0 ? attribs[0].ContentPath : null;
     }  
     
-    public static ImmutableArray<string>? GetBaseUriAlternatives(this ProviderEnum value)  
+    public static ImmutableArray<string> GetBaseUriAlternatives(this ProviderEnum value)  
     {  
         var type = value.GetType();  
         var fieldInfo = type.GetField(value.ToString());  
         var attribs = fieldInfo?.GetCustomAttributes(  
             typeof(ProviderAttribute), false) as ProviderAttribute[];
 
-        return attribs?.Length > 0 ? attribs[0].BaseUriAlternatives : null;
+        return attribs?.Length > 0 ? attribs[0].BaseUriAlternatives : new ImmutableArray<string>();
     }
     
     public static Uri BuildSearchPath(this ProviderEnum value)
