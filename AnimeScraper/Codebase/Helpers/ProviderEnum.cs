@@ -2,7 +2,7 @@
 
 public enum ProviderEnum
 {
-    [Provider("https://9anime.to/", "filter")]
+    [Provider("https://9anime.to/", "filter", "", "https://9anime.id/")]
     NINEANIME,
     [Provider("https://allanime.site/", "graphql")]
     ALLANIME,
