@@ -8,14 +8,16 @@ namespace AnimeScraper.Codebase.Helpers;
 public class StreamUrlManager
 {
     private readonly List<StreamUrl> _mrls;
-    
-    public StreamUrlManager(params StreamUrl[] mrls)
+    public readonly SubDubTitle Type;
+    public StreamUrlManager(SubDubTitle type = SubDubTitle.Subbed, params StreamUrl[] mrls)
     {
+        Type = type;
         _mrls = mrls.ToList();
     }
 
-    public StreamUrlManager()
+    public StreamUrlManager(SubDubTitle type = SubDubTitle.Subbed)
     {
+        Type = type;
         _mrls = new List<StreamUrl>();
     }
 
@@ -156,9 +158,9 @@ public class StreamUrlManager
         {
             size++;
             if(size == _mrls.Count)
-                sb.Append($"<Mrl: {mrl}> ");
+                sb.Append($"<Type: {(Type == SubDubTitle.Dubbed ? "Dubbed" : "Subbed")} Mrl: {mrl}> ");
             else
-                sb.Append($"<Mrl: {mrl}>, ");
+                sb.Append($"<Type: {(Type == SubDubTitle.Dubbed ? "Dubbed" : "Subbed")} Mrl: {mrl}>, ");
         }
 
         sb.Append(" }");

@@ -1,12 +1,12 @@
-﻿using System.Diagnostics.Tracing;
-using System.Text;
+﻿using System.Text;
 
 namespace AnimeScraper.Codebase.Helpers.ContentControl;
 
 public class Anime : SearchableAnime
 {
     public ProviderEnum ProviderType;
-    private readonly Dictionary<int, StreamUrlManager> _episodes = new();
+    private readonly Dictionary<int, StreamUrlManager> _subbedEpisodes = new();
+    private readonly Dictionary<int, StreamUrlManager> _dubbedEpisodes = new();
 
     /// <summary>
     /// Constructor
@@ -20,8 +20,13 @@ public class Anime : SearchableAnime
         ProviderType = provider;
     }
 
-    public int GetNumberSavedEpisodes() => _episodes.Count;
-    public Dictionary<int, StreamUrlManager> GetEpisodesDict() => _episodes;
+    public int GetNumberSavedEpisodes() => _subbedEpisodes.Count + _dubbedEpisodes.Count;
+    public int GetNumberSubbedSavedEpisodes() => _subbedEpisodes.Count;
+    public int GetNumberDubbedSavedEpisodes() => _dubbedEpisodes.Count;
+    
+    public Dictionary<int, StreamUrlManager> GetEpisodesDict() => _subbedEpisodes.Union(_dubbedEpisodes).ToDictionary (k => k.Key, v => v.Value);
+    public Dictionary<int, StreamUrlManager> GetSubbedEpisodesDict() => _subbedEpisodes;
+    public Dictionary<int, StreamUrlManager> GetDubbedEpisodesDict() => _dubbedEpisodes;
 
     /// <summary>
     /// Adds a specified episode to the anime index
@@ -30,27 +35,44 @@ public class Anime : SearchableAnime
     /// <param name="episode">The <see cref="StreamUrlManager"/> of the episode</param>
     public void AddEpisode(int episodeNumber, StreamUrlManager episode)
     {
-        _episodes[episodeNumber] = episode;
+        if (episode.Type == SubDubTitle.Dubbed)
+        {
+            _dubbedEpisodes[episodeNumber] = episode;
+        }
+        else
+        {
+            _subbedEpisodes[episodeNumber] = episode;
+        }
     }
 
     /// <summary>
-    /// Gets the specified episode of an anime if it's saved to the object
+    /// Gets the specified subbed episode of an anime if it's saved to the object
     /// </summary>
     /// <param name="episodeNumber">The episode to look for</param>
     /// <returns>A <see cref="StreamUrlManager"/> of the episode of it exists in this context, null otherwise</returns>
-    public StreamUrlManager? GetEpisode(int episodeNumber)
+    public StreamUrlManager? GetSubbedEpisode(int episodeNumber)
     {
-        return _episodes.ContainsKey(episodeNumber) ? _episodes[episodeNumber] : null;
+        return _subbedEpisodes.ContainsKey(episodeNumber) ? _subbedEpisodes[episodeNumber] : null;
+    }
+    
+    /// <summary>
+    /// Gets the specified dubbed episode of an anime if it's saved to the object
+    /// </summary>
+    /// <param name="episodeNumber">The episode to look for</param>
+    /// <returns>A <see cref="StreamUrlManager"/> of the episode of it exists in this context, null otherwise</returns>
+    public StreamUrlManager? GetDubbedEpisode(int episodeNumber)
+    {
+        return _dubbedEpisodes.ContainsKey(episodeNumber) ? _dubbedEpisodes[episodeNumber] : null;
     }
 
     /// <summary>
-    /// Gets the episodes numbers saved in the instance
+    /// Gets the subbed episodes numbers saved in the instance
     /// </summary>
     /// <returns>A list of episode numbers</returns>
-    public List<int> GetEpisodeNumbers()
+    public List<int> GetSubbedEpisodeNumbers()
     {
         var episodeNumbers = new List<int>();
-        foreach (var (episodeNumber, _) in _episodes)
+        foreach (var (episodeNumber, _) in _subbedEpisodes)
         {
             episodeNumbers.Add(episodeNumber);
         }
@@ -59,22 +81,49 @@ public class Anime : SearchableAnime
         return episodeNumbers;
     }
 
+    
+    /// <summary>
+    /// Gets the dubbed episodes numbers saved in the instance
+    /// </summary>
+    /// <returns>A list of episode numbers</returns>
+    public List<int> GetDubbedEpisodeNumbers()
+    {
+        var episodeNumbers = new List<int>();
+        foreach (var (episodeNumber, _) in _dubbedEpisodes)
+        {
+            episodeNumbers.Add(episodeNumber);
+        }
+
+        episodeNumbers.Sort();
+        return episodeNumbers;
+    }
+    
     public override string ToString()
     {
-        if (_episodes.Count == 0)
+        if (_subbedEpisodes.Count == 0 && _dubbedEpisodes.Count == 0)
             return " { Empty } ";
         
         var sb = new StringBuilder();
         var size = 0;
         
         sb.Append(" { ");
-        foreach (var (episode, manager) in _episodes)
+        foreach (var (episode, manager) in _subbedEpisodes)
         {
             size += 1;
-            if (size == _episodes.Count)
-                sb.Append($"<Episode: {episode}, Manager:{manager}> ");
+            if (size == _subbedEpisodes.Count)
+                sb.Append($"<Subbed Episode: {episode}, Manager:{manager}> ");
             else
-                sb.Append($"<Episode: {episode}, Manager:{manager}>, ");
+                sb.Append($"<Subbed Episode: {episode}, Manager:{manager}>, ");
+
+        }
+        
+        foreach (var (episode, manager) in _dubbedEpisodes)
+        {
+            size += 1;
+            if (size == _subbedEpisodes.Count)
+                sb.Append($"<Dubbed Episode: {episode}, Manager:{manager}> ");
+            else
+                sb.Append($"<Dubbed Episode: {episode}, Manager:{manager}>, ");
 
         }
         sb.Append("} ");
