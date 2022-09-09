@@ -319,11 +319,12 @@ public class Animepahe : IProvider
     /// <b>na-051.files.nextcdn.org</b></example>
     private static string? GetHost(ref HtmlDocument htmlDoc)
     {
-        var node = htmlDoc.DocumentNode.SelectSingleNode("//link[@rel='preconnect']");
-        var host = node.Attributes["href"].Value;
-        if (host != null && host.StartsWith("//"))
-            return host.TrimStart('/');
-        return host;
+        var nodes = htmlDoc.DocumentNode.SelectNodes("//link[@rel='preconnect']");
+        return (from node in nodes select 
+            node.Attributes["href"].Value 
+            into host 
+            where host != null && host.StartsWith("//na") 
+            select host.TrimStart('/')).FirstOrDefault();
     }
 
     /// <summary>
