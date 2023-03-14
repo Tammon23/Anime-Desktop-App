@@ -1,27 +1,24 @@
 ﻿using System.Runtime.Serialization;
 
-namespace MyAnimeList.ResponseObjects.Manga
+namespace MyAnimeList.ResponseObjects.Manga;
+
+[DataContract]
+public class Author
 {
-    [DataContract]
-    public class Author
+    public Author(MangaDetailsNode node, string role)
     {
-        public Author(MangaDetailsNode node, string role)
-        {
-            this.Node = node;
-            this.Role = role;
-        }
+        Node = node;
+        Role = role;
+    }
 
-        [DataMember]
-        public MangaDetailsNode Node { get; }
+    [DataMember] public MangaDetailsNode Node { get; }
 
-        [DataMember]
-        public string Role { get; }
+    [DataMember] public string Role { get; }
 
-        public override string ToString()
-        {
-            return $"Node: {Node}"
-                + $" ,Role: {Role}"
-                ;
-        }
+    public override string ToString()
+    {
+        return $"Node: {Node}"
+               + $" ,Role: {Role}"
+            ;
     }
 }

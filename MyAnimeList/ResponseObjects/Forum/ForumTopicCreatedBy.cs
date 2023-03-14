@@ -1,28 +1,25 @@
 ﻿using System.Runtime.Serialization;
 
-namespace MyAnimeList.ResponseObjects.Forum
+namespace MyAnimeList.ResponseObjects.Forum;
+
+[DataContract]
+public class ForumTopicCreatedBy
 {
-    [DataContract]
-    public class ForumTopicCreatedBy
+    public ForumTopicCreatedBy(string id, string name)
     {
-        public ForumTopicCreatedBy(string id, string name)
-        {
-            this.Id = id;
-            this.Name = name;
-        }
+        Id = id;
+        Name = name;
+    }
 
-        [DataMember]
-        public string Id { get; }
+    [DataMember] public string Id { get; }
 
-        [DataMember]
-        public string Name { get; }
+    [DataMember] public string Name { get; }
 
 
-        public override string ToString()
-        {
-            return $"Id: {Id}, "
-                   + $"Name: {Name}, "
-                ;
-        }
+    public override string ToString()
+    {
+        return $"Id: {Id}, "
+               + $"Name: {Name}, "
+            ;
     }
 }

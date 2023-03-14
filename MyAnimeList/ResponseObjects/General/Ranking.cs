@@ -1,21 +1,19 @@
 ﻿using System.Runtime.Serialization;
 
-namespace MyAnimeList.ResponseObjects.General
+namespace MyAnimeList.ResponseObjects.General;
+
+[DataContract]
+public class Ranking
 {
-    [DataContract]
-    public class Ranking
+    public Ranking(int rank)
     {
-        public Ranking(int rank)
-        {
-            this.Rank = rank;
-        }
+        Rank = rank;
+    }
 
-        [DataMember]
-        public int Rank { get; }
+    [DataMember] public int Rank { get; }
 
-        public override string ToString()
-        {
-            return $"Rank: {Rank}";
-        }
+    public override string ToString()
+    {
+        return $"Rank: {Rank}";
     }
 }

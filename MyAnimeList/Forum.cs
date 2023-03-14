@@ -1,66 +1,59 @@
 ﻿using MyAnimeList.Exceptions;
 using MyAnimeList.ResponseObjects.Forum;
 
-namespace MyAnimeList
+namespace MyAnimeList;
+
+public class Forum
 {
-    public class Forum
+    /// <summary>
+    ///     Gets the forum boards
+    /// </summary>
+    /// <returns>ForumBoard object or null if failure</returns>
+    public static async Task<ForumBoard?> GetForumBoards()
     {
-        /// <summary>
-        /// Gets the forum boards
-        /// </summary>
-        /// <returns>ForumBoard object or null if failure</returns>
-        public static async Task<ForumBoard?> GetForumBoards()
-        {
-            var r = await MALRequestClient.Get<ForumBoard>(
-                "v2/forum/boards"
-            );
-            
-            return r;
-        }
-        
-         // ----> requires testing
-        /// <summary>
-        /// Gets more detail related to a given forum topic
-        /// </summary>
-        /// <param name="topic_id">The ID of the forum topic</param>
-        /// <param name="offset">The amount of results to skip over when retrieving results</param>
-        /// <param name="limit">The max amount of results</param>
-        /// <returns>ForumTopicDetail object or null if failure</returns>
-        /// <exception cref="LimitOutOfRangeException">Limit must be between 0 and 100</exception>
-        public static async Task<ForumTopicDetail> GetForumTopicDetail(int topic_id, int limit = 100, int offset=0)
-        {
-            if (limit is > 100 or < 0)
-            {
-                throw new LimitOutOfRangeException("Limit must be between 0 and 100");
-            }
+        var r = await MALRequestClient.Get<ForumBoard>(
+            "v2/forum/boards"
+        );
 
-            var r = await MALRequestClient.Get<ForumTopicDetail>(
-                $"v2/forum/topic/{topic_id}?offset={offset}&limit={limit}"
-            );
+        return r;
+    }
 
-            return r;
-        }
-        
-        // ----> requires testing
-        public static async Task<ForumTopicDetail> GetForumTopic(int? boardId = null,
-            int? subboardId = null,
-            string? q = null,
-            string? topicUserName = null,
-            string? userName = null,
-            string sort = "recent",
-            int limit = 100,
-            int offset = 0
-            )
-        {
-            if (limit is > 100 or < 0)
-            {
-                throw new LimitOutOfRangeException("Limit must be between 0 and 100");
-            }
+    // ----> requires testing
+    /// <summary>
+    ///     Gets more detail related to a given forum topic
+    /// </summary>
+    /// <param name="topic_id">The ID of the forum topic</param>
+    /// <param name="offset">The amount of results to skip over when retrieving results</param>
+    /// <param name="limit">The max amount of results</param>
+    /// <returns>ForumTopicDetail object or null if failure</returns>
+    /// <exception cref="LimitOutOfRangeException">Limit must be between 0 and 100</exception>
+    public static async Task<ForumTopicDetail> GetForumTopicDetail(int topic_id, int limit = 100, int offset = 0)
+    {
+        if (limit is > 100 or < 0) throw new LimitOutOfRangeException("Limit must be between 0 and 100");
 
-            var r = await MALRequestClient.Get<ForumTopicDetail>(
-                $"v2/forum/topics?q={q}&subboard_id={subboardId}&limit={limit}"
-            );
-            return r;
-        }
+        var r = await MALRequestClient.Get<ForumTopicDetail>(
+            $"v2/forum/topic/{topic_id}?offset={offset}&limit={limit}"
+        );
+
+        return r;
+    }
+
+    // ----> requires testing
+    public static async Task<ForumTopicDetail> GetForumTopic(int? boardId = null,
+        int? subboardId = null,
+        string? q = null,
+        string? topicUserName = null,
+        string? userName = null,
+        string sort = "recent",
+        int limit = 100,
+        int offset = 0
+    )
+    {
+        if (limit is > 100 or < 0) throw new LimitOutOfRangeException("Limit must be between 0 and 100");
+
+        var r = await MALRequestClient.Get<ForumTopicDetail>(
+            $"v2/forum/topics?q={q}&subboard_id={subboardId}&limit={limit}"
+        );
+        return r;
     }
 }

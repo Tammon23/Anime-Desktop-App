@@ -6,29 +6,29 @@ namespace MyAnimeList.FieldManager;
 
 public class AnimeNodeFields
 {
+    public int? AverageEpisodeDuration;
+    public Broadcast? Broadcast;
+    public DateTime? CreatedAt;
     public int? Id;
-    public string? Title;
-    public string? Synopsis;
     public double? Mean;
-    public int? Rank;
-    public int? Popularity;
+    public string? MediaType;
+    public NsfwEnum? Nsfw;
+    public int? NumEpisodes;
     public int? NumListUsers;
     public int? NumScoringUsers;
-    public NsfwEnum? Nsfw;
-    public DateTime? CreatedAt;
-    public DateTime? UpdatedAt;
-    public string? MediaType;
-    public string? Status;
-    public int? NumEpisodes;
-    public StartSeason? StartSeason;
-    public Broadcast? Broadcast;
-    public string? Source;
-    public int? AverageEpisodeDuration;
+    public int? Popularity;
+    public int? Rank;
     public RatingEnum? Rating;
+    public string? Source;
+    public StartSeason? StartSeason;
+    public string? Status;
+    public string? Synopsis;
+    public string? Title;
+    public DateTime? UpdatedAt;
 
     public string getFields()
     {
-        StringBuilder sb = new StringBuilder();
+        var sb = new StringBuilder();
         if (Id != null) sb.Append($"id={Id}");
         if (Synopsis != null) sb.Append($"synopsis={Synopsis}");
         if (Mean != null) sb.Append($"mean={Mean}");

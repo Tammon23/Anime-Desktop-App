@@ -1,20 +1,18 @@
 ﻿using System.Runtime.Serialization;
 
-namespace MyAnimeList.ResponseObjects.General
+namespace MyAnimeList.ResponseObjects.General;
+
+public class Datum
 {
-    public class Datum
+    public Datum(Node node)
     {
-        public Datum(Node node)
-        {
-            this.Node = node;
-        }
+        Node = node;
+    }
 
-        [DataMember]
-        public Node Node { get; }
+    [DataMember] public Node Node { get; }
 
-        public override string ToString()
-        {
-            return $"Node: {Node}";
-        }
+    public override string ToString()
+    {
+        return $"Node: {Node}";
     }
 }

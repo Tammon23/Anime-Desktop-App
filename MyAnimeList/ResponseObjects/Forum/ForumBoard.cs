@@ -1,23 +1,19 @@
-﻿using System.Collections.Generic;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 
-namespace MyAnimeList.ResponseObjects.Forum
+namespace MyAnimeList.ResponseObjects.Forum;
 
+[DataContract]
+public class ForumBoard
 {
-    [DataContract]
-    public class ForumBoard
+    public ForumBoard(List<Category>? categories)
     {
-        public ForumBoard(List<Category>? categories)
-        {
-            this.Categories = categories;
-        }
+        Categories = categories;
+    }
 
-        [DataMember]
-        public IReadOnlyList<Category>? Categories { get; }
+    [DataMember] public IReadOnlyList<Category>? Categories { get; }
 
-        public override string ToString()
-        {
-            return $"Categories: {((Categories != null) ? string.Join(" | ", Categories) : "N/A")}";
-        }
+    public override string ToString()
+    {
+        return $"Categories: {(Categories != null ? string.Join(" | ", Categories) : "N/A")}";
     }
 }

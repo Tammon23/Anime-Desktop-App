@@ -1,27 +1,24 @@
 ﻿using System.Runtime.Serialization;
 
-namespace MyAnimeList.ResponseObjects.General
+namespace MyAnimeList.ResponseObjects.General;
+
+[DataContract]
+public class Picture
 {
-    [DataContract]
-    public class Picture
+    public Picture(string medium, string large)
     {
-        public Picture(string medium, string large)
-        {
-            this.Medium = medium;
-            this.Large = large;
-        }
+        Medium = medium;
+        Large = large;
+    }
 
-        [DataMember]
-        public string Medium { get; }
+    [DataMember] public string Medium { get; }
 
-        [DataMember]
-        public string Large { get; }
-        
-        public override string ToString()
-        {
-            return $"Medium: {Medium}, "
-                   + $"Large: {Large}"
-                ;
-        }
+    [DataMember] public string? Large { get; }
+
+    public override string ToString()
+    {
+        return $"Medium: {Medium}, "
+               + $"Large: {Large}"
+            ;
     }
 }

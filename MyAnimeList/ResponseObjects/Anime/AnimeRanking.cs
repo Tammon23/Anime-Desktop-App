@@ -1,28 +1,24 @@
-﻿using System.Collections.Generic;
-using System.Runtime.Serialization;
+﻿using System.Runtime.Serialization;
 using MyAnimeList.ResponseObjects.General;
 
-namespace MyAnimeList.ResponseObjects.Anime
+namespace MyAnimeList.ResponseObjects.Anime;
+
+public class AnimeRanking
 {
-    public class AnimeRanking
+    public AnimeRanking(List<AnimeListDatum>? data, Paging? paging)
     {
-        public AnimeRanking(List<AnimeListDatum>? data, Paging? paging)
-        {
-            this.Data = data;
-            this.Paging = paging;
-        }
+        Data = data;
+        Paging = paging;
+    }
 
-        [DataMember]
-        public IReadOnlyList<AnimeListDatum>? Data { get; }
+    [DataMember] public IReadOnlyList<AnimeListDatum>? Data { get; }
 
-        [DataMember]
-        public Paging? Paging { get; }
+    [DataMember] public Paging? Paging { get; }
 
-        public override string ToString()
-        {
-            return $"Data: {((Data != null) ? string.Join(" | ", Data) : "N/A")}"
-                    + $"Paging: {Paging}"
-                ;
-        }
+    public override string ToString()
+    {
+        return $"Data: {(Data != null ? string.Join(" | ", Data) : "N/A")}"
+               + $"Paging: {Paging}"
+            ;
     }
 }

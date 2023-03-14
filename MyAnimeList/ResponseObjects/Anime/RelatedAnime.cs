@@ -1,33 +1,31 @@
 ﻿using System.Runtime.Serialization;
 using MyAnimeList.ResponseObjects.General;
 
-namespace MyAnimeList.ResponseObjects.Anime
+namespace MyAnimeList.ResponseObjects.Anime;
+
+[DataContract]
+public class RelatedAnime
 {
-    [DataContract]
-    public class RelatedAnime
+    public RelatedAnime(Node node, string relationType, string relationTypeFormatted)
     {
-        public RelatedAnime(Node node, string relationType, string relationTypeFormatted)
-        {
-            this.Node = node;
-            this.RelationType = relationType;
-            this.RelationTypeFormatted = relationTypeFormatted;
-        }
+        Node = node;
+        RelationType = relationType;
+        RelationTypeFormatted = relationTypeFormatted;
+    }
 
-        [DataMember]
-        public Node Node { get; }
+    [DataMember] public Node Node { get; }
 
-        [DataMember(Name = "relation_type")]
-        public string RelationType { get; }
+    [DataMember(Name = "relation_type")] 
+    public string RelationType { get; }
 
-        [DataMember(Name = "relation_type_formatted")]
-        public string RelationTypeFormatted { get; }
-        
-        public override string ToString()
-        {
-            return $"Node: {Node}, "
-                   + $"Relation Type: {RelationType}, "
-                   + $"Related Type Formatted: {RelationTypeFormatted}"
-                ;
-        }
+    [DataMember(Name = "relation_type_formatted")]
+    public string RelationTypeFormatted { get; }
+
+    public override string ToString()
+    {
+        return $"Node: {Node}, "
+               + $"Relation Type: {RelationType}, "
+               + $"Related Type Formatted: {RelationTypeFormatted}"
+            ;
     }
 }

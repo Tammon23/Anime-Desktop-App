@@ -1,28 +1,32 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿namespace MyAnimeList;
 
-namespace MyAnimeList
+public class Program
 {
-    public class Program
+    private static async Task Main()
     {
-        static async Task Main()
+        await MALRequestClient.Init();
+        var r = await Anime.GetAnime("Nichijou", limit: 2, fields: "title");
+        foreach (var d in r.Data)
         {
-            // initializing variables for first time run
-            OAuth.Init();
-            OAuth.RefreshToken();
-            
-            // getting the allow/cancel link (click it)
-            /*Console.WriteLine(OAuth.GetUserAuthUrl());
-            
-            string AutorisationURL;
-            while ((AutorisationURL = Console.ReadLine()) != null)
-            {
-                AutorisationURL = AutorisationURL.Trim();
-                await OAuth.InitUserAccessToken(AutorisationURL);
-                break;
-            }*/
-            
-            Console.ReadKey();
+            var r2 = await Anime.GetAnimeDetails(d.Node.Id);
+            if (r2 == null)
+                Console.WriteLine("r2 is null");
+            else
+                Console.WriteLine(r2);
+            //Console.WriteLine(r2);
         }
+
+        Console.WriteLine(r == null);
+        Console.WriteLine(r);
+
+        // initializing variables for first time run        
+        /*await MALRequestClient.Init();
+
+        Forum forum = new();
+        AnimeListStatus al = new(animeStatus: AnimeStatusEnum.PlanToWatch);
+        /*StatusEnum.TryParse()#1#
+        var result = await forum.GetForumBoards();
+        Console.WriteLine(result==null);
+        Console.WriteLine(result);*/
     }
 }

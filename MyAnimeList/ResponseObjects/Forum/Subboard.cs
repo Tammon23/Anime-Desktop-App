@@ -1,27 +1,24 @@
 ﻿using System.Runtime.Serialization;
 
-namespace MyAnimeList.ResponseObjects.Forum
+namespace MyAnimeList.ResponseObjects.Forum;
+
+[DataContract]
+public class Subboard
 {
-    [DataContract]
-    public class Subboard
+    public Subboard(int id, string title)
     {
-        public Subboard(int id, string title)
-        {
-            this.Id = id;
-            this.Title = title;
-        }
+        Id = id;
+        Title = title;
+    }
 
-        [DataMember]
-        public int Id { get; }
+    [DataMember] public int Id { get; }
 
-        [DataMember]
-        public string Title { get; }
+    [DataMember] public string Title { get; }
 
-        public override string ToString()
-        {
-            return $"Id: {Id}, "
-                    + $"Title: {Title}"
-                ;
-        }
+    public override string ToString()
+    {
+        return $"Id: {Id}, "
+               + $"Title: {Title}"
+            ;
     }
 }

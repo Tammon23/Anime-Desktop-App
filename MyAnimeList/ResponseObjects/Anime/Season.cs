@@ -1,27 +1,24 @@
 ﻿using System.Runtime.Serialization;
 
-namespace MyAnimeList.ResponseObjects.Anime
+namespace MyAnimeList.ResponseObjects.Anime;
+
+[DataContract]
+public class SeasonInfo
 {
-    [DataContract]
-    public class SeasonInfo
+    public SeasonInfo(int year, SeasonEnum season)
     {
-        public SeasonInfo(int year, SeasonEnum season)
-        {
-            this.Year = year;
-            this.Season = season;
-        }
+        Year = year;
+        Season = season;
+    }
 
-        [DataMember]
-        public int Year { get; }
+    [DataMember] public int Year { get; }
 
-        [DataMember(Name = "Season")]
-        public SeasonEnum Season { get; }
+    [DataMember(Name = "Season")] public SeasonEnum Season { get; }
 
-        public override string ToString()
-        {
-            return $"Year: {Year}, "
-                   + $"Season: {Season}"
-                ;
-        }
+    public override string ToString()
+    {
+        return $"Year: {Year}, "
+               + $"Season: {Season}"
+            ;
     }
 }

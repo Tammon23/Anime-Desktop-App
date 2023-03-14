@@ -1,12 +1,11 @@
 ﻿using MyAnimeList.ResponseObjects.General;
 
-namespace MyAnimeList.ResponseObjects.Manga
+namespace MyAnimeList.ResponseObjects.Manga;
+
+public class MangaListDatum : Datum
 {
-    public class MangaListDatum : Datum
+    public MangaListDatum(Node node)
+        : base(node)
     {
-        public MangaListDatum(Node node)
-            : base(node)
-        {
-        }
     }
 }

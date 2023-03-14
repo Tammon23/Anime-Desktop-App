@@ -2,24 +2,19 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace MyAnimeList.ResponseObjects.Anime
-{
-    [DataContract(Name = "Status")][JsonConverter(typeof(StringEnumConverter))]
-    public enum AnimeStatusEnum
-    {
-        [EnumMember(Value="watching")]
-        Watching,
+namespace MyAnimeList.ResponseObjects.Anime;
 
-        [EnumMember(Value="completed")]
-        Completed,
-        
-        [EnumMember(Value="on_hold")]
-        OnHold,
-        
-        [EnumMember(Value="dropped")]
-        Dropped,
-        
-        [EnumMember(Value ="plan_to_watch")]
-        PlanToWatch
-    }
+[DataContract(Name = "Status")]
+[JsonConverter(typeof(StringEnumConverter))]
+public enum AnimeStatusEnum
+{
+    [EnumMember(Value = "watching")] Watching,
+
+    [EnumMember(Value = "completed")] Completed,
+
+    [EnumMember(Value = "on_hold")] OnHold,
+
+    [EnumMember(Value = "dropped")] Dropped,
+
+    [EnumMember(Value = "plan_to_watch")] PlanToWatch
 }
