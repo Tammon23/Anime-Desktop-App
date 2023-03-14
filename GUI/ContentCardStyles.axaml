@@ -1,0 +1,35 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+            <Button ToolTip.Tip="Anime Name" Classes="CardRepeater">
+                <StackPanel>
+                    <Image Source="Assets/SampleImages/127508.jpg" />
+                    <TextBlock Text="Anime Name" />
+                </StackPanel>
+            </Button>
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+    <Style Selector="Button.CardRepeater">
+        <Setter Property="Padding" Value="5 10 5 0" />
+        <Setter Property="CornerRadius" Value="10" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="MaxWidth" Value="230" />
+    </Style>
+
+    <Style Selector="Button.CardRepeater > StackPanel > TextBlock">
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeNormal}" />
+        <Setter Property="Margin" Value="0 7 0 0" />
+    </Style>
+
+    <Style Selector="Button.CardRepeater > StackPanel > Image">
+        <Setter Property="Width" Value="210" />
+        <Setter Property="Height" Value="300" />
+    </Style>
+</Styles>

@@ -1,0 +1,143 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="using:GUI.Templates">
+    <Design.PreviewWith>
+        <StackPanel>
+            <controls:SidePanelPageButton />
+            <controls:SidePanelPageButton Classes="type2" />
+        </StackPanel>
+    </Design.PreviewWith>
+
+    <Style Selector="controls|SidePanelPageButton">
+        <!-- Set Defaults -->
+        <Setter Property="Foreground" Value="Red" />
+        <Setter Property="Background" Value="White" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <RadioButton 
+                    Background="{TemplateBinding Background}" 
+                    GroupName="{TemplateBinding GroupName}"
+                    IsChecked="{TemplateBinding IsChecked}">
+                    <StackPanel Orientation="Horizontal">
+                        <Label HorizontalAlignment="Center" Content="{TemplateBinding Text}"
+                               FontSize="{TemplateBinding FontSize}" />
+                    </StackPanel>
+                </RadioButton>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+
+    <Style Selector="controls|SidePanelPageButton.type2">
+        <!-- Set Defaults -->
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBaseBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BackgroundBaseBrush}" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Grid ColumnDefinitions="Auto,*">
+                    <Grid.Styles>
+                        <Style Selector="ToggleButton:checked /template/ ContentPresenter#PART_ContentPresenter">
+                            <Setter Property="Background" Value="{DynamicResource BackgroundBaseBrush}"/>
+                        </Style>
+                    </Grid.Styles>
+                    <Rectangle Grid.Column="0" Width="5" Fill="Red" IsVisible="{TemplateBinding IsChecked}"/>
+
+                    <ToggleButton Grid.Column="1"
+                        Margin="5 2.5 5 2.5" 
+                        Background="{TemplateBinding Background}" 
+                        HorizontalAlignment="Stretch"
+                        ToolTip.Tip="{TemplateBinding Text}"
+                        IsChecked="{TemplateBinding IsChecked, Mode=TwoWay}"
+                        Command="{TemplateBinding Command}">
+                        <StackPanel Orientation="Horizontal">
+
+                            <!--Path glyph from materialdesignicons.com-->
+                            <Border Width="{TemplateBinding BorderWidth}">
+                                <Viewbox Width="{TemplateBinding IconSize}" Height="{TemplateBinding IconSize}"
+                                         HorizontalAlignment="Left">
+                                    <Canvas Width="{TemplateBinding IconSize}" Height="{TemplateBinding IconSize}">
+                                        <Path Fill="{DynamicResource ForegroundBaseBrush}"
+                                              Data="{TemplateBinding IconData}" />
+                                    </Canvas>
+                                </Viewbox>
+                            </Border>
+                            <TextBlock Name="LabelText" VerticalAlignment="Center" Text="{TemplateBinding Text}"
+                                       FontSize="{TemplateBinding FontSize}" />
+                        </StackPanel>
+                    </ToggleButton>
+                </Grid>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+       <Style Selector="controls|SidePanelPageButton.type3">
+        <!-- Set Defaults -->
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBaseBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BackgroundBaseBrush}" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel>
+                    <!--<Panel.Styles>
+                        <Style Selector="ToggleButton[IsChecked=True] /template/ ContentPresenter">
+                            <Setter Property="Background" Value="Red"/>
+                        </Style>
+                    </Panel.Styles>-->
+                    <ToggleButton 
+                        Margin="5 2.5 5 2.5"
+                        Background="{TemplateBinding Background}" 
+                        HorizontalAlignment="Stretch"
+                        Command="{TemplateBinding Command}" 
+                        ToolTip.Tip="{TemplateBinding Text}">
+                        <StackPanel Orientation="Horizontal">
+                            <!--Path glyph from materialdesignicons.com-->
+                            <Border Width="{TemplateBinding BorderWidth}">
+                                <Viewbox Width="{TemplateBinding IconSize}" Height="{TemplateBinding IconSize}"
+                                         HorizontalAlignment="Left">
+                                    <Canvas Width="{TemplateBinding IconSize}" Height="{TemplateBinding IconSize}">
+                                        <Path Fill="{DynamicResource ForegroundBaseBrush}"
+                                              Data="{TemplateBinding IconData}" />
+                                    </Canvas>
+                                </Viewbox>
+                            </Border>
+                            <TextBlock Name="LabelText" VerticalAlignment="Center" Text="{TemplateBinding Text}"
+                                       FontSize="{TemplateBinding FontSize}" />
+                        </StackPanel>
+                    </ToggleButton>
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    
+    <Style Selector="controls|SidePanelPageButton.type4">
+        <!-- Set Defaults -->
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBaseBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BackgroundBaseBrush}" />
+
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Button 
+                    Margin="5 2.5 5 2.5" 
+                    Background="{TemplateBinding Background}" 
+                    HorizontalAlignment="Stretch"
+                    Command="{TemplateBinding Command}" 
+                    ToolTip.Tip="{TemplateBinding Text}">
+                    <StackPanel Orientation="Horizontal">
+                        <!--Path glyph from materialdesignicons.com-->
+                        <Border Width="{TemplateBinding BorderWidth}">
+                            <Viewbox Width="{TemplateBinding IconSize}" Height="{TemplateBinding IconSize}"
+                                     HorizontalAlignment="Left">
+                                <Canvas Width="{TemplateBinding IconSize}" Height="{TemplateBinding IconSize}">
+                                    <Path Fill="{DynamicResource ForegroundBaseBrush}"
+                                          Data="{TemplateBinding IconData}" />
+                                </Canvas>
+                            </Viewbox>
+                        </Border>
+                        <TextBlock Name="LabelText" VerticalAlignment="Center" Text="{TemplateBinding Text}"
+                                   FontSize="{TemplateBinding FontSize}" />
+                    </StackPanel>
+                </Button>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>

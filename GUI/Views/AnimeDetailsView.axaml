@@ -1,0 +1,83 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:GUI.ViewModels"
+             xmlns:models="clr-namespace:GUI.Models"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="GUI.Views.AnimeDetailsView">
+
+    <Design.DataContext>
+        <vm:AnimeDetailsViewModel />
+    </Design.DataContext>
+
+    <!--<StackPanel HorizontalAlignment="Left">
+        ~1~<TextBlock Text="Hi, this is the anime details page view" Foreground="{DynamicResource ForegroundBaseFontLightModeBrush}" />
+        <TextBlock Text="{Binding UrlPathSegment}" Foreground="{DynamicResource ForegroundBaseFontLightModeBrush}" />
+        <TextBlock Text="{Binding Details^.Title, FallbackValue='Loading Title...' }"/>@1@
+        <Image Source="{Binding Art^ , FallbackValue='Assets/SampleImages/127508.jpg'}" />
+        <StackPanel Orientation="Vertical" />
+    </StackPanel>-->
+    <Grid ColumnDefinitions="Auto,*" RowDefinitions="*">
+        <models:AsyncImage Grid.Column="0" AsyncSource="{Binding Art}"  FallbackSource="Assets/SampleImages/127508.jpg" Margin="0 0 10 0 "/> 
+        <StackPanel Grid.Column="1">
+            <Border>
+                <StackPanel>
+                    <TextBlock Text="{Binding Details.Title, FallbackValue='Default Title'}"/>
+                    <TextBlock Text="{Binding Details.AlternativeTitles.En}" IsVisible="{Binding $self.Text, Converter={x:Static StringConverters.IsNotNullOrEmpty}}"/>
+                </StackPanel>
+            </Border>
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+                    <HeaderedContentControl Header="General Information" Classes="Style1" Margin="5">
+                        <StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding Details.Mean, FallbackValue='Unknown', StringFormat='Mean: {0}'}"/>
+                                <TextBlock Margin="10 0 0 0" Text="{Binding Details.Rank, FallbackValue='Unknown', StringFormat='Rank: #{0}'}"/>
+                                <TextBlock Margin="10 0 0 0" Text="{Binding Details.Popularity, FallbackValue='Unknown', StringFormat='Popularity: #{0}'}"/>
+                                <TextBlock Margin="10 0 0 0" Text="{Binding Details.NumListUsers, FallbackValue='Unknown', StringFormat='Number of List Users: {0:n0}'}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 10 0 0">
+                                <TextBlock Text="{Binding Details.NumScoringUsers, FallbackValue='Unknown', StringFormat='Number of Scoring Users: {0:n0}'}"/>
+                                <CheckBox Content="NSFW " IsEnabled="False" IsChecked="{Binding Details.Nsfw, FallbackValue=false}"/>
+                                <TextBlock Margin="10 0 0 0" Text="{Binding Details.CreatedAt, FallbackValue='Unknown', StringFormat='Created At: {0}'}"/>
+                                <TextBlock Margin="10 0 0 0" Text="{Binding Details.UpdatedAt, FallbackValue='Unknown', StringFormat='Updated At: {0}'}"/>
+                            </StackPanel>
+                                <TextBlock Text="text"/>
+                                <TextBlock Text="text"/>
+                                <TextBlock Text="text"/>
+                                <TextBlock Text="text"/>
+                                <CheckBox >
+                                    
+                                </CheckBox>
+                        </StackPanel>
+                    </HeaderedContentControl>
+            
+                    <HeaderedContentControl Header="My Status" Classes="Style1" Margin="5">
+                        <StackPanel>
+                            <TextBlock Text="text"/>
+                            <TextBlock Text="text"/>
+                            <TextBlock Text="text"/>
+                            <TextBlock Text="text"/>
+                        </StackPanel>
+                    </HeaderedContentControl>
+            
+                    <HeaderedContentControl Header="Synopsis" Classes="Style1" Margin="5">
+                        <TextBlock Margin="5" TextWrapping="Wrap" Text="{Binding Details.Synopsis, FallbackValue='No synopsis exists yet.'}"/>
+                    </HeaderedContentControl>
+            
+                    <HeaderedContentControl Header="Extra Information" Classes="Style1" Margin="5">
+                        <StackPanel>
+                            <TextBlock Text="text"/>
+                            <TextBlock Text="text"/>
+                            <TextBlock Text="text"/>
+                            <TextBlock Text="text"/>
+                        </StackPanel>
+                    </HeaderedContentControl>
+            
+                    <!--Maybe add a section to see each episode/episode name in a Carousel-->
+                </StackPanel>
+            </ScrollViewer>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,41 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:GUI"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"
+             xmlns:controls="clr-namespace:GUI.Templates"
+             x:Class="GUI.App">
+    <Application.DataTemplates>
+        <local:ViewLocator />
+    </Application.DataTemplates>
+
+    <Application.Styles>
+        <FluentTheme Mode="Light" />
+        <StyleInclude Source="/Templates/SidePanelPageButton.axaml" />
+        <StyleInclude Source="/Templates/GroupBox.axaml" />
+        <StyleInclude Source="/ContentCardStyles.axaml" />
+        <!--<StyleInclude Source="avares://Citrus.Avalonia/Citrus.xaml"/> --><!--https://github.com/AvaloniaUI/Citrus.Avalonia-->
+        <!--<Style Selector="controls|SidePanelPageButton[IsChecked=True] Panel.eee">
+            <Setter Property="Background" Value="Red"></Setter>
+        </Style>-->
+    </Application.Styles>
+
+
+    <Application.Resources>
+        <SolidColorBrush x:Key="ForegroundBaseBrush">#696969</SolidColorBrush>
+        <SolidColorBrush x:Key="BackgroundBaseBrush">White</SolidColorBrush>
+        <SolidColorBrush x:Key="ButtonHoverPressedBrush">#e6e6e6</SolidColorBrush>
+
+        <SolidColorBrush x:Key="ForegroundBaseFontLightModeBrush">Black</SolidColorBrush>
+        <SolidColorBrush x:Key="ForegroundBaseFontDarkModeBrush">White</SolidColorBrush>
+
+        <system:Int32 x:Key="DefaultIconSize">20</system:Int32>
+
+        <system:Double x:Key="FontSizeLarge">42</system:Double>
+        <system:Double x:Key="FontSizeNormal">20</system:Double>
+        <system:Double x:Key="FontSizeSmall">12</system:Double>
+        
+        <system:String x:Key="NotUsedDefaultString">/Assets/Player/Play.png</system:String>
+        
+        
+    </Application.Resources>
+</Application>

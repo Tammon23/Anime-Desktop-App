@@ -1,0 +1,38 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:GUI.ViewModels"
+             xmlns:models="clr-namespace:GUI.Models"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="GUI.Views.SearchPageView">
+    <Design.DataContext>
+        <vm:SearchPageViewModel />
+    </Design.DataContext>
+    <DockPanel>
+        <ProgressBar IsIndeterminate="True" IsEnabled="{Binding IsBusy}" Height="5" DockPanel.Dock="Top"
+                     IsVisible="{Binding IsBusy}" />
+        <ScrollViewer VerticalScrollBarVisibility="Auto" IsVisible="{Binding AnimeSearchResult.Count}">
+            <ItemsRepeater Items="{Binding AnimeSearchResult}">
+                <ItemsRepeater.ItemTemplate>
+                    <DataTemplate DataType="{x:Type models:NodePresentation}">
+                        <Button ToolTip.Tip="{Binding Title}" Classes="CardRepeater" Command="{Binding GoDetailsPage}">
+                            <StackPanel>
+                                <Image Source="{Binding Art^}" />
+                                <TextBlock Text="{Binding Title}" />
+                            </StackPanel>
+                        </Button>
+                    </DataTemplate>
+                </ItemsRepeater.ItemTemplate>
+                <ItemsRepeater.Layout>
+                    <!--<UniformGridLayout ItemsJustification="SpaceBetween"/>-->
+                    <WrapLayout HorizontalSpacing="5" VerticalSpacing="5" />
+                </ItemsRepeater.Layout>
+            </ItemsRepeater>
+        </ScrollViewer>
+        <TextBlock IsVisible="{Binding !AnimeSearchResult.Count}" FontSize="{DynamicResource FontSizeNormal}"
+                   DockPanel.Dock="Top" Text="This place looks empty, try searching for some anime!"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+    </DockPanel>
+</UserControl>

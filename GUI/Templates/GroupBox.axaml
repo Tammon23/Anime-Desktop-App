@@ -1,0 +1,207 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <WrapPanel >
+                <HeaderedContentControl Header="Header" BorderBrush="Red" Classes="Style1" Margin="5">
+                    <StackPanel>
+                        <TextBlock Text="text"/>
+                        <TextBlock Text="text"/>
+                        <TextBlock Text="text"/>
+                        <TextBlock Text="text"/>
+                    </StackPanel>
+                </HeaderedContentControl>
+                <HeaderedContentControl Header="Header" BorderBrush="Red" Classes="Style2" Margin="5">
+                    <StackPanel>
+                        <TextBlock Text="text"/>
+                        <TextBlock Text="text"/>
+                        <TextBlock Text="text"/>
+                        <TextBlock Text="text"/>
+                    </StackPanel>
+                </HeaderedContentControl>
+                <HeaderedContentControl Header="Header" BorderBrush="Red" Classes="Style3" Margin="5">
+                    <StackPanel>
+                        <TextBlock Text="text"/>
+                        <TextBlock Text="text"/>
+                        <TextBlock Text="text"/>
+                        <TextBlock Text="text"/>
+                    </StackPanel>
+                </HeaderedContentControl>
+                <HeaderedContentControl Header="Header" BorderBrush="Red" Classes="Style4" Margin="5">
+                    <StackPanel>
+                        <TextBlock Text="text"/>
+                        <TextBlock Text="text"/>
+                        <TextBlock Text="text"/>
+                        <TextBlock Text="text"/>
+                    </StackPanel>
+                </HeaderedContentControl>
+                <HeaderedContentControl Header="Header" BorderBrush="Red" Classes="Style5" Margin="5">
+                    <StackPanel>
+                        <TextBlock Text="text"/>
+                        <TextBlock Text="text"/>
+                        <TextBlock Text="text"/>
+                        <TextBlock Text="text"/>
+                    </StackPanel>
+                </HeaderedContentControl>
+                
+                <HeaderedContentControl Header="Header" BorderBrush="Red" Classes="Style6" Margin="5">
+                    <StackPanel>
+                        <TextBlock Text="text"/>
+                        <TextBlock Text="text"/>
+                        <TextBlock Text="text"/>
+                        <TextBlock Text="text"/>
+                    </StackPanel>
+                </HeaderedContentControl>    
+            </WrapPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+    <Style Selector="HeaderedContentControl.Style1">
+        <Setter Property="Background" Value="LightGray" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <StackPanel>
+                        <ContentPresenter TextBlock.FontWeight="Bold" Content="{TemplateBinding Header}"/>
+                        <ContentPresenter Padding="5" Content="{TemplateBinding Content}" CornerRadius="3" Background="{TemplateBinding Background}"/>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style Selector="HeaderedContentControl.Style2">
+        <Setter Property="Background" Value="LightGray" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <StackPanel>
+                        <ContentPresenter TextBlock.FontWeight="Bold" Content="{TemplateBinding Header}" />
+                        <Border
+                            BorderBrush="{TemplateBinding Background}"
+                            BorderThickness="2"
+                            CornerRadius="3">
+                            <ContentPresenter Padding="5" Content="{TemplateBinding Content}" />
+                        </Border>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style Selector="HeaderedContentControl.Style3">
+        <Setter Property="Background" Value="LightGray" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <StackPanel>
+                        <ContentPresenter 
+                            TextBlock.FontWeight="Bold" 
+                            Content="{TemplateBinding Header}" 
+                            Background="{TemplateBinding Background}"
+                            Padding="2 2 2 0"/>
+                        <Border
+                            BorderBrush="{TemplateBinding Background}"
+                            BorderThickness="2">
+                            <ContentPresenter Padding="5" Content="{TemplateBinding Content}" />
+                        </Border>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style Selector="HeaderedContentControl.Style4">
+        <Setter Property="Background" Value="LightGray" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <Grid RowDefinitions="Auto,*" ColumnDefinitions="Auto,*">
+                        <Border Grid.Row="0" Grid.Column="0" ZIndex="1" Padding="5,0,5,0" Margin="5 0 0 0">
+                            <TextBlock FontWeight="Bold" Text="{TemplateBinding Header}"  Padding="2 2 2 0" Background="{TemplateBinding Background}" />
+                        </Border>
+                        <Border Grid.Row="0" Grid.Column="0" Grid.RowSpan="2" Grid.ColumnSpan="2" Margin="0,10,0,0"
+                                BorderBrush="{TemplateBinding Background}"
+                                BorderThickness="2">
+                            <ContentPresenter Padding="5" Content="{TemplateBinding Content}" />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--Style 1 but allows for full control of bindings-->
+    <Style Selector="HeaderedContentControl.Style5">
+        <Setter Property="Background" Value="LightGray" />
+        <Setter Property="CornerRadius" Value="3"/>
+        <Setter Property="BorderThickness" Value="2"/> 
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <StackPanel>
+                        <ContentPresenter TextBlock.FontWeight="Bold" Content="{TemplateBinding Header}"/>
+                        <Border 
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="{TemplateBinding CornerRadius}">
+                            <ContentPresenter Padding="5" Content="{TemplateBinding Content}"/>
+                        </Border>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <!--Style 3 but allows for full control of bindings-->
+
+    <Style Selector="HeaderedContentControl.Style6">
+        <Setter Property="Background" Value="LightGray" />
+        <Setter Property="BorderThickness" Value="2"/> 
+        
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <StackPanel>
+                        <ContentPresenter 
+                            TextBlock.FontWeight="Bold" 
+                            Content="{TemplateBinding Header}" 
+                            Background="{TemplateBinding BorderBrush}"
+                            Padding="2 2 2 0"/>
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter Padding="5" Content="{TemplateBinding Content}" />
+                        </Border>
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+    
+    <Style Selector="HeaderedContentControl.Style7">
+        <Setter Property="Background" Value="LightGray" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <StackPanel>
+                        <ContentPresenter TextBlock.FontWeight="Bold" Content="{TemplateBinding Header}" />
+                        <Line Stroke="Orange"/>
+                        <!--<Separator Background="Black"/>-->                                    
+                        <!--<Rectangle VerticalAlignment="Stretch" Width="1" Margin="2" Stroke="Black" />-->
+                        <!--<Border
+                            BorderBrush="{TemplateBinding Background}"
+                            BorderThickness="2"
+                            CornerRadius="3">
+                            <ContentPresenter Content="{TemplateBinding Content}" />
+                        </Border>-->
+                    </StackPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</Styles>

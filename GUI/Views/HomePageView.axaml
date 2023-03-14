@@ -1,0 +1,22 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:GUI.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="GUI.Views.HomePageView">
+    <Design.DataContext>
+        <vm:HomePageViewModel />
+    </Design.DataContext>
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Text="Hi, this is the home page view"
+                   Foreground="{DynamicResource ForegroundBaseFontLightModeBrush}" />
+        <TextBlock Text="{Binding UrlPathSegment}" Foreground="{DynamicResource ForegroundBaseFontLightModeBrush}" />
+        <StackPanel Orientation="Horizontal">
+            <RadioButton GroupName="GG" Content="b1" IsChecked="True"/>
+            <RadioButton GroupName="GG" Content="b2"/>
+            <RadioButton GroupName="GG" Content="b3"/>
+            <RadioButton GroupName="GG" Content="b4"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>
