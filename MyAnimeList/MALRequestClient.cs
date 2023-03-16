@@ -15,7 +15,7 @@ public static class MALRequestClient
     /// </summary>
     public static async Task<bool> Init(bool requireAuthInit = false)
     {
-        if (requireAuthInit)
+        if (requireAuthInit & _myAnimeListClient == null)
             await OAuth.Init();
 
         if (_myAnimeListClient == null)
