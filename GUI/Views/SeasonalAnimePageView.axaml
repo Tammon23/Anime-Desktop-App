@@ -3,14 +3,58 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:GUI.ViewModels"
+             xmlns:models="clr-namespace:GUI.Models"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="GUI.Views.SeasonalAnimePageView">
     <Design.DataContext>
         <vm:SeasonalAnimePageViewModel />
     </Design.DataContext>
 
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="Hi, this is the seasonal anime page view" Foreground="White" />
-        <TextBlock Text="{Binding UrlPathSegment}" Foreground="White" />
-    </StackPanel>
+    <Grid RowDefinitions="Auto,*">
+        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 0 0 10 ">
+            
+            <ComboBox SelectedIndex="{Binding SelectedSeason}">
+                <ComboBoxItem>
+                    <TextBlock Text="Winter" ToolTip.Tip="January, February, March" Margin="10 0"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Spring" ToolTip.Tip="April, May, June" Margin="10 0"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Summer" ToolTip.Tip="July, August, September" Margin="10 0"/>
+                </ComboBoxItem>
+                <ComboBoxItem>
+                    <TextBlock Text="Fall" ToolTip.Tip="October, November, December" Margin="10 0"/>
+                </ComboBoxItem>
+            </ComboBox>
+            
+            <NumericUpDown Value="{Binding Year}"
+                           AllowSpin="True"
+                           Increment="1"
+                           Minimum="1917" 
+                           Maximum="{Binding MaximumYear}" 
+                           Margin="10 0 0 0 "/>
+        </StackPanel>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Visible" IsVisible="{Binding QueriedAnimeSeasonal.Count}">
+            <ItemsRepeater Items="{Binding QueriedAnimeSeasonal}">
+                <ItemsRepeater.ItemTemplate>
+                    <DataTemplate DataType="{x:Type models:NodePresentation}">
+                        <Button ToolTip.Tip="{Binding Title}" Classes="CardRepeater" Command="{Binding GoDetailsPage}">
+                            <StackPanel>
+                                <Image Source="{Binding Art^}" />
+                                <TextBlock Text="{Binding Title}" />
+                            </StackPanel>
+                        </Button>
+                    </DataTemplate>
+                </ItemsRepeater.ItemTemplate>
+                <ItemsRepeater.Layout>
+                    <UniformGridLayout ItemsJustification="SpaceAround"/>
+                </ItemsRepeater.Layout>
+            </ItemsRepeater>
+        </ScrollViewer>
+        <TextBlock Grid.Row="1" IsVisible="{Binding !QueriedAnimeSeasonal.Count}" FontSize="{DynamicResource FontSizeNormal}"
+                   DockPanel.Dock="Top" Text="This place looks empty, perhaps MAL is down?"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+    </Grid>
 </UserControl>

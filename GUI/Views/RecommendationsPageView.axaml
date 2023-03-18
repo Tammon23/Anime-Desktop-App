@@ -3,14 +3,34 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:GUI.ViewModels"
+             xmlns:models="clr-namespace:GUI.Models"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="GUI.Views.RecommendationsPageView">
     <Design.DataContext>
         <vm:RecommendationsPageViewModel />
     </Design.DataContext>
 
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="Hi, this is the recommendations page view" Foreground="White" />
-        <TextBlock Text="{Binding UrlPathSegment}" Foreground="White" />
-    </StackPanel>
+    <Panel>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" IsVisible="{Binding QueriedAnimeRecommendations.Count}">
+            <ItemsRepeater Items="{Binding QueriedAnimeRecommendations}">
+                <ItemsRepeater.ItemTemplate>
+                    <DataTemplate DataType="{x:Type models:NodePresentation}">
+                        <Button ToolTip.Tip="{Binding Title}" Classes="CardRepeater" Command="{Binding GoDetailsPage}">
+                            <StackPanel>
+                                <Image Source="{Binding Art^}" />
+                                <TextBlock Text="{Binding Title}" />
+                            </StackPanel>
+                        </Button>
+                    </DataTemplate>
+                </ItemsRepeater.ItemTemplate>
+                <ItemsRepeater.Layout>
+                    <UniformGridLayout ItemsJustification="SpaceAround"/>
+                </ItemsRepeater.Layout>
+            </ItemsRepeater>
+        </ScrollViewer>
+        <TextBlock IsVisible="{Binding !QueriedAnimeRecommendations.Count}" FontSize="{DynamicResource FontSizeNormal}"
+                   DockPanel.Dock="Top" Text="This place looks empty, perhaps you have no recommendations?"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+    </Panel>
 </UserControl>
