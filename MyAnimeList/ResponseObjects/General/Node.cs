@@ -16,7 +16,7 @@ public class Node
 
     [DataMember] public string Title { get; }
 
-    [DataMember(Name = "main_picture")] public Picture MainPicture { get; }
+    [DataMember(Name = "main_picture")] public Picture? MainPicture { get; }
 
     public override string ToString()
     {
