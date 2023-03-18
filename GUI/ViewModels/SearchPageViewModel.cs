@@ -36,9 +36,6 @@ public sealed class SearchPageViewModel : ReactiveObject, IRoutableViewModel
     public IObservable<bool>? ButtonIsExecuting { get; set; }
     public IObservable<string>? AnimeSearchText { get; set; }
 
-    /*
-    public ObservableCollection<SearchPageViewModel> SearchResultIterable => new();
-    */
 
     // Reference to IScreen that owns the routable view model
     public IScreen? HostScreen { get; set; }
@@ -61,7 +58,7 @@ public sealed class SearchPageViewModel : ReactiveObject, IRoutableViewModel
 
         foreach (var anime in animeSearchResults)
         {
-            var node = new NodePresentation(anime.SearchResult, HostScreen)
+            var node = new NodePresentation(anime.ContentNode, HostScreen)
             {
                 UseLargePicture = true // eventually will be migrated to the settings plane
             };
@@ -74,24 +71,4 @@ public sealed class SearchPageViewModel : ReactiveObject, IRoutableViewModel
 
         _lastSearchTerm = searchTerm;
     }
-
-
-    /*public static async Task<IEnumerable<SearchPageViewModel>> LoadCached()
-    {
-        return (await AnimeSearch.LoadCachedAsync()).Select(x => new SearchPageViewModel(x));
-    }*/
-
-    /*public async Task SaveToDiskAsync()
-    {
-        await _anime!.SaveAsync();
-
-        if (Art != null)
-        {
-            await Task.Run(() =>
-            {
-                using var fs = _anime.SaveAnimeArtLargeBitmapStream();
-                Art.Save(fs);
-            });
-        }
-    }*/
 }

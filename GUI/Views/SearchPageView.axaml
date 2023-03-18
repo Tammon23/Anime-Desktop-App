@@ -18,6 +18,7 @@
                     <DataTemplate DataType="{x:Type models:NodePresentation}">
                         <Button ToolTip.Tip="{Binding Title}" Classes="CardRepeater" Command="{Binding GoDetailsPage}">
                             <StackPanel>
+                                <!--<models:AsyncImage AsyncSource="{Binding Art}"  FallbackSource="C:\Users\Ikenna\source\repos\MyAnimeListDesktopApplication2\GUI\Assets\SampleImages\127508.jpg"/>--> 
                                 <Image Source="{Binding Art^}" />
                                 <TextBlock Text="{Binding Title}" />
                             </StackPanel>
@@ -25,8 +26,7 @@
                     </DataTemplate>
                 </ItemsRepeater.ItemTemplate>
                 <ItemsRepeater.Layout>
-                    <!--<UniformGridLayout ItemsJustification="SpaceBetween"/>-->
-                    <WrapLayout HorizontalSpacing="5" VerticalSpacing="5" />
+                    <UniformGridLayout ItemsJustification="SpaceAround"/>
                 </ItemsRepeater.Layout>
             </ItemsRepeater>
         </ScrollViewer>
