@@ -22,6 +22,31 @@
         <entry key="Avalonia.AnimeViewer/Views/Tabinator.axaml" value="Avalonia.AnimeViewer/Avalonia.AnimeViewer.csproj" />
         <entry key="EmbededExample/App.axaml" value="EmbededExample/EmbededExample.csproj" />
         <entry key="EmbededExample/Views/MainWindow.axaml" value="EmbededExample/EmbededExample.csproj" />
+        <entry key="GUI/App.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/ColourThemes/DarkTheme.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/ColourThemes/LightTheme.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/ContentCardStyles.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/FontStyles.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Templates/BetterGroupBox.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Templates/GroupBox.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Templates/SidePanelPageButton.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Templates/SidePanelPages.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Templates/ee.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Views/AnimeDetailsView.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Views/CalenderPageView.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Views/CalenderPageViewModel.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Views/FirstView.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Views/GroupBox.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Views/HomePageView.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Views/MainWindow.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Views/ProfilePageView.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Views/RecommendationsPageView.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Views/SearchPageView.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Views/SeasonalAnimePage.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Views/SeasonalAnimePageView.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Views/SecondView.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Views/SettingsPageView.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Views/WatchPageView.axaml" value="GUI/GUI.csproj" />
         <entry key="LibVLCSharp.Avalonia/App.axaml" value="LibVLCSharp.Avalonia/LibVLCSharp.Avalonia.csproj" />
         <entry key="LibVLCSharp.Avalonia/Styles.xaml" value="LibVLCSharp.Avalonia/LibVLCSharp.Avalonia.csproj" />
         <entry key="LibVLCSharp.Avalonia/Views/MainWindow.axaml" value="LibVLCSharp.Avalonia/LibVLCSharp.Avalonia.csproj" />
@@ -38,6 +63,8 @@
         <entry key="UIManager/Pages/SliderPage.axaml" value="UIManager/UIManager.csproj" />
         <entry key="UIManager/SideBar.axaml" value="UIManager/UIManager.csproj" />
         <entry key="UIManager/Styles.axaml" value="UIManager/UIManager.csproj" />
+        <entry key="UIManager/Views/AnimeDetailsPageView.axaml" value="UIManager/UIManager.csproj" />
+        <entry key="UIManager/Views/AnimeInfoPageView.axaml" value="UIManager/UIManager.csproj" />
         <entry key="UIManager/Views/AnimeListPageView.axaml" value="UIManager/UIManager.csproj" />
         <entry key="UIManager/Views/ContentCardVie.axaml" value="UIManager/UIManager.csproj" />
         <entry key="UIManager/Views/ContentCardView.axaml" value="UIManager/UIManager.csproj" />
