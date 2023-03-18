@@ -23,8 +23,25 @@ public class OAuth
     private static Process? _browserProcess;
 
     private static string? _token;
+    private const string FilePath = "TOKENS.xml";
 
+    /// <summary>
+    /// Used to manage when we should generate a new token, load a token from file,
+    /// or refresh a saved token
+    /// </summary>
     public static async Task Init()
+    {
+        if (LoadTokenFromFile())
+        {
+            
+        }
+        else
+        {
+            await GenerateToken();
+        }
+    }
+    
+    private static async Task GenerateToken()
     {
         _codeVerifier = GenerateNonce();
 
@@ -54,9 +71,17 @@ public class OAuth
             _authHttpListener = new HttpListener();
         }
 
-        _authHttpListener = new HttpListener();
-        _authHttpListener.Prefixes.Add(MyAnimeListConstants.RedirectUrl);
-        _authHttpListener.Start();
+        try
+        {
+            _authHttpListener = new HttpListener();
+            _authHttpListener.Prefixes.Add(MyAnimeListConstants.RedirectUrl);
+            _authHttpListener.Start();
+
+        }
+        catch (Exception ex)
+        {
+            Debug.WriteLine($"Exception: {ex}");
+        }
 
         // if the browser process variable has yet to be set, create a new one or if it has
         // been set, refresh the current one
@@ -103,18 +128,21 @@ public class OAuth
     /// <summary>
     ///     Exchanging authorization code for refresh and access tokens
     /// </summary>
-    /// <param name="authorizationUrl"></param>
+    /// <param name="code">The user's Authorisation Code received during the previous step</param>
+    /// <param name="state">A string which can be used to maintain state between the request and callback.
+    /// It is later returned by the MAL servers to the API client</param>
     /// <returns></returns>
-    public static async Task InitUserAccessToken(string code, string? state)
+    private static async Task InitUserAccessToken(string code, string? state)
     {
         if (_oAuthMyAnimeListHttpClient == null || _codeVerifier == null) return;
 
         // preparing a http form to get the token type, expires in, access token and refresh token
         var parameters = new Dictionary<string, string>();
         parameters.Add("client_id", MyAnimeListConstants.ClientId);
+        /*parameters.Add("client_secret", "");*/
+        parameters.Add("grant_type", "authorization_code");
         parameters.Add("code", code);
         parameters.Add("code_verifier", _codeVerifier);
-        parameters.Add("grant_type", "authorization_code");
 
         using var content = new FormUrlEncodedContent(parameters);
         content.Headers.Clear();
@@ -123,7 +151,11 @@ public class OAuth
         var response = await _oAuthMyAnimeListHttpClient.PostAsync("v1/oauth2/token", content);
 
         if (response.StatusCode == HttpStatusCode.OK)
+        {
             _tokenRefreshInfo = await response.Content.ReadAsAsync<AuthorizationResponse>();
+            _tokenRefreshInfo.ExpiresAt = DateTime.UtcNow.AddSeconds(_tokenRefreshInfo.expires_in);
+
+        }
     }
 
     /// <summary>
@@ -139,10 +171,8 @@ public class OAuth
 
         _token = _tokenRefreshInfo.access_token;
 
-        const string filePath = "TOKENS.xml";
-
         var serializer = new XmlSerializer(typeof(AuthorizationResponse));
-        using TextWriter tw = new StreamWriter(filePath);
+        using TextWriter tw = new StreamWriter(FilePath);
         serializer.Serialize(tw, _tokenRefreshInfo);
 
         _tokenRefreshInfo = null;
@@ -156,17 +186,20 @@ public class OAuth
     ///     Reads an object instance from a xml file. Author: https://www.youtube.com/watch?v=jbwjbbc5PjI
     /// </summary>
     /// <returns>Returns a new instance of the object read from the xml file.</returns>
-    private static void LoadTokenFromFile()
+    private static bool LoadTokenFromFile()
     {
-        const string filePath = "TOKENS.xml";
+        if (!File.Exists(FilePath))
+            return false;
+        
         var deserializer = new XmlSerializer(typeof(AuthorizationResponse));
 
-        using (TextReader tr = new StreamReader(filePath))
-        {
-            _tokenRefreshInfo = (AuthorizationResponse) deserializer.Deserialize(tr);
-        }
+        using TextReader tr = new StreamReader(FilePath);
+        _tokenRefreshInfo = (AuthorizationResponse) deserializer.Deserialize(tr);
+        _token = _tokenRefreshInfo.access_token;
+        
+        return true;
     }
-
+    
 
     /// <summary>
     ///     Used to refresh the access token for the client
@@ -239,21 +272,20 @@ public class OAuth
     }
 }
 
-[Serializable]
+/*[Serializable]*/
 public class AuthorizationResponse
 {
     public string token_type { get; set; }
     public int expires_in { get; set; }
     public string access_token { get; set; }
     public string refresh_token { get; set; }
-
     public DateTime ExpiresAt { get; set; }
-
-    [OnDeserialized]
+    
+    /*[OnDeserialized]
     private void OnDeserializedMethod(StreamingContext context)
     {
         ExpiresAt = DateTime.UtcNow.AddSeconds(expires_in);
-    }
+    }*/
 
     public override string ToString()
     {

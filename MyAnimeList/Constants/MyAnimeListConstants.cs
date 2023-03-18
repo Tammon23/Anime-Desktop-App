@@ -2,7 +2,9 @@
 
 public class MyAnimeListConstants
 {
-    public const string RedirectUrl = "http://localhost:50123/";
+    // TODO eventually change below to my github io website to avoid "port in use" problems
+    // remember to change the url in the mal api account settings
+    public const string RedirectUrl = "http://localhost:44406/"; 
     public const string APIUrl = "https://myanimelist.net/";
 
     public const string AuthUrl =

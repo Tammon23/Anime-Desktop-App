@@ -6,6 +6,7 @@ using MyAnimeList.Exceptions;
 
 namespace MyAnimeList;
 
+// ReSharper disable once InconsistentNaming
 public static class MALRequestClient
 {
     private static HttpClient? _myAnimeListClient;
