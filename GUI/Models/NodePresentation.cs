@@ -1,8 +1,11 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Net.Http;
 using System.Reactive;
 using System.Threading.Tasks;
+using Avalonia;
 using Avalonia.Media.Imaging;
+using Avalonia.Platform;
 using GUI.ViewModels;
 using MyAnimeList.ResponseObjects.General;
 using ReactiveUI;
@@ -32,14 +35,23 @@ public class NodePresentation : Node
     /*public ReactiveCommand<Unit, IRoutableViewModel> GoDetailsPage { get; }*/
     public ReactiveCommand<Unit, Unit> GoDetailsPage { get; }
     public Task<Bitmap> Art => LoadArt();
-
+    /*public string Art => MainPicture.Large;*/
     private async Task<Bitmap> LoadArt()
     {
-        var imageStream =
-            UseLargePicture ? await LoadAnimeArtLargeBitmapAsync() : await LoadAnimeArtMediumBitmapAsync();
+        Stream imageStream;
+        if (MainPicture != null)
+        {
+            imageStream = UseLargePicture ? await LoadAnimeArtLargeBitmapAsync() : await LoadAnimeArtMediumBitmapAsync();
+        }
+        else
+        {
+            var assests = AvaloniaLocator.Current.GetService<IAssetLoader>();
+            imageStream = assests.Open(new Uri("avares://GUI/Assets/SampleImages/image_not_found_image.png"));
+        }
+
         return await Task.Run(() => Bitmap.DecodeToWidth(imageStream, 400));
     }
-
+    
     /// <summary>
     ///     Functions from https://docs.avaloniaui.net/tutorials/music-store-app/searching-for-albums
     /// </summary>
