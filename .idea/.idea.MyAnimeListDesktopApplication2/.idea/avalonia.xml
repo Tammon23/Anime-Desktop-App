@@ -23,6 +23,7 @@
         <entry key="EmbededExample/App.axaml" value="EmbededExample/EmbededExample.csproj" />
         <entry key="EmbededExample/Views/MainWindow.axaml" value="EmbededExample/EmbededExample.csproj" />
         <entry key="GUI/App.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/BetterVLC/VLCStyle.axaml" value="GUI/GUI.csproj" />
         <entry key="GUI/ColourThemes/DarkTheme.axaml" value="GUI/GUI.csproj" />
         <entry key="GUI/ColourThemes/LightTheme.axaml" value="GUI/GUI.csproj" />
         <entry key="GUI/ContentCardStyles.axaml" value="GUI/GUI.csproj" />
@@ -32,6 +33,7 @@
         <entry key="GUI/Templates/SidePanelPageButton.axaml" value="GUI/GUI.csproj" />
         <entry key="GUI/Templates/SidePanelPages.axaml" value="GUI/GUI.csproj" />
         <entry key="GUI/Templates/ee.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/ViewModels/PlayerControls.axaml" value="GUI/GUI.csproj" />
         <entry key="GUI/Views/AnimeDetailsView.axaml" value="GUI/GUI.csproj" />
         <entry key="GUI/Views/CalenderPageView.axaml" value="GUI/GUI.csproj" />
         <entry key="GUI/Views/CalenderPageViewModel.axaml" value="GUI/GUI.csproj" />
