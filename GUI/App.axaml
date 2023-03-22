@@ -13,6 +13,9 @@
         <StyleInclude Source="/Templates/SidePanelPageButton.axaml" />
         <StyleInclude Source="/Templates/GroupBox.axaml" />
         <StyleInclude Source="/ContentCardStyles.axaml" />
+        
+        <StyleInclude Source="/BetterVLC/VLCStyle.axaml"/>
+        
         <!--<StyleInclude Source="avares://Citrus.Avalonia/Citrus.xaml"/> --><!--https://github.com/AvaloniaUI/Citrus.Avalonia-->
         <!--<Style Selector="controls|SidePanelPageButton[IsChecked=True] Panel.eee">
             <Setter Property="Background" Value="Red"></Setter>

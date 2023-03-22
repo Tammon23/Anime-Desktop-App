@@ -3,14 +3,39 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:GUI.ViewModels"
+             xmlns:betterVlc="clr-namespace:GUI.BetterVLC"
+
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="GUI.Views.WatchPageView">
     <Design.DataContext>
         <vm:WatchPageViewModel />
     </Design.DataContext>
+    <Grid RowDefinitions="*,Auto,Auto"> <!--Auto = size of item, * = eat rest of space-->
+        <Panel>
+            <betterVlc:VideoView x:Name="VideoView" MediaPlayer="{Binding VideoPlayer}" VlcRenderingOptions="AvaloniaCustomDrawingOperation"/>
+        </Panel>
+        <Slider Grid.Row="1" Minimum="0" Maximum="100" Value="{Binding MediaPosition}"/>
+        <Grid Grid.Row="2" ColumnDefinitions="Auto,*,Auto">
+            <StackPanel Grid.Column="0" Orientation="Horizontal">
+                <Button Content="Play/Pause" Command="{Binding PlayPauseCommand}" />
+                <Button Content="Stop" Command="{Binding StopCommand}" />
+                <CheckBox Content="Volume:" Margin="5 0 0 0" IsChecked="{Binding !IsMuted, Mode=TwoWay}" />
+                <Slider IsEnabled="{Binding !IsMuted}" Minimum="0" Maximum="100" Width="100" Margin="5 0" Value="{Binding Volume}" VerticalAlignment="Center">
+                    <Slider.Styles>
+                        <Style Selector="Slider:disabled">
+                            <Setter Property="Opacity" Value="0.5" />
+                        </Style>
+                    </Slider.Styles>
+                </Slider>
+            </StackPanel>
+            <StackPanel Grid.Column="2" Orientation="Horizontal">
+                <Button Content="-5s" Command="{Binding BackwardCommand}"/>
+                <Button Content="+5s" Command="{Binding ForwardCommand}"/>
+                <Label Content="{Binding CurrentTime, StringFormat='{}{0:hh}:{0:mm}:{0:ss}'}" VerticalContentAlignment="Center"/>
+                <Label Content="/" VerticalContentAlignment="Center"/>
+                <Label Content="{Binding Duration, StringFormat='{}{0:hh}:{0:mm}:{0:ss}'}" VerticalContentAlignment="Center"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
 
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="Hi, this is the watch page view" Foreground="White" />
-        <TextBlock Text="{Binding UrlPathSegment}" Foreground="White" />
-    </StackPanel>
 </UserControl>

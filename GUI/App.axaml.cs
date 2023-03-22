@@ -3,6 +3,7 @@ using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
 using GUI.ViewModels;
 using GUI.Views;
+using LibVLCSharp.Shared;
 
 namespace GUI;
 
@@ -10,6 +11,7 @@ public class App : Application
 {
     public override void Initialize()
     {
+        Core.Initialize();
         AvaloniaXamlLoader.Load(this);
     }
 
