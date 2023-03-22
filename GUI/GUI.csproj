@@ -4,6 +4,7 @@
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
         <LangVersion>10</LangVersion>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     </PropertyGroup>
     <ItemGroup>
         <Folder Include="Concepts" />
@@ -19,9 +20,11 @@
         <PackageReference Include="Avalonia.ReactiveUI" Version="0.10.18" />
         <PackageReference Include="Citrus.Avalonia" Version="1.6.1" />
         <PackageReference Include="CommunityToolkit.Mvvm" Version="8.1.0" />
+        <PackageReference Include="VideoLAN.LibVLC.Windows" Version="3.0.17.4" />
     </ItemGroup>
     <ItemGroup>
         <ProjectReference Include="..\Avalonia.AnimeViewer\Avalonia.AnimeViewer.csproj" />
+        <ProjectReference Include="..\LibVLCSharp.Avalonia\LibVLCSharp.Avalonia.csproj" />
     </ItemGroup>
     <ItemGroup>
       <UpToDateCheckInput Remove="ColourThemes\DarkTheme.axaml" />

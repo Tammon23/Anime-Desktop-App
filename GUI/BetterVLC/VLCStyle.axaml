@@ -1,0 +1,33 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="using:GUI.BetterVLC">
+    <Design.PreviewWith>
+        <Border Padding="20">
+            <!-- Add Controls for Previewer Here -->
+        </Border>
+    </Design.PreviewWith>
+
+    <!-- Add Styles Here -->
+    <Style Selector="local|VideoView">
+        <Setter Property="Background" Value="Black" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel Background="{TemplateBinding Background}">
+                    <!--<Image Name="PART_RenderImage" />-->
+                    <local:VLCImageRenderer Name="PART_RenderImage" DisplayRenderStats="{TemplateBinding DisplayRenderStats}" />
+                    <ContentPresenter Content="{TemplateBinding Content}" />
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+    <Style Selector="local|VideoView[VlcRenderingOptions=VlcNative]">
+        <Setter Property="Background" Value="Black" />
+        <Setter Property="Template">
+            <ControlTemplate>
+                <Panel Background="{TemplateBinding Background}">
+                    <local:NativeVideoPresenter Name="PART_NativeHost" Content="{TemplateBinding Content}" />
+                </Panel>
+            </ControlTemplate>
+        </Setter>
+    </Style>
+</Styles>
