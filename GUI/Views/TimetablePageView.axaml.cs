@@ -5,9 +5,9 @@ using ReactiveUI;
 
 namespace GUI.Views;
 
-public class CalenderPageView : ReactiveUserControl<CalenderPageViewModel>
+public class TimetablePageView : ReactiveUserControl<TimetablePageViewModel>
 {
-    public CalenderPageView()
+    public TimetablePageView()
     {
         InitializeComponent();
     }

@@ -3,9 +3,9 @@ using ReactiveUI;
 
 namespace GUI.ViewModels;
 
-public class CalenderPageViewModel : ReactiveObject, IRoutableViewModel
+public class TimetablePageViewModel : ReactiveObject, IRoutableViewModel
 {
-    public CalenderPageViewModel(IScreen screen)
+    public TimetablePageViewModel(IScreen screen)
     {
         HostScreen = screen;
     }

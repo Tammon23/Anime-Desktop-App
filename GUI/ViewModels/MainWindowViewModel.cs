@@ -43,8 +43,8 @@ public class MainWindowViewModel : ViewModelBase, IReactiveObject, IAdvancedScre
             () => Router.Navigate.Execute(new SeasonalAnimePageViewModel(this))
         );
 
-        GoCalenderPage = ReactiveCommand.CreateFromObservable(
-            () => Router.Navigate.Execute(new CalenderPageViewModel(this))
+        GoTimetablePage = ReactiveCommand.CreateFromObservable(
+            () => Router.Navigate.Execute(new TimetablePageViewModel(this))
         );
 
         GoWatchPage = ReactiveCommand.CreateFromObservable(
@@ -71,7 +71,7 @@ public class MainWindowViewModel : ViewModelBase, IReactiveObject, IAdvancedScre
     public ReactiveCommand<Unit, IRoutableViewModel> GoSearchPage { get; }
     public ReactiveCommand<Unit, IRoutableViewModel> GoRecommendationsPage { get; }
     public ReactiveCommand<Unit, IRoutableViewModel> GoSeasonalAnimePage { get; }
-    public ReactiveCommand<Unit, IRoutableViewModel> GoCalenderPage { get; }
+    public ReactiveCommand<Unit, IRoutableViewModel> GoTimetablePage { get; }
     public ReactiveCommand<Unit, IRoutableViewModel> GoWatchPage { get; }
     public ReactiveCommand<Unit, IRoutableViewModel> GoProfilePage { get; }
     public ReactiveCommand<Unit, IRoutableViewModel> GoSettingsPage { get; }
