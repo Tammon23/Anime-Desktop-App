@@ -27,7 +27,7 @@ public class User
     /// <param name="limit">The max amount of results</param>
     /// <returns>AnimeListStatus object or null if failure</returns>
     /// <exception cref="LimitOutOfRangeException">Limit must be between 0 and 1000 inclusively</exception>
-    public async Task<UserAnimeList?> GetUserAnimeList(string username = "@me",
+    public static async Task<UserAnimeList?> GetUserAnimeList(string username = "@me",
         AnimeStatusEnum? status = null,
         SortEnum? sort = null,
         int offset = 0,
@@ -50,7 +50,7 @@ public class User
     /// </summary>
     /// <param name="animeId">The ID of the anime to be removed</param>
     /// <returns>True if the delete was successful, False if the anime ID is invalid, null remaining cases</returns>
-    public async Task<bool?> DeleteAnimeListItem(int animeId)
+    public static async Task<bool?> DeleteAnimeListItem(int animeId)
     {
         var r = await MALRequestClient.Delete(
             $"v2/anime/{animeId}/my_list_status");
@@ -61,7 +61,7 @@ public class User
     ///     Gets the current logged in user's information
     /// </summary>
     /// <returns>UserInformation object or null if failure</returns>
-    public async Task<UserInformation?> GetMyInformation()
+    public static async Task<UserInformation?> GetMyInformation()
     {
         var r = await MALRequestClient.Get<UserInformation>(
             "v2/users/@me?fields=anime_statistics", true);
