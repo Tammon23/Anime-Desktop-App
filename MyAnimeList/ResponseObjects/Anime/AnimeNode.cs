@@ -23,7 +23,7 @@ public class AnimeNode : Node
         DateTime? createdAt,
         DateTime? updatedAt,
         string? mediaType,
-        string? status,
+        AnimeAiringStatusEnum? status,
         MyAnimeListStatus? myListStatus,
         int? numEpisodes,
         StartSeason? startSeason,
@@ -88,7 +88,7 @@ public class AnimeNode : Node
 
     [DataMember(Name = "media_type")] public string? MediaType { get; }
 
-    [DataMember] public string? Status { get; }
+    [DataMember] public AnimeAiringStatusEnum? Status { get; }
 
     [DataMember] public IReadOnlyList<Genre>? Genres { get; }
 

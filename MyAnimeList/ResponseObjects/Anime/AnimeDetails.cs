@@ -25,7 +25,7 @@ public class AnimeDetails : AnimeNode
         DateTime? createdAt,
         DateTime? updatedAt,
         string? mediaType,
-        string? status,
+        AnimeAiringStatusEnum? status,
         List<Genre> genres,
         MyAnimeListStatus? myListStatus,
         int? numEpisodes,
