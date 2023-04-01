@@ -1,19 +1,23 @@
 ﻿using System.Runtime.Serialization;
+using MyAnimeList.Converters;
+using Newtonsoft.Json;
 
 namespace MyAnimeList.ResponseObjects.Anime;
 
 [DataContract]
 public class Broadcast
 {
-    public Broadcast(string dayOfTheWeek, string startTime)
+    public Broadcast(DayOfWeek? dayOfTheWeek, TimeOnly startTime)
     {
         DayOfTheWeek = dayOfTheWeek;
         StartTime = startTime;
     }
 
-    [DataMember(Name = "day_of_the_week")] public string DayOfTheWeek { get; }
+    [DataMember(Name = "day_of_the_week")] public DayOfWeek? DayOfTheWeek { get; }
 
-    [DataMember(Name = "start_time")] public string StartTime { get; }
+    [DataMember(Name = "start_time")]
+    [JsonConverter(typeof(TimeOnlyJsonConverter))]
+    public TimeOnly StartTime { get; }
 
     public override string ToString()
     {
