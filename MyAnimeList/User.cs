@@ -31,7 +31,7 @@ public class User
         AnimeStatusEnum? status = null,
         SortEnum? sort = null,
         int offset = 0,
-        int limit = 4)
+        int limit = 1000)
     {
         if (limit is > 1000 or < 0) throw new LimitOutOfRangeException("Limit must be between 0 and 1000");
 
