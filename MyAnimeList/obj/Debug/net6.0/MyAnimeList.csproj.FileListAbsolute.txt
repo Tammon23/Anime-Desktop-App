@@ -13,7 +13,7 @@ C:\Users\Ikenna\source\repos\MyAnimeListDesktopApplication2\MyAnimeList\obj\Debu
 C:\Users\Ikenna\source\repos\MyAnimeListDesktopApplication2\MyAnimeList\obj\Debug\net6.0\MyAnimeList.csproj.CoreCompileInputs.cache
 C:\Users\Ikenna\source\repos\MyAnimeListDesktopApplication2\MyAnimeList\obj\Debug\net6.0\MyAnimeList.csproj.CopyComplete
 C:\Users\Ikenna\source\repos\MyAnimeListDesktopApplication2\MyAnimeList\obj\Debug\net6.0\MyAnimeList.dll
-C:\Users\Ikenna\source\repos\MyAnimeListDesktopApplication2\MyAnimeList\obj\Debug\net6.0\ref\MyAnimeList.dll
+C:\Users\Ikenna\source\repos\MyAnimeListDesktopApplication2\MyAnimeList\obj\Debug\net6.0\refint\MyAnimeList.dll
 C:\Users\Ikenna\source\repos\MyAnimeListDesktopApplication2\MyAnimeList\obj\Debug\net6.0\MyAnimeList.pdb
 C:\Users\Ikenna\source\repos\MyAnimeListDesktopApplication2\MyAnimeList\obj\Debug\net6.0\MyAnimeList.genruntimeconfig.cache
-C:\Users\Ikenna\source\repos\MyAnimeListDesktopApplication2\MyAnimeList\obj\Debug\net6.0\refint\MyAnimeList.dll
+C:\Users\Ikenna\source\repos\MyAnimeListDesktopApplication2\MyAnimeList\obj\Debug\net6.0\ref\MyAnimeList.dll
