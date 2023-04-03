@@ -2,9 +2,9 @@
 
 namespace MyAnimeList.ResponseObjects.Manga;
 
-public class MangaListDatum : Datum
+public class MangaListDatum : MangaDatum
 {
-    public MangaListDatum(Node node)
+    public MangaListDatum(MangaNode node)
         : base(node)
     {
     }

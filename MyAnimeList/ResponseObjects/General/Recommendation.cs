@@ -1,17 +1,18 @@
 ﻿using System.Runtime.Serialization;
+using MyAnimeList.ResponseObjects.Anime;
 
 namespace MyAnimeList.ResponseObjects.General;
 
 [DataContract]
 public class Recommendation
 {
-    public Recommendation(Node node, int numRecommendations)
+    public Recommendation(AnimeNode node, int numRecommendations)
     {
         Node = node;
         NumRecommendations = numRecommendations;
     }
 
-    [DataMember] public Node Node { get; }
+    [DataMember] public AnimeNode Node { get; }
 
     [DataMember(Name = "num_recommendations")]
     public int NumRecommendations { get; }

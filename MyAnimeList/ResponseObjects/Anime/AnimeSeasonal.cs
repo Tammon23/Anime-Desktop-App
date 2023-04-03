@@ -21,7 +21,7 @@ public class AnimeSeasonal
 
     public override string ToString()
     {
-        return $"Data: {(Data != null ? string.Join(" | ", Data) : "N/A")}, "
+        return $"Data: {(Data != null ? string.Join(" \n=> ", Data) : "N/A")}, "
                + $"Paging: {Paging}, "
                + $"Season: {Season}"
             ;

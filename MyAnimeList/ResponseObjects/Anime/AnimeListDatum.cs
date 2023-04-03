@@ -4,9 +4,9 @@ using MyAnimeList.ResponseObjects.General;
 namespace MyAnimeList.ResponseObjects.Anime;
 
 [DataContract]
-public class AnimeListDatum : Datum
+public class AnimeListDatum : AnimeDatum
 {
-    public AnimeListDatum(Node node)
+    public AnimeListDatum(AnimeNode node)
         : base(node)
     {
     }

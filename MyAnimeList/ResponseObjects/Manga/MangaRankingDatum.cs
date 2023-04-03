@@ -6,13 +6,13 @@ namespace MyAnimeList.ResponseObjects.Manga;
 [DataContract]
 public class MangaRankingDatum
 {
-    public MangaRankingDatum(Node node, Ranking ranking)
+    public MangaRankingDatum(MangaNode node, Ranking ranking)
     {
         Node = node;
         Ranking = ranking;
     }
 
-    [DataMember] public Node Node { get; }
+    [DataMember] public MangaNode Node { get; }
 
     [DataMember] public Ranking Ranking { get; }
 

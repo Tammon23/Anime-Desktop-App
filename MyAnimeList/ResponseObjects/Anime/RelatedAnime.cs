@@ -6,14 +6,14 @@ namespace MyAnimeList.ResponseObjects.Anime;
 [DataContract]
 public class RelatedAnime
 {
-    public RelatedAnime(Node node, string relationType, string relationTypeFormatted)
+    public RelatedAnime(AnimeNode node, string relationType, string relationTypeFormatted)
     {
         Node = node;
         RelationType = relationType;
         RelationTypeFormatted = relationTypeFormatted;
     }
 
-    [DataMember] public Node Node { get; }
+    [DataMember] public AnimeNode Node { get; }
 
     [DataMember(Name = "relation_type")] 
     public string RelationType { get; }

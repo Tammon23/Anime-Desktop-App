@@ -13,7 +13,9 @@ public class Broadcast
         StartTime = startTime;
     }
 
-    [DataMember(Name = "day_of_the_week")] public DayOfWeek? DayOfTheWeek { get; }
+    [DataMember(Name = "day_of_the_week")]
+    [JsonConverter((typeof(BroadcastDayOfTheWeekConverter)))]
+    public DayOfWeek? DayOfTheWeek { get; }
 
     [DataMember(Name = "start_time")]
     [JsonConverter(typeof(TimeOnlyJsonConverter))]
