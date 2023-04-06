@@ -23,6 +23,15 @@ public class Anime
             $"v2/anime?offset={offset}&q={searchString}&limit={limit}&fields={fields}");
         return r;
     }
+    
+    /// <summary>
+    ///     Overload for <see cref="GetAnime(string,int,int,string)"/>
+    /// </summary>
+    public static async Task<AnimeList?> GetAnime(string searchString, int offset = 0, int limit = 100,
+        FieldSelector? fields = null)
+    {
+        return await GetAnime(searchString, offset, limit, fields == null ? "" : fields.GetFieldsAsString());
+    }
 
     /// <summary>
     ///     Used to get additional details of the anime
@@ -40,9 +49,6 @@ public class Anime
     /// <summary>
     ///     Overload for <see cref="GetAnimeDetails(int,string)"/>
     /// </summary>
-    /// <param name="id">The Id of the anime</param>
-    /// <param name="fields">The fields that you want returned. *Does not default to all*</param>
-    /// <returns>AnimeDetails object or null if failure</returns>
     public static async Task<AnimeDetails?> GetAnimeDetails(int id, FieldSelector fields)
     {
         return await GetAnimeDetails(id, fields.GetFieldsAsString());
@@ -57,8 +63,7 @@ public class Anime
     /// <param name="fields">The fields that you want returned. *Does not default to all*</param>
     /// <returns>AnimeRanking object or null if failure</returns>
     public static async Task<AnimeRanking?> GetAnimeRanking(AnimeRankingTypeEnum animeRankingType, int offset = 0,
-        int limit = 100,
-        string fields = "")
+        int limit = 100, string fields = "")
     {
         if (limit is > 500 or < 0) throw new LimitOutOfRangeException("Limit must be between 0 and 500");
 
@@ -68,6 +73,15 @@ public class Anime
             $"v2/anime/ranking?ranking_type={ranking}&offset={offset}&limit={limit}&fields={fields}");
 
         return r;
+    }
+    
+    /// <summary>
+    ///     Overload for <see cref="GetAnimeRanking(AnimeRankingTypeEnum,int,int,string)"/>
+    /// </summary>
+    public static async Task<AnimeRanking?> GetAnimeRanking(AnimeRankingTypeEnum animeRankingType, int offset = 0,
+        int limit = 100, FieldSelector? fields = null)
+    {
+        return await GetAnimeRanking(animeRankingType, offset, limit, fields == null ? "" : fields.GetFieldsAsString());
     }
 
     /// <summary>
@@ -90,6 +104,15 @@ public class Anime
             $"v2/anime/season/{year}/{searchSeason}?offset={offset}&limit={limit}&fields={fields}");
         return r;
     }
+    
+    /// <summary>
+    ///     Overload for <see cref="GetSeasonalAnime(int,SeasonEnum,int,int,string)"/>
+    /// </summary>
+    public static async Task<AnimeSeasonal?> GetSeasonalAnime(int year, SeasonEnum season, int offset = 0, 
+        int limit = 100,  FieldSelector? fields = null)
+    {
+        return await GetSeasonalAnime(year, season, offset, limit, fields == null ? "" : fields.GetFieldsAsString());
+    }
 
     /// <summary>
     ///     Used to get suggested anime for the authorized user
@@ -107,4 +130,14 @@ public class Anime
             $"v2/anime/suggestions?offset={offset}&limit={limit}&fields={fields}", true);
         return r;
     }
+    
+    /// <summary>
+    ///     Overload for <see cref="GetAnimeSuggestions(int,int,string)"/>
+    /// </summary>
+    public static async Task<AnimeSuggestions?> GetAnimeSuggestions(int offset = 0, int limit = 100,
+        FieldSelector? fields = null)
+    {
+        return await GetAnimeSuggestions(offset, limit, fields == null ? "" : fields.GetFieldsAsString());
+    }
+    
 }

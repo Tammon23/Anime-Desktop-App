@@ -22,7 +22,7 @@ public class AnimeSearch : MALConnector
             ClientInitialized = true;
         }
 
-        var r = await Anime.GetAnime(searchString);
+        var r = await Anime.GetAnime(searchString, fields: fields);
 
         return r == null ? new List<AnimeSearch>() : r.Data.Select(node => new AnimeSearch(node.Node)).ToList();
     }

@@ -24,8 +24,8 @@ public class AnimeRecommendations : MALConnector
             await MALRequestClient.Init(requireAuthInit:true);
             ClientAuthInitialized = true;
         }
-        
-        var r = await Anime.GetAnimeSuggestions();
+
+        var r = await Anime.GetAnimeSuggestions(offset, limit, fields);
 
         return r == null ? new List<AnimeRecommendations>() : r.Data.Select(node => new AnimeRecommendations(node.Node)).ToList();
     }
