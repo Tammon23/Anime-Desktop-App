@@ -2,7 +2,7 @@ name: run get_timetables.py
 
 on:
   schedule:
-    - cron: '0 7 * * 6' # At 07:00 on Saturday
+    - cron: '0 4 * * 0' # At 04:00 on Sunday UTC
 
 jobs:
   build:
@@ -36,4 +36,4 @@ jobs:
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          branch: main 
+          branch: master 
