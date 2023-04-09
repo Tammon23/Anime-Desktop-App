@@ -2,7 +2,7 @@ name: run get_timetables.py
 
 on:
   schedule:
-    - cron: '0 4 * * 0' # At 04:00 on Sunday UTC
+    - cron: '0 4 * * *' # At 04:00 UTC
 
 jobs:
   build:
