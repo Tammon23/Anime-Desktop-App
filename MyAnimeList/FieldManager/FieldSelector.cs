@@ -11,11 +11,11 @@ public class FieldSelector
         _fields.Add(field.StringValue());
     }
     
-    public void AddAllFields(bool incldeNsfw=false)
+    public void AddAllFields(bool includeNsfw=false)
     {
         _fields.UnionWith(Enum.GetValues<Fields>().Select(x => x.StringValue()));
 
-        if (!incldeNsfw)
+        if (!includeNsfw)
         {
             _fields.Remove("nsfw");
         }

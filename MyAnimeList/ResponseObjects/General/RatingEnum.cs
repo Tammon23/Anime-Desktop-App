@@ -15,7 +15,7 @@ public enum RatingEnum
     [EnumMember(Value = "pg")] [Description("PG - Children")]
     Pg,
 
-    [EnumMember(Value = "pg_13")] [Description("pg_13 - Teens 13 and Older")]
+    [EnumMember(Value = "pg_13")] [Description("pg-13 - Teens 13 and Older")]
     Pg13,
 
     [EnumMember(Value = "r")] [Description("R - 17+ (violence & profanity)")]
