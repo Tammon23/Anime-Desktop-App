@@ -2,7 +2,6 @@
 
 using System.Diagnostics;
 using System.Net;
-using System.Runtime.Serialization;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -12,7 +11,7 @@ using MyAnimeList.Exceptions;
 
 namespace MyAnimeList;
 
-public class OAuth
+public static class OAuth
 {
     private static HttpClient? _oAuthMyAnimeListHttpClient;
     private static string? _codeVerifier;
@@ -31,14 +30,22 @@ public class OAuth
     /// </summary>
     public static async Task Init()
     {
-        if (LoadTokenFromFile())
-        {
-            
-        }
-        else
+        var hasValidTokenSave = await LoadTokenFromFile();
+        if (!hasValidTokenSave)
         {
             await GenerateToken();
         }
+    }
+
+    private static void CreateClient(bool forceOverride=false)
+    {
+        if (_oAuthMyAnimeListHttpClient != null && !forceOverride) 
+            return;
+        
+        _oAuthMyAnimeListHttpClient = HttpClientFactory.Create();
+        _oAuthMyAnimeListHttpClient.DefaultRequestHeaders.Accept.Clear();
+        _oAuthMyAnimeListHttpClient.BaseAddress = new Uri(MyAnimeListConstants.APIUrl);
+
     }
     
     private static async Task GenerateToken()
@@ -50,11 +57,8 @@ public class OAuth
         _codeChallenge = _codeVerifier;
 
         if (_oAuthMyAnimeListHttpClient == null)
-        {
-            _oAuthMyAnimeListHttpClient = HttpClientFactory.Create();
-            _oAuthMyAnimeListHttpClient.DefaultRequestHeaders.Accept.Clear();
-            _oAuthMyAnimeListHttpClient.BaseAddress = new Uri(MyAnimeListConstants.APIUrl);
-        }
+            CreateClient();
+
 
         if (_authHttpListener == null)
         {
@@ -119,12 +123,6 @@ public class OAuth
         SaveTokenToFile();
     }
 
-    public static void Login()
-    {
-        // determines when to refresh the token or generate a new one
-    }
-
-
     /// <summary>
     ///     Exchanging authorization code for refresh and access tokens
     /// </summary>
@@ -137,12 +135,13 @@ public class OAuth
         if (_oAuthMyAnimeListHttpClient == null || _codeVerifier == null) return;
 
         // preparing a http form to get the token type, expires in, access token and refresh token
-        var parameters = new Dictionary<string, string>();
-        parameters.Add("client_id", MyAnimeListConstants.ClientId);
-        /*parameters.Add("client_secret", "");*/
-        parameters.Add("grant_type", "authorization_code");
-        parameters.Add("code", code);
-        parameters.Add("code_verifier", _codeVerifier);
+        var parameters = new Dictionary<string, string>
+        {
+            {"client_id", MyAnimeListConstants.ClientId},
+            {"grant_type", "authorization_code"},
+            {"code", code},
+            {"code_verifier", _codeVerifier}
+        };
 
         using var content = new FormUrlEncodedContent(parameters);
         content.Headers.Clear();
@@ -172,10 +171,12 @@ public class OAuth
         _token = _tokenRefreshInfo.access_token;
 
         var serializer = new XmlSerializer(typeof(AuthorizationResponse));
-        using TextWriter tw = new StreamWriter(FilePath);
-        serializer.Serialize(tw, _tokenRefreshInfo);
 
-        _tokenRefreshInfo = null;
+        using (TextWriter sw = new StreamWriter(FilePath))
+        {
+            serializer.Serialize(sw, _tokenRefreshInfo);
+            sw.Close();
+        }
 
 #if DEBUG
         Console.WriteLine("Token successfully saved to file");
@@ -186,17 +187,28 @@ public class OAuth
     ///     Reads an object instance from a xml file. Author: https://www.youtube.com/watch?v=jbwjbbc5PjI
     /// </summary>
     /// <returns>Returns a new instance of the object read from the xml file.</returns>
-    private static bool LoadTokenFromFile()
+    private static async Task<bool> LoadTokenFromFile()
     {
         if (!File.Exists(FilePath))
             return false;
-        
+
+        var refreshStatus = true;
         var deserializer = new XmlSerializer(typeof(AuthorizationResponse));
 
         using TextReader tr = new StreamReader(FilePath);
-        _tokenRefreshInfo = (AuthorizationResponse) deserializer.Deserialize(tr);
-        _token = _tokenRefreshInfo.access_token;
+        _tokenRefreshInfo = (AuthorizationResponse?) deserializer.Deserialize(tr);
+        tr.Close();
         
+        if (_tokenRefreshInfo == null)
+            return false;
+        
+        if (_tokenRefreshInfo.ExpiresAt <= DateTime.Now)
+            refreshStatus = await RefreshToken();
+
+        if (!refreshStatus)
+            return false;
+        
+        _token = _tokenRefreshInfo.access_token;
         return true;
     }
     
@@ -204,33 +216,40 @@ public class OAuth
     /// <summary>
     ///     Used to refresh the access token for the client
     /// </summary>
-    public static async Task<bool> RefreshToken()
+    private static async Task<bool> RefreshToken()
     {
-        if (_oAuthMyAnimeListHttpClient == null) return false;
+        if (_oAuthMyAnimeListHttpClient == null)
+            CreateClient();
 
-        // loading refresh tokens from file, if loading failed wont refresh
-        LoadTokenFromFile();
+            /*// loading refresh tokens from file, if loading failed wont refresh
+            LoadTokenFromFile();*/
         if (_tokenRefreshInfo == null) return false;
 
         // preparing a http form to get the token type, expires in, access token and refresh token
-        var parameters = new Dictionary<string, string>();
-        parameters.Add("grant_type", "refresh_token");
-        parameters.Add("refresh_token", _tokenRefreshInfo.refresh_token);
+        var parameters = new Dictionary<string, string>
+        {
+            {"client_id", MyAnimeListConstants.ClientId},
+            {"grant_type", "refresh_token"},
+            {"refresh_token", _tokenRefreshInfo.refresh_token}
+        };
 
         using var content = new FormUrlEncodedContent(parameters);
 
         content.Headers.Clear();
         content.Headers.Add("Content-Type", "application/x-www-form-urlencoded");
 
-        var response = await _oAuthMyAnimeListHttpClient.PostAsync("v1/oauth2/token", content);
+        var response = await _oAuthMyAnimeListHttpClient?.PostAsync("v1/oauth2/token", content)!;
 
-        if (response.StatusCode == HttpStatusCode.OK)
-            _tokenRefreshInfo = await response.Content.ReadAsAsync<AuthorizationResponse>();
+        if (response.StatusCode != HttpStatusCode.OK)
+            return false;
+
+        _tokenRefreshInfo = await response.Content.ReadAsAsync<AuthorizationResponse>();
+        _tokenRefreshInfo.ExpiresAt = DateTime.UtcNow.AddSeconds(_tokenRefreshInfo.expires_in);
 
         // saving the new token
         SaveTokenToFile();
+        return true;
 
-        return response.StatusCode == HttpStatusCode.OK;
     }
 
     /// <summary>

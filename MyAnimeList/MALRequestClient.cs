@@ -57,7 +57,14 @@ public static class MALRequestClient
             return await response.Content.ReadAsAsync<T>();
         }
         
-        Debug.WriteLine($"Failure, status code: {response.StatusCode}");
+        Debug.WriteLine($">>> Failure, status code: {response.StatusCode}");
+
+        HttpHeaders headers = response.Headers;
+        if (headers.TryGetValues("WWW-Authenticate", out var values))
+        {
+            Debug.WriteLine($">>> {values.First()}");
+        }      
+
         return default;
     }
 
