@@ -1,4 +1,6 @@
-﻿using MyAnimeList.ResponseObjects.Anime;
+﻿using System.ComponentModel;
+using System.Reflection;
+using MyAnimeList.ResponseObjects.Anime;
 using MyAnimeList.ResponseObjects.General;
 using MyAnimeList.ResponseObjects.Manga;
 using MyAnimeList.ResponseObjects.User.MyAnimeList.ResponseObjects.User;
@@ -103,4 +105,43 @@ public class Util
             _ => "unknown"
         };
     }
+
+    public static string MediaTypeToString(AnimeMediaType? mediaType)
+    {
+        return mediaType switch
+        {
+            AnimeMediaType.Tv => "TV",
+            AnimeMediaType.Ova => "OVA",
+            AnimeMediaType.Movie => "Movie",
+            AnimeMediaType.Special => "Special",
+            AnimeMediaType.Ona => "ONA",
+            AnimeMediaType.Music => "Music",
+            _ => "Unknown"
+        };
+    }
+
+    public static string AiringStatusToString(AnimeAiringStatusEnum? airingStatus)
+    {
+        return airingStatus switch
+        {
+            AnimeAiringStatusEnum.FinishedAiring => "Finished Airing",
+            AnimeAiringStatusEnum.CurrentlyAiring => "Currently Airing",
+            AnimeAiringStatusEnum.NotYetAired => "Not Yet Aired",
+            _ => "Unknown"
+        };
+    }
+    
+    public static string GetEnumDescription(Enum value)
+    {
+        return
+            value
+                .GetType()
+                .GetMember(value.ToString())
+                .FirstOrDefault()
+                ?.GetCustomAttribute<DescriptionAttribute>()
+                ?.Description
+            ?? value.ToString();        
+    }
+    
+    
 }
