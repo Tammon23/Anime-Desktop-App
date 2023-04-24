@@ -17,12 +17,6 @@ public class AnimeSeasonal : MALConnector
     public static async Task<IEnumerable<AnimeSeasonal>> GetSeasonalAnime(int year, SeasonEnum season, int offset = 0, int limit = 100,
         string fields = "")
     {
-        if (!ClientInitialized)
-        {
-            await MALRequestClient.Init();
-            ClientInitialized = true;
-        }
-
         var r = await Anime.GetSeasonalAnime(year, season, offset, limit, fields);
 
         return r == null ? new List<AnimeSeasonal>() : r.Data.Select(node => new AnimeSeasonal(node.Node)).ToList();

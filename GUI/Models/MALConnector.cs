@@ -12,9 +12,7 @@ namespace GUI.Models;
 public class MALConnector
 {
     private static HttpClient _sHttpClient = new();
-    public static bool ClientInitialized;
-    public static bool ClientAuthInitialized;
-
+    
     public MALConnector(Node node)
     {
         ContentNode = node;

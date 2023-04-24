@@ -16,12 +16,6 @@ public class AnimeSearch : MALConnector
     public static async Task<IEnumerable<AnimeSearch>> SearchAsync(string searchString, int offset = 0, int limit = 100,
         string fields = "")
     {
-        if (!ClientInitialized)
-        {
-            await MALRequestClient.Init();
-            ClientInitialized = true;
-        }
-
         var r = await Anime.GetAnime(searchString, fields: fields);
 
         return r == null ? new List<AnimeSearch>() : r.Data.Select(node => new AnimeSearch(node.Node)).ToList();

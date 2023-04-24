@@ -19,12 +19,6 @@ public class AnimeRecommendations : MALConnector
     
     public static async Task<IEnumerable<AnimeRecommendations>> GetRecommendedAsync(int offset = 0, int limit = 100, string fields = "")
     {
-        if (!ClientAuthInitialized)
-        {
-            await MALRequestClient.Init(requireAuthInit:true);
-            ClientAuthInitialized = true;
-        }
-
         var r = await Anime.GetAnimeSuggestions(offset, limit, fields);
 
         return r == null ? new List<AnimeRecommendations>() : r.Data.Select(node => new AnimeRecommendations(node.Node)).ToList();

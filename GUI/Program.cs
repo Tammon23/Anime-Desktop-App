@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Threading.Tasks;
 using Avalonia;
 using Avalonia.ReactiveUI;
+using MyAnimeList;
 
 namespace GUI;
 
@@ -10,8 +12,10 @@ internal class Program
     // SynchronizationContext-reliant code before AppMain is called: things aren't initialized
     // yet and stuff might break.
     [STAThread]
-    public static void Main(string[] args)
+    public static async Task Main(string[] args)
     {
+        await MALRequestClient.Init(requireAuthInit:true);
+
         BuildAvaloniaApp()
             .StartWithClassicDesktopLifetime(args);
     }
