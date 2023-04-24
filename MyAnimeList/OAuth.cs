@@ -202,7 +202,7 @@ public static class OAuth
         if (_tokenRefreshInfo == null)
             return false;
         
-        if (_tokenRefreshInfo.ExpiresAt <= DateTime.Now)
+        if (_tokenRefreshInfo.ExpiresAt <= DateTime.UtcNow)
             refreshStatus = await RefreshToken();
 
         if (!refreshStatus)
@@ -300,12 +300,6 @@ public class AuthorizationResponse
     public string refresh_token { get; set; }
     public DateTime ExpiresAt { get; set; }
     
-    /*[OnDeserialized]
-    private void OnDeserializedMethod(StreamingContext context)
-    {
-        ExpiresAt = DateTime.UtcNow.AddSeconds(expires_in);
-    }*/
-
     public override string ToString()
     {
         return $"{token_type}, {expires_in}, {access_token}, {refresh_token}";
