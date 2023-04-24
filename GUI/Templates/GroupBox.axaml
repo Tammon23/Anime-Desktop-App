@@ -58,13 +58,20 @@
 
     <!-- Add Styles Here -->
     <Style Selector="HeaderedContentControl.Style1">
-        <Setter Property="Background" Value="LightGray" />
+        <Setter Property="Background" Value="Transparent" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate>
                     <StackPanel>
-                        <ContentPresenter TextBlock.FontWeight="Bold" Content="{TemplateBinding Header}"/>
-                        <ContentPresenter Padding="5" Content="{TemplateBinding Content}" CornerRadius="3" Background="{TemplateBinding Background}"/>
+                        <ContentPresenter TextBlock.FontWeight="Bold" 
+                                          Content="{TemplateBinding Header}" 
+                                          Margin="0 0 0 5" 
+                                          TextBlock.FontSize="{StaticResource FontSizeMedium}"/>
+                        <ContentPresenter Padding="5" 
+                                          Content="{TemplateBinding Content}" 
+                                          CornerRadius="3" 
+                                          Background="{TemplateBinding Background}"
+                                          TextBlock.FontSize="{StaticResource FontSizeNormal}"/>
                     </StackPanel>
                 </ControlTemplate>
             </Setter.Value>
