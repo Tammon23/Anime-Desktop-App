@@ -32,4 +32,31 @@
         <Setter Property="Width" Value="210" />
         <Setter Property="Height" Value="300" />
     </Style>
+    
+    
+    <!--Timetable card repeater-->
+    <Style Selector="Button.CardRepeaterTimetable">
+        <Setter Property="Padding" Value="5 0"/>
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="MaxWidth" Value="230" />
+        <Setter Property="Margin" Value="0 0 0 10"/>
+    </Style>
+    
+    <Style Selector="Button.CardRepeaterTimetable > StackPanel">
+        <Setter Property="Margin" Value="2.5 0" />
+    </Style>
+
+    <Style Selector="Button.CardRepeaterTimetable > StackPanel > TextBlock">
+        <Setter Property="TextTrimming" Value="CharacterEllipsis" />
+        <Setter Property="HorizontalAlignment" Value="Center" />
+        <Setter Property="FontSize" Value="{DynamicResource FontSizeNormal}" />
+        <Setter Property="Margin" Value="0 7 0 0" />
+    </Style>
+
+    <Style Selector="Button.CardRepeaterTimetable > StackPanel > Image">
+        <Setter Property="Width" Value="210" />
+        <Setter Property="Height" Value="300" />
+        <Setter Property="Margin" Value="0 3 "/>
+    </Style>
 </Styles>
