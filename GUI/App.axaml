@@ -2,7 +2,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="using:GUI"
              xmlns:system="clr-namespace:System;assembly=System.Runtime"
-             xmlns:controls="clr-namespace:GUI.Templates"
+             xmlns:lcc="clr-namespace:LiveChartsCore.SkiaSharpView.Painting;assembly=LiveChartsCore.SkiaSharpView"
              x:Class="GUI.App">
     <Application.DataTemplates>
         <local:ViewLocator />
@@ -15,30 +15,71 @@
         <StyleInclude Source="/ContentCardStyles.axaml" />
         
         <StyleInclude Source="/BetterVLC/VLCStyle.axaml"/>
+
+        <Style Selector="TextBlock">
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
         
-        <!--<StyleInclude Source="avares://Citrus.Avalonia/Citrus.xaml"/> --><!--https://github.com/AvaloniaUI/Citrus.Avalonia-->
-        <!--<Style Selector="controls|SidePanelPageButton[IsChecked=True] Panel.eee">
-            <Setter Property="Background" Value="Red"></Setter>
-        </Style>-->
+        <Style Selector="Button">
+            <Setter Property="FontSize" Value="20"/>
+        </Style>
+        
+        <!--https://github.com/AvaloniaUI/Citrus.Avalonia-->
+        <!--<StyleInclude Source="avares://Citrus.Avalonia/Candy.xaml"/> -->
+        <StyleInclude Source="/Themes/OceanDark.axaml"/> 
+        
     </Application.Styles>
 
 
     <Application.Resources>
-        <SolidColorBrush x:Key="ForegroundBaseBrush">#696969</SolidColorBrush>
-        <SolidColorBrush x:Key="BackgroundBaseBrush">White</SolidColorBrush>
+        <Color x:Key="BackgroundBase">#181D31</Color>
+        <lcc:SolidColorPaint x:Key="BackgroundBaseLiveCharts" Color="#181D31"/>
+        <Color x:Key="BackgroundAccent">#678983</Color>
+        <Color x:Key="BackgroundAccent2">#405552</Color>
+        <Color x:Key="BackgroundAccent3">#78a19a</Color>
+        <Color x:Key="BackgroundAccent4">#94c7be</Color>
+        <Color x:Key="ForegroundBase">#E6DDC4</Color>
+        <lcc:SolidColorPaint x:Key="ForegroundBaseLiveCharts" Color="#E6DDC4"/>
+        <Color x:Key="ForegroundAccent">#F0E9D2</Color>
+        <Color x:Key="ForegroundAccent2">#69685c</Color>
+        <Color x:Key="HoverBase">#83afa7</Color>
+        <Color x:Key="HoverBase2">#3c497d</Color>
+        <Color x:Key="PointOverBase">#9fd5cb</Color>
+        <Color x:Key="PointOverAccent">#5c7b76</Color>
+        <Color x:Key="DisabledBase">#8c8c8c</Color>
+        
+        <SolidColorBrush x:Key="SystemTransparent" Color="Transparent"/>
+        <SolidColorBrush x:Key="BackgroundBaseBrush" Color="{DynamicResource BackgroundBase}"/>
+        <SolidColorBrush x:Key="BackgroundAccentBrush" Color="{DynamicResource BackgroundAccent}"/>
+        <SolidColorBrush x:Key="BackgroundAccentBrush2" Color="{DynamicResource BackgroundAccent2}"/>
+        <SolidColorBrush x:Key="BackgroundAccentBrush3" Color="{DynamicResource BackgroundAccent3}"/>
+        <SolidColorBrush x:Key="BackgroundAccentBrush4" Color="{DynamicResource BackgroundAccent4}"/>
+        <SolidColorBrush x:Key="ForegroundBaseBrush" Color="{DynamicResource ForegroundBase}"/>
+        <SolidColorBrush x:Key="ForegroundAccentBrush" Color="{DynamicResource ForegroundAccent}"/>
+        <SolidColorBrush x:Key="ForegroundAccentBrush2" Color="{DynamicResource ForegroundAccent2}"/>
+        
+        <SolidColorBrush x:Key="HoverBaseBrush" Color="{DynamicResource HoverBase}"/>
+        <SolidColorBrush x:Key="HoverBaseBrush2" Color="{DynamicResource HoverBase2}"/>
+        
+        <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="{DynamicResource DisabledBase}"/>
+        <SolidColorBrush x:Key="PointOverBaseBrush" Color="{DynamicResource PointOverBase}"/>
+        <SolidColorBrush x:Key="PointOverAccentBrush" Color="{DynamicResource PointOverAccent}"/>
+        
+        <SolidColorBrush x:Key="CheckBoxBackgroundDisabled" Color="{DynamicResource DisabledBase}"/>
+
+        
         <SolidColorBrush x:Key="ButtonHoverPressedBrush">#e6e6e6</SolidColorBrush>
 
-        <SolidColorBrush x:Key="ForegroundBaseFontLightModeBrush">Black</SolidColorBrush>
-        <SolidColorBrush x:Key="ForegroundBaseFontDarkModeBrush">White</SolidColorBrush>
+        <!--<SolidColorBrush x:Key="ForegroundBaseFontLightModeBrush">Black</SolidColorBrush>
+        <SolidColorBrush x:Key="ForegroundBaseFontDarkModeBrush">White</SolidColorBrush>-->
 
         <system:Int32 x:Key="DefaultIconSize">20</system:Int32>
 
         <system:Double x:Key="FontSizeLarge">42</system:Double>
+        <system:Double x:Key="FontSizeBig">30</system:Double>
+        <system:Double x:Key="FontSizeMedium">25</system:Double>
         <system:Double x:Key="FontSizeNormal">20</system:Double>
         <system:Double x:Key="FontSizeSmall">12</system:Double>
-        
-        <system:String x:Key="NotUsedDefaultString">/Assets/Player/Play.png</system:String>
-        
         
     </Application.Resources>
 </Application>
