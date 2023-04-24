@@ -3,93 +3,40 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
-        <entry key="AnimeViewer/App.axaml" value="AnimeViewer/AnimeViewer.csproj" />
-        <entry key="AnimeViewer/Icons.axaml" value="AnimeViewer/AnimeViewer.csproj" />
-        <entry key="AnimeViewer/Pages/ContentDetails.axaml" value="AnimeViewer/AnimeViewer.csproj" />
-        <entry key="AnimeViewer/Styles.axaml" value="AnimeViewer/AnimeViewer.csproj" />
-        <entry key="AnimeViewer/Views/AnimeSearchView.axaml" value="AnimeViewer/AnimeViewer.csproj" />
-        <entry key="AnimeViewer/Views/MainWindow.axaml" value="AnimeViewer/AnimeViewer.csproj" />
-        <entry key="AnimeViewer/Views/Tabinator.axaml" value="AnimeViewer/AnimeViewer.csproj" />
-        <entry key="AnimeViewer2/App.axaml" value="AnimeViewer2/AnimeViewer2.csproj" />
-        <entry key="Avalonia.AnimeViewer/App.axaml" value="Avalonia.AnimeViewer/Avalonia.AnimeViewer.csproj" />
-        <entry key="Avalonia.AnimeViewer/Icons.axaml" value="Avalonia.AnimeViewer/Avalonia.AnimeViewer.csproj" />
-        <entry key="Avalonia.AnimeViewer/Pages/AnimeDetails.axaml" value="Avalonia.AnimeViewer/Avalonia.AnimeViewer.csproj" />
-        <entry key="Avalonia.AnimeViewer/Pages/ContentDetails.axaml" value="Avalonia.AnimeViewer/Avalonia.AnimeViewer.csproj" />
-        <entry key="Avalonia.AnimeViewer/Styles.axaml" value="Avalonia.AnimeViewer/Avalonia.AnimeViewer.csproj" />
-        <entry key="Avalonia.AnimeViewer/Views/AnimeSearchViedw.axaml" value="Avalonia.AnimeViewer/Avalonia.AnimeViewer.csproj" />
-        <entry key="Avalonia.AnimeViewer/Views/AnimeSearchView.axaml" value="Avalonia.AnimeViewer/Avalonia.AnimeViewer.csproj" />
-        <entry key="Avalonia.AnimeViewer/Views/MainWindow.axaml" value="Avalonia.AnimeViewer/Avalonia.AnimeViewer.csproj" />
-        <entry key="Avalonia.AnimeViewer/Views/Tabinator.axaml" value="Avalonia.AnimeViewer/Avalonia.AnimeViewer.csproj" />
-        <entry key="EmbededExample/App.axaml" value="EmbededExample/EmbededExample.csproj" />
-        <entry key="EmbededExample/Views/MainWindow.axaml" value="EmbededExample/EmbededExample.csproj" />
         <entry key="GUI/App.axaml" value="GUI/GUI.csproj" />
-        <entry key="GUI/BetterVLC/VLCStyle.axaml" value="GUI/GUI.csproj" />
-        <entry key="GUI/ColourThemes/DarkTheme.axaml" value="GUI/GUI.csproj" />
-        <entry key="GUI/ColourThemes/LightTheme.axaml" value="GUI/GUI.csproj" />
         <entry key="GUI/ContentCardStyles.axaml" value="GUI/GUI.csproj" />
         <entry key="GUI/FontStyles.axaml" value="GUI/GUI.csproj" />
-        <entry key="GUI/Templates/BetterGroupBox.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Styles.axaml" value="GUI/GUI.csproj" />
         <entry key="GUI/Templates/GroupBox.axaml" value="GUI/GUI.csproj" />
         <entry key="GUI/Templates/SidePanelPageButton.axaml" value="GUI/GUI.csproj" />
-        <entry key="GUI/Templates/SidePanelPages.axaml" value="GUI/GUI.csproj" />
-        <entry key="GUI/Templates/ee.axaml" value="GUI/GUI.csproj" />
-        <entry key="GUI/ViewModels/PlayerControls.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Templates/SidePanelRadioButton.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Themes/ControlThemes/ButtonStyles.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Themes/ControlThemes/CheckBoxStyles.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Themes/ControlThemes/ComboBoxItemStyles.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Themes/ControlThemes/ComboBoxStyles.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Themes/ControlThemes/Index.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Themes/ControlThemes/ProgressBarStyles.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Themes/ControlThemes/SidePanelPageButtonStyles.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Themes/ControlThemes/SplitViewStyles.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Themes/ControlThemes/TextBlockStyles.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Themes/ControlThemes/ToggleButtonStyles.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Themes/ControlThemes/ToolTipStyles.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Themes/DarkSimple.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Themes/OceanDark.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Themes/Palette/DarkSimplePalette.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Themes/Palette/OceanDarkPalette.axaml" value="GUI/GUI.csproj" />
         <entry key="GUI/Views/AnimeDetailsView.axaml" value="GUI/GUI.csproj" />
-        <entry key="GUI/Views/CalenderPageView.axaml" value="GUI/GUI.csproj" />
-        <entry key="GUI/Views/CalenderPageViewModel.axaml" value="GUI/GUI.csproj" />
-        <entry key="GUI/Views/FirstView.axaml" value="GUI/GUI.csproj" />
-        <entry key="GUI/Views/GroupBox.axaml" value="GUI/GUI.csproj" />
         <entry key="GUI/Views/HomePageView.axaml" value="GUI/GUI.csproj" />
         <entry key="GUI/Views/MainWindow.axaml" value="GUI/GUI.csproj" />
         <entry key="GUI/Views/ProfilePageView.axaml" value="GUI/GUI.csproj" />
         <entry key="GUI/Views/RecommendationsPageView.axaml" value="GUI/GUI.csproj" />
         <entry key="GUI/Views/SearchPageView.axaml" value="GUI/GUI.csproj" />
-        <entry key="GUI/Views/SeasonalAnimePage.axaml" value="GUI/GUI.csproj" />
         <entry key="GUI/Views/SeasonalAnimePageView.axaml" value="GUI/GUI.csproj" />
-        <entry key="GUI/Views/SecondView.axaml" value="GUI/GUI.csproj" />
         <entry key="GUI/Views/SettingsPageView.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Views/SettingsViews/SettingsGeneralView.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Views/SettingsViews/SettingsOtherView.axaml" value="GUI/GUI.csproj" />
+        <entry key="GUI/Views/TimetablePageView.axaml" value="GUI/GUI.csproj" />
         <entry key="GUI/Views/WatchPageView.axaml" value="GUI/GUI.csproj" />
-        <entry key="LibVLCSharp.Avalonia/App.axaml" value="LibVLCSharp.Avalonia/LibVLCSharp.Avalonia.csproj" />
-        <entry key="LibVLCSharp.Avalonia/Styles.xaml" value="LibVLCSharp.Avalonia/LibVLCSharp.Avalonia.csproj" />
-        <entry key="LibVLCSharp.Avalonia/Views/MainWindow.axaml" value="LibVLCSharp.Avalonia/LibVLCSharp.Avalonia.csproj" />
-        <entry key="TodoSampleApp/Views/MainWindow.axaml" value="TodoSampleApp/TodoSampleApp.csproj" />
-        <entry key="TodoSampleApp/Views/TodoListView.axaml" value="TodoSampleApp/TodoSampleApp.csproj" />
-        <entry key="UIManager/App.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Icons.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/MainView.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/MainWindow.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Pages/AnimeListPage.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Pages/BoarderTemplate.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Pages/DialogsPage.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Pages/SeasonalAnimePage.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Pages/SliderPage.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/SideBar.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Styles.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Views/AnimeDetailsPageView.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Views/AnimeInfoPageView.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Views/AnimeListPageView.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Views/ContentCardVie.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Views/ContentCardView.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Views/MainView.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Views/MainWindow.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Views/MediaPageView.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Views/Notification.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Views/NotificationView.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Views/PlayerControl.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Views/PlayerControls.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Views/SeasonalAnimePage.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Views/SeasonalAnimePageView.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Views/SliderPageView.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="UIManager/Views/StatusBarView.axaml" value="UIManager/UIManager.csproj" />
-        <entry key="VideoRenderer/App.axaml" value="VideoRenderer/VideoRenderer.csproj" />
-        <entry key="VideoRenderer/Example1.axaml" value="VideoRenderer/VideoRenderer.csproj" />
-        <entry key="VideoRenderer/Example2.axaml" value="VideoRenderer/VideoRenderer.csproj" />
-        <entry key="VideoRenderer/LibVLCSharp.Avalonia/Styles.xaml" value="VideoRenderer/VideoRenderer.csproj" />
-        <entry key="VideoRenderer/Styles.axaml" value="VideoRenderer/VideoRenderer.csproj" />
-        <entry key="VideoRenderer/Styles.xaml" value="VideoRenderer/VideoRenderer.csproj" />
-        <entry key="VideoRenderer/Views/Example1.axaml" value="VideoRenderer/VideoRenderer.csproj" />
-        <entry key="VideoRenderer/Views/Example2.axaml" value="VideoRenderer/VideoRenderer.csproj" />
-        <entry key="VideoRenderer/Views/MainWindow.axaml" value="VideoRenderer/VideoRenderer.csproj" />
       </map>
     </option>
   </component>
