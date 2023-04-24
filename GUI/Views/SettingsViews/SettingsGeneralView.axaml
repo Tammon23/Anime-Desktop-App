@@ -1,0 +1,21 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="GUI.Views.SettingsViews.SettingsGeneralView">
+
+    <DockPanel>
+        <TextBlock DockPanel.Dock="Top" Text="General Settings"/>
+        <Separator DockPanel.Dock="Top" Height="1" Background="Black" />
+        <Grid DockPanel.Dock="Top" ColumnDefinitions="Auto Auto">
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Choose Style: "/>
+            <ComboBox Grid.Row="0" Grid.Column="1" x:Name="Themes" SelectedIndex="0" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                <!--<ComboBoxItem>Light</ComboBoxItem>
+                <ComboBoxItem>Dark</ComboBoxItem>-->
+                <ComboBoxItem>OceanDark</ComboBoxItem>
+                <ComboBoxItem>DarkSimple</ComboBoxItem>
+            </ComboBox>
+        </Grid>
+    </DockPanel>
+</UserControl>
