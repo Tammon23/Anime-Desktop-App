@@ -1,0 +1,26 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style Selector="Button">
+        <Setter Property="Foreground" Value="{DynamicResource ForegroundBaseBrush}" />
+        <Setter Property="Background" Value="{DynamicResource BackgroundAccentBrush2}"/>
+    </Style>
+    
+    <Style Selector="Button:pointerover /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource BackgroundBaseBrush}" />
+        <Setter Property="Background" Value="{DynamicResource HoverBaseBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource HoverBaseBrush}" />
+    </Style>
+    
+    <Style Selector="Button:pressed  /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource PointOverBaseBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource PointOverBaseBrush}" />
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource BackgroundBaseBrush}" />
+    </Style>
+    
+    <Style Selector="Button:disabled /template/ ContentPresenter#PART_ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource ButtonBackgroundDisabled}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource ButtonBackgroundDisabled}" />
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource ForegroundBaseBrush}" />
+    </Style>
+</Styles>

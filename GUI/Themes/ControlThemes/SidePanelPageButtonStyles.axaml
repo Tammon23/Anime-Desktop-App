@@ -1,0 +1,14 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:templates="clr-namespace:GUI.Templates">
+        
+        <Style Selector="templates|SidePanelPageButton:checked /template/ Rectangle#Bar">
+                <Setter Property="Stroke" Value="{DynamicResource BackgroundBaseBrush}" />
+                <Setter Property="Fill" Value="{DynamicResource BackgroundBaseBrush}" />
+        </Style>
+        
+        <Style Selector="templates|SidePanelPageButton:pointerover /template/ Rectangle#Bar">
+                <Setter Property="Stroke" Value="{DynamicResource BackgroundAccentBrush}" />
+                <Setter Property="Fill" Value="{DynamicResource BackgroundAccentBrush}" />
+        </Style>
+</Styles>

@@ -1,0 +1,57 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Design.PreviewWith>
+        <Border Padding="20 20 20 200" Background="{DynamicResource BackgroundBaseBrush}">
+            <StackPanel Spacing="20">
+                <ComboBox SelectedIndex="0">
+                    <ComboBoxItem Content="Test1"/>
+                    <ComboBoxItem Content="Test2"/>
+                    <ComboBoxItem Content="Test3"/>
+                    <ComboBoxItem Content="Test4"/>
+                </ComboBox>        
+                <TextBlock Text="Sample Text 1"/>
+                <TextBlock Text="Sample Text 2"/>
+                <TextBlock Text="Sample Text 3"/>
+                <TextBlock Text="Sample Text 4"/>
+            </StackPanel>
+        </Border>
+    </Design.PreviewWith>
+
+    <Style Selector="ComboBoxItem">
+        <Setter Property="Background" Value="{DynamicResource BackgroundAccentBrush2}"/>
+        <Setter Property="Padding" Value="10 0 0 0"/>
+    </Style>
+    
+    <!--  PointerOver state  -->
+    <Style Selector="ComboBoxItem:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource BackgroundAccentBrush3}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BackgroundAccentBrush3}" />
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource ForegroundBaseBrush}" />
+    </Style>
+    
+    <!--  Selected PointerOver state  -->
+    <Style Selector="ComboBoxItem:selected:pointerover /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource BackgroundBaseBrush}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BackgroundBaseBrush}" />
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource ForegroundBaseBrush}" />
+    </Style>
+    
+    <!--  Selected state  -->
+    <Style Selector="ComboBoxItem:selected /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource BackgroundAccent}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BackgroundAccent}" />
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource ForegroundBaseBrush}" />
+    </Style>
+    
+    <!--  Pressed state  -->
+    <Style Selector="ComboBoxItem:pressed /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource BackgroundAccentBrush4}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BackgroundAccentBrush4}" />
+        <Setter Property="TextBlock.Foreground" Value="{DynamicResource ForegroundAccent2}" />
+    </Style>
+    <Style Selector="ComboBoxItem:selected:pressed /template/ ContentPresenter">
+        <Setter Property="Background" Value="{DynamicResource BackgroundAccentBrush4}" />
+        <Setter Property="BorderBrush" Value="{DynamicResource BackgroundAccentBrush4}" />
+        <Setter Property="TextBlock.Foreground" Value="Black" />
+    </Style>
+</Styles>

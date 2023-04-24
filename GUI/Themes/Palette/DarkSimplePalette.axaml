@@ -1,0 +1,15 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+        <Styles.Resources>
+                <Color x:Key="BackgroundBase">Black</Color>
+                <Color x:Key="BackgroundAccent">#3b3f44</Color>
+                <Color x:Key="ForegroundBase">White</Color>
+                <Color x:Key="ForegroundAccent">#686f77</Color>
+
+                <SolidColorBrush x:Key="BackgroundBaseBrush" Color="{DynamicResource BackgroundBase}"/>
+                <SolidColorBrush x:Key="BackgroundAccentBrush" Color="{DynamicResource BackgroundAccent}"/>
+                <SolidColorBrush x:Key="ForegroundBaseBrush" Color="{DynamicResource ForegroundBase}"/>
+                <SolidColorBrush x:Key="ForegroundAccentBrush" Color="{DynamicResource ForegroundAccent}"/>
+        </Styles.Resources>
+</Styles>

@@ -1,0 +1,14 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+        
+        <StyleInclude Source="avares://GUI/Themes/ControlThemes/TextBlockStyles.axaml"/>
+        <StyleInclude Source="avares://GUI/Themes/ControlThemes/SplitViewStyles.axaml"/>
+        <StyleInclude Source="avares://GUI/Themes/ControlThemes/ButtonStyles.axaml"/>
+        <StyleInclude Source="avares://GUI/Themes/ControlThemes/ToggleButtonStyles.axaml"/>
+        <StyleInclude Source="avares://GUI/Themes/ControlThemes/ProgressBarStyles.axaml"/>
+        <StyleInclude Source="avares://GUI/Themes/ControlThemes/ToolTipStyles.axaml"/>
+        <StyleInclude Source="avares://GUI/Themes/ControlThemes/CheckBoxStyles.axaml"/>
+        <StyleInclude Source="avares://GUI/Themes/ControlThemes/ComboBoxStyles.axaml"/>
+        <StyleInclude Source="avares://GUI/Themes/ControlThemes/ComboBoxItemStyles.axaml"/>
+        <StyleInclude Source="avares://GUI/Themes/ControlThemes/SidePanelPageButtonStyles.axaml"/>
+</Styles>

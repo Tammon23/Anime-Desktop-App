@@ -1,0 +1,39 @@
+﻿<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    
+    <Styles.Resources>
+        <Color x:Key="BackgroundBase">#181D31</Color>
+        <Color x:Key="BackgroundAccent">#678983</Color>
+        <Color x:Key="BackgroundAccent2">#405552</Color>
+        <Color x:Key="BackgroundAccent3">#78a19a</Color>
+        <Color x:Key="BackgroundAccent4">#94c7be</Color>
+        <Color x:Key="ForegroundBase">#E6DDC4</Color>
+        <Color x:Key="ForegroundAccent">#F0E9D2</Color>
+        <Color x:Key="ForegroundAccent2">#69685c</Color>
+        <Color x:Key="HoverBase">#83afa7</Color>
+        <Color x:Key="HoverBase2">#3c497d</Color>
+        <Color x:Key="PointOverBase">#9fd5cb</Color>
+        <Color x:Key="PointOverAccent">#5c7b76</Color>
+        <Color x:Key="DisabledBase">#8c8c8c</Color>
+        
+        <SolidColorBrush x:Key="SystemTransparent" Color="Transparent"/>
+        <SolidColorBrush x:Key="BackgroundBaseBrush" Color="{DynamicResource BackgroundBase}"/>
+        <SolidColorBrush x:Key="BackgroundAccentBrush" Color="{DynamicResource BackgroundAccent}"/>
+        <SolidColorBrush x:Key="BackgroundAccentBrush2" Color="{DynamicResource BackgroundAccent2}"/>
+        <SolidColorBrush x:Key="BackgroundAccentBrush3" Color="{DynamicResource BackgroundAccent3}"/>
+        <SolidColorBrush x:Key="BackgroundAccentBrush4" Color="{DynamicResource BackgroundAccent4}"/>
+        <SolidColorBrush x:Key="ForegroundBaseBrush" Color="{DynamicResource ForegroundBase}"/>
+        <SolidColorBrush x:Key="ForegroundAccentBrush" Color="{DynamicResource ForegroundAccent}"/>
+        <SolidColorBrush x:Key="ForegroundAccentBrush2" Color="{DynamicResource ForegroundAccent2}"/>
+        
+        <SolidColorBrush x:Key="HoverBaseBrush" Color="{DynamicResource HoverBase}"/>
+        <SolidColorBrush x:Key="HoverBaseBrush2" Color="{DynamicResource HoverBase2}"/>
+        
+        <SolidColorBrush x:Key="ButtonBackgroundDisabled" Color="{DynamicResource DisabledBase}"/>
+        <SolidColorBrush x:Key="PointOverBaseBrush" Color="{DynamicResource PointOverBase}"/>
+        <SolidColorBrush x:Key="PointOverAccentBrush" Color="{DynamicResource PointOverAccent}"/>
+        
+        <SolidColorBrush x:Key="CheckBoxBackgroundDisabled" Color="{DynamicResource DisabledBase}"/>
+        <SolidColorBrush x:Key="ComboBoxDropDownBackground" Color="{DynamicResource BackgroundAccent2}"/>
+    </Styles.Resources>
+</Styles>
