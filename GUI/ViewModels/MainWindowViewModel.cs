@@ -6,12 +6,14 @@ using ReactiveUI;
 
 namespace GUI.ViewModels;
 
-public class MainWindowViewModel : ViewModelBase, IReactiveObject, IAdvancedScreen
+public class MainWindowViewModel : ViewModelBase, IAdvancedScreen
 {
     private string _searchBoxText = "";
 
     public MainWindowViewModel()
     {
+        Router.Navigate.Execute(new HomePageViewModel(this));
+        
         // to use the search bar in multiple view models we create an observable that 
         // watches when the value bound to the text property is changed this being an IObservable<string>
         // we can then pass this observable where needed and bound it using the "^" in the axaml

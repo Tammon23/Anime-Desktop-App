@@ -10,21 +10,23 @@
         <vm:SeasonalAnimePageViewModel />
     </Design.DataContext>
 
-    <Grid RowDefinitions="Auto,*">
-        <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0 0 0 10 ">
+    <Grid RowDefinitions="Auto Auto *">
+        <TextBlock Grid.Row="0" Text="Seasonal Anime Page" FontSize="{StaticResource FontSizeMedium}"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="0 0 0 10 ">
             
             <ComboBox SelectedIndex="{Binding SelectedSeason}">
                 <ComboBoxItem>
-                    <TextBlock Text="Winter" ToolTip.Tip="January, February, March" Margin="10 0"/>
+                    <TextBlock Text="Winter" ToolTip.Tip="January, February, March" Padding="10 0"/>
                 </ComboBoxItem>
                 <ComboBoxItem>
-                    <TextBlock Text="Spring" ToolTip.Tip="April, May, June" Margin="10 0"/>
+                    <TextBlock Text="Spring" ToolTip.Tip="April, May, June" Padding="10 0"/>
                 </ComboBoxItem>
                 <ComboBoxItem>
-                    <TextBlock Text="Summer" ToolTip.Tip="July, August, September" Margin="10 0"/>
+                    <TextBlock Text="Summer" ToolTip.Tip="July, August, September" Padding="10 0"/>
                 </ComboBoxItem>
                 <ComboBoxItem>
-                    <TextBlock Text="Fall" ToolTip.Tip="October, November, December" Margin="10 0"/>
+                    <TextBlock Text="Fall" ToolTip.Tip="October, November, December" Padding="10 0"/>
                 </ComboBoxItem>
             </ComboBox>
             
@@ -35,7 +37,7 @@
                            Maximum="{Binding MaximumYear}" 
                            Margin="10 0 0 0 "/>
         </StackPanel>
-        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Visible" IsVisible="{Binding QueriedAnimeSeasonal.Count}">
+        <ScrollViewer Grid.Row="2" VerticalScrollBarVisibility="Visible" IsVisible="{Binding QueriedAnimeSeasonal.Count}">
             <ItemsRepeater Items="{Binding QueriedAnimeSeasonal}">
                 <ItemsRepeater.ItemTemplate>
                     <DataTemplate DataType="{x:Type models:NodePresentation}">

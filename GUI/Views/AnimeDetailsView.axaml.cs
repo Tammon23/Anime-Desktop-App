@@ -9,24 +9,29 @@ namespace GUI.Views;
 public class AnimeDetailsView : ReactiveUserControl<AnimeDetailsViewModel>
 {
 
-    private Button _left;
-    private Button _right;
+    private Button _back;
+    private Button _forward;
     private Carousel _carousel;
     public AnimeDetailsView()
     {
         InitializeComponent();
 
-        _carousel = this.Get<Carousel>("Carousel");
-        _left = this.Get<Button>("Left");
-        _right = this.Get<Button>("Right");
+        _carousel = this.Get<Carousel>("CarouselAnimeImages");
+        _back = this.Get<Button>("ButtonBackCarouselAnimeImages");
+        _forward = this.Get<Button>("ButtonForwardCarouselAnimeImages");
         
-        _left.Click += (_, _) => _carousel.Previous();
-        _right.Click += (_, _) => _carousel.Next();
+        _back.Click += (_, _) => _carousel.Previous();
+        _forward.Click += (_, _) => _carousel.Next();
     }
 
     private void InitializeComponent()
     {
         this.WhenActivated(_ => { });
         AvaloniaXamlLoader.Load(this);
+    }
+
+    private void Spinner_OnSpin(object? sender, SpinEventArgs e)
+    {
+        throw new System.NotImplementedException();
     }
 }

@@ -10,8 +10,10 @@
         <vm:SearchPageViewModel />
     </Design.DataContext>
     <DockPanel>
-        <ProgressBar IsIndeterminate="True" IsEnabled="{Binding IsBusy}" Height="5" DockPanel.Dock="Top"
+        <ProgressBar IsIndeterminate="True" IsEnabled="{Binding IsBusy}" DockPanel.Dock="Top"
                      IsVisible="{Binding IsBusy}" />
+        <TextBlock Text="Search Page Page" FontSize="{StaticResource FontSizeMedium}" DockPanel.Dock="Top"/>
+
         <ScrollViewer VerticalScrollBarVisibility="Auto" IsVisible="{Binding AnimeSearchResult.Count}">
             <ItemsRepeater Items="{Binding AnimeSearchResult}">
                 <ItemsRepeater.ItemTemplate>

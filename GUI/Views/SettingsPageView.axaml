@@ -3,14 +3,43 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:GUI.ViewModels"
+             xmlns:rxui="http://reactiveui.net"
+             xmlns:gui="clr-namespace:GUI"
+             xmlns:templates="clr-namespace:GUI.Templates"
+
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="GUI.Views.SettingsPageView">
     <Design.DataContext>
         <vm:SettingsPageViewModel />
     </Design.DataContext>
 
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="Hi, this is the settings page view" Foreground="White" />
-        <TextBlock Text="{Binding UrlPathSegment}" Foreground="White" />
-    </StackPanel>
+    <!--<StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Text="Hi, this is the settings page view" Foreground="Black" />
+        <TextBlock Text="{Binding UrlPathSegment}" Foreground="Black" />
+    </StackPanel>-->
+    <DockPanel>
+        <Grid>
+            
+        </Grid>
+        <SplitView IsPaneOpen="True" DisplayMode="CompactInline" OpenPaneLength="296" CompactPaneLength="55">
+            <SplitView.Pane>
+                <StackPanel Orientation="Vertical" Spacing="0">
+                    <templates:SidePanelPageButton DockPanel.Dock="Top" Content="General"
+                                                   Command="{Binding GoSettingsGeneralPage}"
+                                                   GroupName="ChangeSettingsGroup"
+                                                   IsChecked="True"
+                                                   IconSize="0"/>
+                    <templates:SidePanelPageButton DockPanel.Dock="Top" Content="Other"
+                                                   Command="{Binding GoSettingsOtherPage}"
+                                                   GroupName="ChangeSettingsGroup"
+                                                   IconSize="0"/>
+                </StackPanel>
+            </SplitView.Pane>
+            <rxui:RoutedViewHost Router="{Binding Router}" PageTransition="{x:Null}">
+                <rxui:RoutedViewHost.ViewLocator>
+                    <gui:AppViewLocator/>
+                </rxui:RoutedViewHost.ViewLocator>
+            </rxui:RoutedViewHost>
+        </SplitView>
+    </DockPanel> 
 </UserControl>

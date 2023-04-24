@@ -10,8 +10,9 @@
         <vm:RecommendationsPageViewModel />
     </Design.DataContext>
 
-    <Panel>
-        <ScrollViewer VerticalScrollBarVisibility="Auto" IsVisible="{Binding QueriedAnimeRecommendations.Count}">
+    <Grid RowDefinitions="Auto *">
+        <TextBlock Grid.Row="0" Text="Recommendations Page" FontSize="{StaticResource FontSizeMedium}"/>
+        <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" IsVisible="{Binding QueriedAnimeRecommendations.Count}">
             <ItemsRepeater Items="{Binding QueriedAnimeRecommendations}">
                 <ItemsRepeater.ItemTemplate>
                     <DataTemplate DataType="{x:Type models:NodePresentation}">
@@ -28,9 +29,9 @@
                 </ItemsRepeater.Layout>
             </ItemsRepeater>
         </ScrollViewer>
-        <TextBlock IsVisible="{Binding !QueriedAnimeRecommendations.Count}" FontSize="{DynamicResource FontSizeNormal}"
-                   DockPanel.Dock="Top" Text="This place looks empty, perhaps you have no recommendations?"
-                   HorizontalAlignment="Center" VerticalAlignment="Center" />
+        <TextBlock Grid.Row="1" IsVisible="{Binding !QueriedAnimeRecommendations.Count}" FontSize="{DynamicResource FontSizeNormal}"
+                               DockPanel.Dock="Top" Text="This place looks empty, perhaps you have no recommendations?"
+                               HorizontalAlignment="Center" VerticalAlignment="Center" />
 
-    </Panel>
+    </Grid>
 </UserControl>

@@ -3,14 +3,204 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:GUI.ViewModels"
+             xmlns:models="clr-namespace:GUI.Models"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="GUI.Views.TimetablePageView">
     <Design.DataContext>
         <vm:TimetablePageViewModel />
     </Design.DataContext>
 
-    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Text="Hi, this is the calender page view" Foreground="White" />
-        <TextBlock Text="{Binding UrlPathSegment}" Foreground="White" />
-    </StackPanel>
+    <Grid RowDefinitions="Auto Auto *">
+        <TextBlock Grid.Row="0" Text="Time Table Page" FontSize="{StaticResource FontSizeMedium}"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center" Margin="0 15">
+            <TextBlock Text="CURRENT SEASON" VerticalAlignment="Center" Margin="5"/>
+            <CheckBox VerticalContentAlignment="Center" IsChecked="{Binding ShowAllAnime}" Margin="15 0 0 0" ToolTip.Tip="When checked all anime in the current season will be shown. Otherwise only currently watching anime will be shown.">
+                Show All Anime
+            </CheckBox>
+        </StackPanel>
+        
+        <ScrollViewer Grid.Row="2">
+            <Grid RowDefinitions="Auto,*" ColumnDefinitions="*,*,*,*,*,*,*">
+                <!--Row 1-->
+                <StackPanel Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding MondayDate, Mode=OneTime}" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Monday"/>
+                </StackPanel>   
+                <StackPanel Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding TuesdayDate, Mode=OneTime}" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Tuesday"/>
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="2" HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding WednesdayDate, Mode=OneTime}" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Wednesday"/>
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="3" HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding ThursdayDate, Mode=OneTime}" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Thursday"/>
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="4" HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding FridayDate, Mode=OneTime}" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Friday"/>
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="5" HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding SaturdayDate, Mode=OneTime}" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Saturday"/>
+                </StackPanel>
+                <StackPanel Grid.Row="0" Grid.Column="6" HorizontalAlignment="Center">
+                    <TextBlock Text="{Binding SundayDate, Mode=OneTime}" HorizontalAlignment="Center"/>
+                    <TextBlock Text="Sunday"/>
+                </StackPanel>
+                
+                <!--Item Repeaters of anime list panels -->
+                <ItemsRepeater Grid.Row="1" Grid.Column="0" Items="{Binding MondayItems}" Margin="0 10 0 0">
+                    <ItemsRepeater.ItemTemplate>
+                        <DataTemplate DataType="{x:Type models:TimetableNodePresentation}">
+                            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*" HorizontalAlignment="Center">
+                                <Border Grid.Row="0" Background="#262626" Margin="0 0 0 5">
+                                    <TextBlock Margin="0 2" Foreground="White" Text="{Binding AirTime}" HorizontalAlignment="Center"/>
+                                </Border>
+                                <Button Grid.Row="1" 
+                                        ToolTip.Tip="{Binding Title}" 
+                                        Classes="CardRepeaterTimetable" 
+                                        Command="{Binding GoDetailsPage}">
+                                    <StackPanel>
+                                        <Image Source="{Binding Art^}"/>
+                                        <TextBlock Text="{Binding Title}" />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsRepeater.ItemTemplate>
+                </ItemsRepeater>
+                
+                <ItemsRepeater Grid.Row="1" Grid.Column="1" Items="{Binding TuesdayItems}" Margin="0 10 0 0">
+                    <ItemsRepeater.ItemTemplate>
+                        <DataTemplate DataType="{x:Type models:TimetableNodePresentation}">
+                            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*" HorizontalAlignment="Center">
+                                <Border Grid.Row="0" Background="#262626" Margin="0 0 0 5">
+                                    <TextBlock Margin="0 2" Foreground="White" Text="{Binding AirTime}" HorizontalAlignment="Center"/>
+                                </Border>
+                                <Button Grid.Row="1" 
+                                        ToolTip.Tip="{Binding Title}" 
+                                        Classes="CardRepeaterTimetable" 
+                                        Command="{Binding GoDetailsPage}">
+                                    <StackPanel>
+                                        <Image Source="{Binding Art^}"/>
+                                        <TextBlock Text="{Binding Title}" />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsRepeater.ItemTemplate>
+                </ItemsRepeater>
+                
+                <ItemsRepeater Grid.Row="1" Grid.Column="2" Items="{Binding WednesdayItems}" Margin="0 10 0 0">
+                    <ItemsRepeater.ItemTemplate>
+                        <DataTemplate DataType="{x:Type models:TimetableNodePresentation}">
+                            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*" HorizontalAlignment="Center">
+                                <Border Grid.Row="0" Background="#262626" Margin="0 0 0 5">
+                                    <TextBlock Margin="0 2" Foreground="White" Text="{Binding AirTime}" HorizontalAlignment="Center"/>
+                                </Border>
+                                <Button Grid.Row="1" 
+                                        ToolTip.Tip="{Binding Title}" 
+                                        Classes="CardRepeaterTimetable" 
+                                        Command="{Binding GoDetailsPage}">
+                                    <StackPanel>
+                                        <Image Source="{Binding Art^}"/>
+                                        <TextBlock Text="{Binding Title}" />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsRepeater.ItemTemplate>
+                </ItemsRepeater>
+                
+                <ItemsRepeater Grid.Row="1" Grid.Column="3" Items="{Binding ThursdayItems}" Margin="0 10 0 0">
+                    <ItemsRepeater.ItemTemplate>
+                        <DataTemplate DataType="{x:Type models:TimetableNodePresentation}">
+                            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*" HorizontalAlignment="Center">
+                                <Border Grid.Row="0" Background="#262626" Margin="0 0 0 5">
+                                    <TextBlock Margin="0 2" Foreground="White" Text="{Binding AirTime}" HorizontalAlignment="Center"/>
+                                </Border>
+                                <Button Grid.Row="1" 
+                                        ToolTip.Tip="{Binding Title}" 
+                                        Classes="CardRepeaterTimetable" 
+                                        Command="{Binding GoDetailsPage}">
+                                    <StackPanel>
+                                        <Image Source="{Binding Art^}"/>
+                                        <TextBlock Text="{Binding Title}" />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsRepeater.ItemTemplate>
+                </ItemsRepeater>
+                
+                <ItemsRepeater Grid.Row="1" Grid.Column="4" Items="{Binding FridayItems}" Margin="0 10 0 0">
+                    <ItemsRepeater.ItemTemplate>
+                        <DataTemplate DataType="{x:Type models:TimetableNodePresentation}">
+                            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*" HorizontalAlignment="Center">
+                                <Border Grid.Row="0" Background="#262626" Margin="0 0 0 5">
+                                    <TextBlock Margin="0 2" Foreground="White" Text="{Binding AirTime}" HorizontalAlignment="Center"/>
+                                </Border>
+                                <Button Grid.Row="1" 
+                                        ToolTip.Tip="{Binding Title}" 
+                                        Classes="CardRepeaterTimetable" 
+                                        Command="{Binding GoDetailsPage}">
+                                    <StackPanel>
+                                        <Image Source="{Binding Art^}"/>
+                                        <TextBlock Text="{Binding Title}" />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsRepeater.ItemTemplate>
+                </ItemsRepeater>
+                
+                <ItemsRepeater Grid.Row="1" Grid.Column="5" Items="{Binding SaturdayItems}" Margin="0 10 0 0">
+                    <ItemsRepeater.ItemTemplate>
+                        <DataTemplate DataType="{x:Type models:TimetableNodePresentation}">
+                            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*" HorizontalAlignment="Center">
+                                <Border Grid.Row="0" Background="#262626" Margin="0 0 0 5">
+                                    <TextBlock Margin="0 2" Foreground="White" Text="{Binding AirTime}" HorizontalAlignment="Center"/>
+                                </Border>
+                                <Button Grid.Row="1" 
+                                        ToolTip.Tip="{Binding Title}" 
+                                        Classes="CardRepeaterTimetable" 
+                                        Command="{Binding GoDetailsPage}">
+                                    <StackPanel>
+                                        <Image Source="{Binding Art^}"/>
+                                        <TextBlock Text="{Binding Title}" />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsRepeater.ItemTemplate>
+                </ItemsRepeater>
+                
+                <ItemsRepeater Grid.Row="1" Grid.Column="6" Items="{Binding SundayItems}" Margin="0 10 0 0">
+                    <ItemsRepeater.ItemTemplate>
+                        <DataTemplate DataType="{x:Type models:TimetableNodePresentation}">
+                            <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="*" HorizontalAlignment="Center">
+                                <Border Grid.Row="0" Background="#262626" Margin="0 0 0 5">
+                                    <TextBlock Margin="0 2" Foreground="White" Text="{Binding AirTime}" HorizontalAlignment="Center"/>
+                                </Border>
+                                <Button Grid.Row="1" 
+                                        ToolTip.Tip="{Binding Title}" 
+                                        Classes="CardRepeaterTimetable" 
+                                        Command="{Binding GoDetailsPage}">
+                                    <StackPanel>
+                                        <Image Source="{Binding Art^}"/>
+                                        <TextBlock Text="{Binding Title}" />
+                                    </StackPanel>
+                                </Button>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsRepeater.ItemTemplate>
+                </ItemsRepeater>
+            </Grid>
+        </ScrollViewer>
+    </Grid>
+
 </UserControl>
