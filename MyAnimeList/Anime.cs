@@ -38,11 +38,12 @@ public class Anime
     /// </summary>
     /// <param name="id">The Id of the anime</param>
     /// <param name="fields">The fields that you want returned. *Does not default to all*</param>
+    /// <param name="getMyList">Gets logged in user's list status too if field selected as well</param>
     /// <returns>AnimeDetails object or null if failure</returns>
-    public static async Task<AnimeDetails?> GetAnimeDetails(int id, string fields = "")
+    public static async Task<AnimeDetails?> GetAnimeDetails(int id, string fields = "", bool getMyList = false)
     {
         var r = await MALRequestClient.Get<AnimeDetails>(
-            $"v2/anime/{id}?fields={fields}");
+            $"v2/anime/{id}?fields={fields}", getMyList);
         return r;
     }
     
@@ -51,7 +52,7 @@ public class Anime
     /// </summary>
     public static async Task<AnimeDetails?> GetAnimeDetails(int id, FieldSelector fields)
     {
-        return await GetAnimeDetails(id, fields.GetFieldsAsString());
+        return await GetAnimeDetails(id, fields.GetFieldsAsString(), fields.Contains(Fields.MyListStatus));
     }
 
     /// <summary>
