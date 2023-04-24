@@ -10,14 +10,19 @@ namespace MyAnimeList;
 public static class MALRequestClient
 {
     private static HttpClient? _myAnimeListClient;
+    
+    public static bool IsLoggedIn { get; private set; }
 
     /// <summary>
     ///     A static constructor used to create the httpclient
     /// </summary>
-    public static async Task<bool> Init(bool requireAuthInit = false)
+    public static async Task<bool> Init(bool requireAuthInit = true)
     {
         if (requireAuthInit & _myAnimeListClient == null)
+        {
             await OAuth.Init();
+            IsLoggedIn = true;
+        }
 
         if (_myAnimeListClient == null)
         {
