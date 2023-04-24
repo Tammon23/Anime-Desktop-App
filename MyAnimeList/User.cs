@@ -79,10 +79,19 @@ public class User
     ///     Gets the current logged in user's information
     /// </summary>
     /// <returns>UserInformation object or null if failure</returns>
-    public static async Task<UserInformation?> GetMyInformation()
+    public static async Task<UserInformation?> GetMyInformation(string fields="")
     {
         var r = await MALRequestClient.Get<UserInformation>(
-            "v2/users/@me?fields=anime_statistics", true);
+            $"v2/users/@me?fields={fields}", true);
         return r;
+    }
+    
+    /// <summary>
+    ///     Overload for <see cref="GetMyInformation(string)"/>
+    /// </summary>
+    /// <returns>UserInformation object or null if failure</returns>
+    public static async Task<UserInformation?> GetMyInformation(FieldSelector fields)
+    {
+        return await GetMyInformation(fields.GetFieldsAsString());
     }
 }
