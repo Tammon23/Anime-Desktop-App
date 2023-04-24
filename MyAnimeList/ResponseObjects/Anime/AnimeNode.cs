@@ -22,14 +22,14 @@ public class AnimeNode : Node
         List<Genre> genres,
         DateTime? createdAt,
         DateTime? updatedAt,
-        string? mediaType,
+        AnimeMediaType? mediaType,
         AnimeAiringStatusEnum? status,
         MyAnimeListStatus? myListStatus,
         int? numEpisodes,
         StartSeason? startSeason,
         Broadcast? broadcast,
         int? averageEpisodeDuration,
-        string? source,
+        AnimeSourceTypeEnum? source,
         RatingEnum? rating,
         List<Studio> studios
     ) : base(id, title ?? "", mainPicture ?? new Picture("", ""))
@@ -86,7 +86,7 @@ public class AnimeNode : Node
 
     [DataMember(Name = "updated_at")] public DateTime? UpdatedAt { get; }
 
-    [DataMember(Name = "media_type")] public string? MediaType { get; }
+    [DataMember(Name = "media_type")] public AnimeMediaType? MediaType { get; }
 
     [DataMember] public AnimeAiringStatusEnum? Status { get; }
 
@@ -100,7 +100,7 @@ public class AnimeNode : Node
 
     [DataMember] public Broadcast? Broadcast { get; }
 
-    [DataMember] public string? Source { get; }
+    [DataMember] public AnimeSourceTypeEnum? Source { get; }
 
     [DataMember(Name = "average_episode_duration")]
     public int? AverageEpisodeDuration { get; }
