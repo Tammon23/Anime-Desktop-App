@@ -223,3 +223,6 @@
 2023-06-20 04:07:57,606 - __main__ - INFO - Starting action
 2023-06-20 04:08:59,974 - __main__ - INFO - Processed 83 shows
 2023-06-20 04:08:59,977 - __main__ - INFO - Finished updating json
+2023-06-21 04:08:01,471 - __main__ - INFO - Starting action
+2023-06-21 04:08:42,619 - __main__ - INFO - Processed 83 shows
+2023-06-21 04:08:42,622 - __main__ - INFO - Finished updating json
