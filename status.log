@@ -268,3 +268,6 @@
 2023-07-05 04:09:24,220 - __main__ - INFO - Starting action
 2023-07-05 04:10:00,862 - __main__ - INFO - Processed 59 shows
 2023-07-05 04:10:00,865 - __main__ - INFO - Finished updating json
+2023-07-06 04:09:20,190 - __main__ - INFO - Starting action
+2023-07-06 04:09:49,037 - __main__ - INFO - Processed 59 shows
+2023-07-06 04:09:49,040 - __main__ - INFO - Finished updating json
