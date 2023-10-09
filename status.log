@@ -550,3 +550,6 @@
 2023-10-08 04:07:47,808 - __main__ - INFO - Starting action
 2023-10-08 04:09:00,863 - __main__ - INFO - Processed 88 shows
 2023-10-08 04:09:00,866 - __main__ - INFO - Finished updating json
+2023-10-09 04:08:20,993 - __main__ - INFO - Starting action
+2023-10-09 04:09:12,890 - __main__ - INFO - Processed 84 shows
+2023-10-09 04:09:12,893 - __main__ - INFO - Finished updating json
