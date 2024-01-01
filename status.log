@@ -802,3 +802,6 @@
 2023-12-31 04:08:19,576 - __main__ - INFO - Starting action
 2023-12-31 04:08:51,029 - __main__ - INFO - Processed 60 shows
 2023-12-31 04:08:51,030 - __main__ - INFO - Finished updating json
+2024-01-01 04:09:02,043 - __main__ - INFO - Starting action
+2024-01-01 04:09:20,322 - __main__ - INFO - Processed 51 shows
+2024-01-01 04:09:20,323 - __main__ - INFO - Finished updating json
