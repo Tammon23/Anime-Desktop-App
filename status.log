@@ -805,3 +805,6 @@
 2024-01-01 04:09:02,043 - __main__ - INFO - Starting action
 2024-01-01 04:09:20,322 - __main__ - INFO - Processed 51 shows
 2024-01-01 04:09:20,323 - __main__ - INFO - Finished updating json
+2024-01-02 04:08:39,071 - __main__ - INFO - Starting action
+2024-01-02 04:08:58,804 - __main__ - INFO - Processed 50 shows
+2024-01-02 04:08:58,805 - __main__ - INFO - Finished updating json
