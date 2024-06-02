@@ -1258,3 +1258,6 @@
 2024-06-01 04:09:05,713 - __main__ - INFO - Starting action
 2024-06-01 04:09:38,425 - __main__ - INFO - Processed 99 shows
 2024-06-01 04:09:38,426 - __main__ - INFO - Finished updating json
+2024-06-02 04:08:47,029 - __main__ - INFO - Starting action
+2024-06-02 04:09:30,654 - __main__ - INFO - Processed 99 shows
+2024-06-02 04:09:30,655 - __main__ - INFO - Finished updating json
