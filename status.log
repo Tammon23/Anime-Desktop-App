@@ -1342,3 +1342,6 @@
 2024-06-30 04:09:06,409 - __main__ - INFO - Starting action
 2024-06-30 04:09:46,216 - __main__ - INFO - Processed 79 shows
 2024-06-30 04:09:46,217 - __main__ - INFO - Finished updating json
+2024-07-01 04:09:49,145 - __main__ - INFO - Starting action
+2024-07-01 04:10:13,162 - __main__ - INFO - Processed 59 shows
+2024-07-01 04:10:13,163 - __main__ - INFO - Finished updating json
