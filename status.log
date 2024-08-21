@@ -1495,3 +1495,6 @@
 2024-08-20 04:12:03,625 - __main__ - INFO - Starting action
 2024-08-20 04:12:40,148 - __main__ - INFO - Processed 99 shows
 2024-08-20 04:12:40,149 - __main__ - INFO - Finished updating json
+2024-08-21 04:10:50,787 - __main__ - INFO - Starting action
+2024-08-21 04:11:23,810 - __main__ - INFO - Processed 99 shows
+2024-08-21 04:11:23,811 - __main__ - INFO - Finished updating json
