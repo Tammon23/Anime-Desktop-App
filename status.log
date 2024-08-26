@@ -1510,3 +1510,6 @@
 2024-08-25 04:09:31,370 - __main__ - INFO - Starting action
 2024-08-25 04:10:06,329 - __main__ - INFO - Processed 100 shows
 2024-08-25 04:10:06,330 - __main__ - INFO - Finished updating json
+2024-08-26 04:10:28,231 - __main__ - INFO - Starting action
+2024-08-26 04:11:01,554 - __main__ - INFO - Processed 99 shows
+2024-08-26 04:11:01,555 - __main__ - INFO - Finished updating json
