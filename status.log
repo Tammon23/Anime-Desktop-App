@@ -1528,3 +1528,6 @@
 2024-08-31 04:09:58,417 - __main__ - INFO - Starting action
 2024-08-31 04:10:43,240 - __main__ - INFO - Processed 99 shows
 2024-08-31 04:10:43,241 - __main__ - INFO - Finished updating json
+2024-09-01 04:11:09,726 - __main__ - INFO - Starting action
+2024-09-01 04:11:57,502 - __main__ - INFO - Processed 99 shows
+2024-09-01 04:11:57,503 - __main__ - INFO - Finished updating json
