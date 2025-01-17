@@ -1942,3 +1942,6 @@
 2025-01-16 04:10:44,674 - __main__ - INFO - Starting action
 2025-01-16 04:11:17,108 - __main__ - INFO - Processed 100 shows
 2025-01-16 04:11:17,109 - __main__ - INFO - Finished updating json
+2025-01-17 04:11:01,745 - __main__ - INFO - Starting action
+2025-01-17 04:11:34,439 - __main__ - INFO - Processed 101 shows
+2025-01-17 04:11:34,441 - __main__ - INFO - Finished updating json
