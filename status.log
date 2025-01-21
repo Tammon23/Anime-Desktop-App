@@ -1954,3 +1954,6 @@
 2025-01-20 04:11:29,214 - __main__ - INFO - Starting action
 2025-01-20 04:12:05,676 - __main__ - INFO - Processed 100 shows
 2025-01-20 04:12:05,677 - __main__ - INFO - Finished updating json
+2025-01-21 04:11:07,270 - __main__ - INFO - Starting action
+2025-01-21 04:11:38,308 - __main__ - INFO - Processed 101 shows
+2025-01-21 04:11:38,309 - __main__ - INFO - Finished updating json
