@@ -1990,3 +1990,6 @@
 2025-02-01 04:10:37,554 - __main__ - INFO - Starting action
 2025-02-01 04:11:10,677 - __main__ - INFO - Processed 107 shows
 2025-02-01 04:11:10,678 - __main__ - INFO - Finished updating json
+2025-02-02 04:20:39,208 - __main__ - INFO - Starting action
+2025-02-02 04:21:16,316 - __main__ - INFO - Processed 109 shows
+2025-02-02 04:21:16,318 - __main__ - INFO - Finished updating json
