@@ -2014,3 +2014,6 @@
 2025-02-09 04:10:55,205 - __main__ - INFO - Starting action
 2025-02-09 04:11:46,234 - __main__ - INFO - Processed 106 shows
 2025-02-09 04:11:46,235 - __main__ - INFO - Finished updating json
+2025-02-10 04:11:23,480 - __main__ - INFO - Starting action
+2025-02-10 04:12:13,489 - __main__ - INFO - Processed 100 shows
+2025-02-10 04:12:13,491 - __main__ - INFO - Finished updating json
