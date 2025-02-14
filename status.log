@@ -2026,3 +2026,6 @@
 2025-02-13 04:11:32,849 - __main__ - INFO - Starting action
 2025-02-13 04:12:05,279 - __main__ - INFO - Processed 101 shows
 2025-02-13 04:12:05,280 - __main__ - INFO - Finished updating json
+2025-02-14 04:11:30,152 - __main__ - INFO - Starting action
+2025-02-14 04:12:10,344 - __main__ - INFO - Processed 101 shows
+2025-02-14 04:12:10,345 - __main__ - INFO - Finished updating json
