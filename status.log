@@ -2092,3 +2092,6 @@
 2025-03-07 04:12:00,502 - __main__ - INFO - Starting action
 2025-03-07 04:12:35,996 - __main__ - INFO - Processed 101 shows
 2025-03-07 04:12:35,997 - __main__ - INFO - Finished updating json
+2025-03-08 04:09:18,724 - __main__ - INFO - Starting action
+2025-03-08 04:09:54,608 - __main__ - INFO - Processed 103 shows
+2025-03-08 04:09:54,609 - __main__ - INFO - Finished updating json
