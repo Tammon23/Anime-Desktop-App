@@ -2425,3 +2425,6 @@
 2025-06-29 04:27:04,266 - __main__ - INFO - Starting action
 2025-06-29 04:27:31,503 - __main__ - INFO - Processed 77 shows
 2025-06-29 04:27:31,504 - __main__ - INFO - Finished updating json
+2025-06-30 04:25:28,532 - __main__ - INFO - Starting action
+2025-06-30 04:25:48,349 - __main__ - INFO - Processed 50 shows
+2025-06-30 04:25:48,350 - __main__ - INFO - Finished updating json
