@@ -2476,3 +2476,6 @@
 2025-07-16 04:30:05,544 - __main__ - INFO - Starting action
 2025-07-16 04:30:56,655 - __main__ - INFO - Processed 103 shows
 2025-07-16 04:30:56,657 - __main__ - INFO - Finished updating json
+2025-07-17 04:29:44,405 - __main__ - INFO - Starting action
+2025-07-17 04:30:19,789 - __main__ - INFO - Processed 106 shows
+2025-07-17 04:30:19,790 - __main__ - INFO - Finished updating json
