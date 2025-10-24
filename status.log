@@ -2773,3 +2773,6 @@
 2025-10-23 04:12:52,322 - __main__ - INFO - Starting action
 2025-10-23 04:13:25,750 - __main__ - INFO - Processed 100 shows
 2025-10-23 04:13:25,751 - __main__ - INFO - Finished updating json
+2025-10-24 04:12:28,980 - __main__ - INFO - Starting action
+2025-10-24 04:12:59,756 - __main__ - INFO - Processed 98 shows
+2025-10-24 04:12:59,757 - __main__ - INFO - Finished updating json
