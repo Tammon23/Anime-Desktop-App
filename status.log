@@ -3067,3 +3067,6 @@
 2026-01-29 05:00:01,508 - __main__ - INFO - Starting action
 2026-01-29 05:00:44,649 - __main__ - INFO - Processed 114 shows
 2026-01-29 05:00:44,650 - __main__ - INFO - Finished updating json
+2026-01-30 05:03:01,332 - __main__ - INFO - Starting action
+2026-01-30 05:03:42,451 - __main__ - INFO - Processed 111 shows
+2026-01-30 05:03:42,452 - __main__ - INFO - Finished updating json
