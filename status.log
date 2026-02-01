@@ -3073,3 +3073,6 @@
 2026-01-31 04:55:51,345 - __main__ - INFO - Starting action
 2026-01-31 04:56:23,217 - __main__ - INFO - Processed 111 shows
 2026-01-31 04:56:23,218 - __main__ - INFO - Finished updating json
+2026-02-01 05:18:07,400 - __main__ - INFO - Starting action
+2026-02-01 05:18:51,110 - __main__ - INFO - Processed 111 shows
+2026-02-01 05:18:51,112 - __main__ - INFO - Finished updating json
