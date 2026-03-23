@@ -3223,3 +3223,6 @@
 2026-03-22 05:14:27,318 - __main__ - INFO - Starting action
 2026-03-22 05:14:56,668 - __main__ - INFO - Processed 109 shows
 2026-03-22 05:14:56,669 - __main__ - INFO - Finished updating json
+2026-03-23 05:25:19,956 - __main__ - INFO - Starting action
+2026-03-23 05:25:46,273 - __main__ - INFO - Processed 98 shows
+2026-03-23 05:25:46,274 - __main__ - INFO - Finished updating json
