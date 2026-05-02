@@ -3343,3 +3343,6 @@
 2026-05-01 06:29:54,458 - __main__ - INFO - Starting action
 2026-05-01 06:30:27,523 - __main__ - INFO - Processed 117 shows
 2026-05-01 06:30:27,524 - __main__ - INFO - Finished updating json
+2026-05-02 05:59:45,001 - __main__ - INFO - Starting action
+2026-05-02 06:00:30,296 - __main__ - INFO - Processed 120 shows
+2026-05-02 06:00:30,297 - __main__ - INFO - Finished updating json
