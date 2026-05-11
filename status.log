@@ -3370,3 +3370,6 @@
 2026-05-10 06:27:16,823 - __main__ - INFO - Starting action
 2026-05-10 06:27:49,470 - __main__ - INFO - Processed 120 shows
 2026-05-10 06:27:49,471 - __main__ - INFO - Finished updating json
+2026-05-11 06:56:44,659 - __main__ - INFO - Starting action
+2026-05-11 06:57:29,014 - __main__ - INFO - Processed 123 shows
+2026-05-11 06:57:29,015 - __main__ - INFO - Finished updating json
