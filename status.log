@@ -3400,3 +3400,6 @@
 2026-05-20 07:33:46,137 - __main__ - INFO - Starting action
 2026-05-20 07:34:32,384 - __main__ - INFO - Processed 123 shows
 2026-05-20 07:34:32,385 - __main__ - INFO - Finished updating json
+2026-05-21 07:39:33,688 - __main__ - INFO - Starting action
+2026-05-21 07:40:09,422 - __main__ - INFO - Processed 125 shows
+2026-05-21 07:40:09,424 - __main__ - INFO - Finished updating json
