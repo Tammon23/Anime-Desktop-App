@@ -3454,3 +3454,6 @@
 2026-06-07 07:45:36,725 - __main__ - INFO - Starting action
 2026-06-07 07:46:13,498 - __main__ - INFO - Processed 123 shows
 2026-06-07 07:46:13,499 - __main__ - INFO - Finished updating json
+2026-06-08 08:43:14,761 - __main__ - INFO - Starting action
+2026-06-08 08:43:49,306 - __main__ - INFO - Processed 116 shows
+2026-06-08 08:43:49,307 - __main__ - INFO - Finished updating json
